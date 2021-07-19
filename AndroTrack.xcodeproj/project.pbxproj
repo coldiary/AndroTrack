@@ -3,62 +3,258 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
+		6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2CA269F515800F7081D /* SettingsView.swift */; };
+		6A4FD2D0269F807600F7081D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4FD2CF269F807600F7081D /* HealthKit.framework */; };
+		6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2D226A041AF00F7081D /* HealthKit.swift */; };
+		6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */; };
+		6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2426A46001003DF0CE /* AndroTrackApp.swift */; };
+		6A8B2D8E26A1A3C800D63862 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8B2D8D26A1A3C800D63862 /* DynamicColor */; };
+		6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */; };
+		6A922C4926A4574A005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C4826A4574A005782DB /* Assets.xcassets */; };
+		6A922C5026A4574A005782DB /* WatchAndroTrack Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6A922C5726A4574A005782DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5626A4574A005782DB /* ContentView.swift */; };
+		6A922C5926A4574A005782DB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5826A4574A005782DB /* NotificationController.swift */; };
+		6A922C5B26A4574A005782DB /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5A26A4574A005782DB /* NotificationView.swift */; };
+		6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5C26A4574A005782DB /* ComplicationController.swift */; };
+		6A922C5F26A4574B005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C5E26A4574B005782DB /* Assets.xcassets */; };
+		6A922C6226A4574B005782DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C6126A4574B005782DB /* Preview Assets.xcassets */; };
+		6A922C6726A4574B005782DB /* WatchAndroTrack.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6A922C4626A45747005782DB /* WatchAndroTrack.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F72269E3CBC00A78C5C /* Color+Extension.swift */; };
+		6A922C7126A4588F005782DB /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */; };
+		6A922C7226A4588F005782DB /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F7C269E457100A78C5C /* Double+Extension.swift */; };
+		6A922C7326A4588F005782DB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */; };
+		6A922C7426A4588F005782DB /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2D226A041AF00F7081D /* HealthKit.swift */; };
+		6A922C7526A4588F005782DB /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F79269E439400A78C5C /* RingShape.swift */; };
+		6A922C7626A4588F005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A6F40269E15BA00A78C5C /* Assets.xcassets */; };
+		6A922C7826A4588F005782DB /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F5F269E178500A78C5C /* Record.swift */; };
+		6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F75269E402300A78C5C /* Date+Extension.swift */; };
+		6A922C7A26A4588F005782DB /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
+		6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
+		6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */; };
+		6A922C7E26A45A49005782DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6A922C7D26A45A49005782DB /* DynamicColor */; };
+		6A922C8026A45B2F005782DB /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C7F26A45B2F005782DB /* TodayView.swift */; };
+		6A922C8226A45BBA005782DB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A922C8126A45BBA005782DB /* HealthKit.framework */; };
+		6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */; };
+		6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */; };
+		6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
+		6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
 		6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */; };
-		6A9A6F52269E15BA00A78C5C /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */; };
 		6A9A6F53269E15BA00A78C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3F269E15B900A78C5C /* ContentView.swift */; };
-		6A9A6F54269E15BA00A78C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3F269E15B900A78C5C /* ContentView.swift */; };
 		6A9A6F55269E15BA00A78C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A6F40269E15BA00A78C5C /* Assets.xcassets */; };
-		6A9A6F56269E15BA00A78C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A6F40269E15BA00A78C5C /* Assets.xcassets */; };
+		6A9A6F60269E178500A78C5C /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F5F269E178500A78C5C /* Record.swift */; };
+		6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F68269E21B800A78C5C /* RecordView.swift */; };
+		6A9A6F6C269E2FE700A78C5C /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */; };
+		6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */; };
+		6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F72269E3CBC00A78C5C /* Color+Extension.swift */; };
+		6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F75269E402300A78C5C /* Date+Extension.swift */; };
+		6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F79269E439400A78C5C /* RingShape.swift */; };
+		6A9A6F7D269E457100A78C5C /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F7C269E457100A78C5C /* Double+Extension.swift */; };
+		6A9A6F80269E6D3200A78C5C /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F7F269E6D3200A78C5C /* TodayView.swift */; };
+		6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F82269E6D9000A78C5C /* HistoryView.swift */; };
+		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
+		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
+		6AFEEEE726A4BB1B000DDADB /* ComplicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6A922C5126A4574A005782DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A9A6F39269E15B800A78C5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A922C4E26A4574A005782DB;
+			remoteInfo = "WatchAndroTrack Extension";
+		};
+		6A922C6526A4574B005782DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A9A6F39269E15B800A78C5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A922C4526A45747005782DB;
+			remoteInfo = WatchAndroTrack;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A922C6B26A4574B005782DB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6A922C5026A4574A005782DB /* WatchAndroTrack Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A922C6F26A4574B005782DB /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6A922C6726A4574B005782DB /* WatchAndroTrack.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6A4FD2C4269F0A6D00F7081D /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		6A4FD2CA269F515800F7081D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6A4FD2CD269F807600F7081D /* AndroTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndroTrack.entitlements; sourceTree = "<group>"; };
+		6A4FD2CF269F807600F7081D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		6A4FD2D226A041AF00F7081D /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
+		6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackAppDelegate.swift; sourceTree = "<group>"; };
+		6A779C2426A46001003DF0CE /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
+		6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchAndroTrack Extension.entitlements"; sourceTree = "<group>"; };
+		6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		6A922C4626A45747005782DB /* WatchAndroTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchAndroTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A922C4826A4574A005782DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A922C4A26A4574A005782DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchAndroTrack Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A922C5626A4574A005782DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6A922C5826A4574A005782DB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6A922C5A26A4574A005782DB /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		6A922C5C26A4574A005782DB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		6A922C5E26A4574B005782DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A922C6126A4574B005782DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6A922C6326A4574B005782DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A922C6426A4574B005782DB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		6A922C7F26A45B2F005782DB /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		6A922C8126A45BBA005782DB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extension.swift"; sourceTree = "<group>"; };
 		6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
 		6A9A6F3F269E15B900A78C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A9A6F40269E15BA00A78C5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A9A6F45269E15BA00A78C5C /* AndroTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndroTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A9A6F48269E15BA00A78C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A9A6F4D269E15BA00A78C5C /* AndroTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndroTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A9A6F4F269E15BA00A78C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A9A6F50269E15BA00A78C5C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		6A9A6F5F269E178500A78C5C /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		6A9A6F68269E21B800A78C5C /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStore.swift; sourceTree = "<group>"; };
+		6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRingView.swift; sourceTree = "<group>"; };
+		6A9A6F72269E3CBC00A78C5C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		6A9A6F75269E402300A78C5C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		6A9A6F79269E439400A78C5C /* RingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingShape.swift; sourceTree = "<group>"; };
+		6A9A6F7C269E457100A78C5C /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		6A9A6F7F269E6D3200A78C5C /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		6A9A6F82269E6D9000A78C5C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
+		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6A922C4C26A4574A005782DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A922C8226A45BBA005782DB /* HealthKit.framework in Frameworks */,
+				6A922C7E26A45A49005782DB /* DynamicColor in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A9A6F42269E15BA00A78C5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6A9A6F4A269E15BA00A78C5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				6A8B2D8E26A1A3C800D63862 /* DynamicColor in Frameworks */,
+				6A4FD2D0269F807600F7081D /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A4FD2CE269F807600F7081D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A922C8126A45BBA005782DB /* HealthKit.framework */,
+				6A4FD2CF269F807600F7081D /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A4FD2D126A0419F00F7081D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6A4FD2D226A041AF00F7081D /* HealthKit.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6A779C2626A460E2003DF0CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A922C5626A4574A005782DB /* ContentView.swift */,
+				6A922C7F26A45B2F005782DB /* TodayView.swift */,
+				6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6A922C4726A45747005782DB /* WatchAndroTrack */ = {
+			isa = PBXGroup;
+			children = (
+				6A922C4826A4574A005782DB /* Assets.xcassets */,
+				6A922C4A26A4574A005782DB /* Info.plist */,
+			);
+			path = WatchAndroTrack;
+			sourceTree = "<group>";
+		};
+		6A922C5326A4574A005782DB /* WatchAndroTrack Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */,
+				6A779C2626A460E2003DF0CE /* Views */,
+				6A779C2426A46001003DF0CE /* AndroTrackApp.swift */,
+				6A922C5826A4574A005782DB /* NotificationController.swift */,
+				6A922C5A26A4574A005782DB /* NotificationView.swift */,
+				6A922C5C26A4574A005782DB /* ComplicationController.swift */,
+				6A922C5E26A4574B005782DB /* Assets.xcassets */,
+				6A922C6326A4574B005782DB /* Info.plist */,
+				6A922C6426A4574B005782DB /* PushNotificationPayload.apns */,
+				6A922C6026A4574B005782DB /* Preview Content */,
+			);
+			path = "WatchAndroTrack Extension";
+			sourceTree = "<group>";
+		};
+		6A922C6026A4574B005782DB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6A922C6126A4574B005782DB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		6A9A6F38269E15B800A78C5C = {
 			isa = PBXGroup;
 			children = (
+				6A4FD2CD269F807600F7081D /* AndroTrack.entitlements */,
 				6A9A6F3D269E15B800A78C5C /* Shared */,
 				6A9A6F47269E15BA00A78C5C /* iOS */,
-				6A9A6F4E269E15BA00A78C5C /* macOS */,
+				6A922C4726A45747005782DB /* WatchAndroTrack */,
+				6A922C5326A4574A005782DB /* WatchAndroTrack Extension */,
 				6A9A6F46269E15BA00A78C5C /* Products */,
+				6A4FD2CE269F807600F7081D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		6A9A6F3D269E15B800A78C5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6A4FD2D126A0419F00F7081D /* Services */,
+				6A9A6F71269E3CB100A78C5C /* Extensions */,
+				6A9A6F66269E1CEB00A78C5C /* Views */,
+				6A9A6F62269E1AB900A78C5C /* Models */,
+				6ADBD5DF26A1D53A009FDB3D /* Stores */,
 				6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */,
-				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
+				6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */,
 				6A9A6F40269E15BA00A78C5C /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -68,7 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				6A9A6F45269E15BA00A78C5C /* AndroTrack.app */,
-				6A9A6F4D269E15BA00A78C5C /* AndroTrack.app */,
+				6A922C4626A45747005782DB /* WatchAndroTrack.app */,
+				6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,18 +278,100 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		6A9A6F4E269E15BA00A78C5C /* macOS */ = {
+		6A9A6F62269E1AB900A78C5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6A9A6F4F269E15BA00A78C5C /* Info.plist */,
-				6A9A6F50269E15BA00A78C5C /* macOS.entitlements */,
+				6A9A6F5F269E178500A78C5C /* Record.swift */,
+				6A4FD2C4269F0A6D00F7081D /* Day.swift */,
 			);
-			path = macOS;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6A9A6F66269E1CEB00A78C5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A6F78269E437B00A78C5C /* TimeRingView */,
+				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
+				6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */,
+				6A9A6F7F269E6D3200A78C5C /* TodayView.swift */,
+				6A9A6F68269E21B800A78C5C /* RecordView.swift */,
+				6A4FD2CA269F515800F7081D /* SettingsView.swift */,
+				6A9A6F82269E6D9000A78C5C /* HistoryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6A9A6F71269E3CB100A78C5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A6F72269E3CBC00A78C5C /* Color+Extension.swift */,
+				6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */,
+				6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */,
+				6A9A6F75269E402300A78C5C /* Date+Extension.swift */,
+				6A9A6F7C269E457100A78C5C /* Double+Extension.swift */,
+				6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6A9A6F78269E437B00A78C5C /* TimeRingView */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */,
+				6A9A6F79269E439400A78C5C /* RingShape.swift */,
+			);
+			path = TimeRingView;
+			sourceTree = "<group>";
+		};
+		6ADBD5DF26A1D53A009FDB3D /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */,
+				6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6A922C4526A45747005782DB /* WatchAndroTrack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A922C6C26A4574B005782DB /* Build configuration list for PBXNativeTarget "WatchAndroTrack" */;
+			buildPhases = (
+				6A922C4426A45747005782DB /* Resources */,
+				6A922C6B26A4574B005782DB /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A922C5226A4574A005782DB /* PBXTargetDependency */,
+			);
+			name = WatchAndroTrack;
+			productName = WatchAndroTrack;
+			productReference = 6A922C4626A45747005782DB /* WatchAndroTrack.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6A922C4E26A4574A005782DB /* WatchAndroTrack Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A922C6826A4574B005782DB /* Build configuration list for PBXNativeTarget "WatchAndroTrack Extension" */;
+			buildPhases = (
+				6A922C4B26A4574A005782DB /* Sources */,
+				6A922C4C26A4574A005782DB /* Frameworks */,
+				6A922C4D26A4574A005782DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchAndroTrack Extension";
+			packageProductDependencies = (
+				6A922C7D26A45A49005782DB /* DynamicColor */,
+			);
+			productName = "WatchAndroTrack Extension";
+			productReference = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		6A9A6F44269E15BA00A78C5C /* AndroTrack (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A9A6F59269E15BA00A78C5C /* Build configuration list for PBXNativeTarget "AndroTrack (iOS)" */;
@@ -100,31 +379,19 @@
 				6A9A6F41269E15BA00A78C5C /* Sources */,
 				6A9A6F42269E15BA00A78C5C /* Frameworks */,
 				6A9A6F43269E15BA00A78C5C /* Resources */,
+				6A922C6F26A4574B005782DB /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6A922C6626A4574B005782DB /* PBXTargetDependency */,
 			);
 			name = "AndroTrack (iOS)";
+			packageProductDependencies = (
+				6A8B2D8D26A1A3C800D63862 /* DynamicColor */,
+			);
 			productName = "AndroTrack (iOS)";
 			productReference = 6A9A6F45269E15BA00A78C5C /* AndroTrack.app */;
-			productType = "com.apple.product-type.application";
-		};
-		6A9A6F4C269E15BA00A78C5C /* AndroTrack (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6A9A6F5C269E15BA00A78C5C /* Build configuration list for PBXNativeTarget "AndroTrack (macOS)" */;
-			buildPhases = (
-				6A9A6F49269E15BA00A78C5C /* Sources */,
-				6A9A6F4A269E15BA00A78C5C /* Frameworks */,
-				6A9A6F4B269E15BA00A78C5C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "AndroTrack (macOS)";
-			productName = "AndroTrack (macOS)";
-			productReference = 6A9A6F4D269E15BA00A78C5C /* AndroTrack.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -136,10 +403,13 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					6A9A6F44269E15BA00A78C5C = {
+					6A922C4526A45747005782DB = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					6A9A6F4C269E15BA00A78C5C = {
+					6A922C4E26A4574A005782DB = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					6A9A6F44269E15BA00A78C5C = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
@@ -153,17 +423,39 @@
 				Base,
 			);
 			mainGroup = 6A9A6F38269E15B800A78C5C;
+			packageReferences = (
+				6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */,
+			);
 			productRefGroup = 6A9A6F46269E15BA00A78C5C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				6A9A6F44269E15BA00A78C5C /* AndroTrack (iOS) */,
-				6A9A6F4C269E15BA00A78C5C /* AndroTrack (macOS) */,
+				6A922C4526A45747005782DB /* WatchAndroTrack */,
+				6A922C4E26A4574A005782DB /* WatchAndroTrack Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6A922C4426A45747005782DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A922C4926A4574A005782DB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A922C4D26A4574A005782DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A922C6226A4574B005782DB /* Preview Assets.xcassets in Resources */,
+				6A922C7626A4588F005782DB /* Assets.xcassets in Resources */,
+				6A922C5F26A4574B005782DB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A9A6F43269E15BA00A78C5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,38 +464,172 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A9A6F4B269E15BA00A78C5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A9A6F56269E15BA00A78C5C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6A922C4B26A4574A005782DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
+				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
+				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
+				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
+				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
+				6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */,
+				6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
+				6A922C7326A4588F005782DB /* RecordStore.swift in Sources */,
+				6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */,
+				6A922C7826A4588F005782DB /* Record.swift in Sources */,
+				6A922C7A26A4588F005782DB /* Day.swift in Sources */,
+				6A922C7226A4588F005782DB /* Double+Extension.swift in Sources */,
+				6A922C7526A4588F005782DB /* RingShape.swift in Sources */,
+				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
+				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
+				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
+				6AFEEEE726A4BB1B000DDADB /* ComplicationViews.swift in Sources */,
+				6A922C8026A45B2F005782DB /* TodayView.swift in Sources */,
+				6A922C5B26A4574A005782DB /* NotificationView.swift in Sources */,
+				6A922C7126A4588F005782DB /* UserDefaults+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6A9A6F41269E15BA00A78C5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6A9A6F53269E15BA00A78C5C /* ContentView.swift in Sources */,
+				6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */,
+				6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */,
+				6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
+				6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */,
+				6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */,
 				6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6A9A6F49269E15BA00A78C5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A9A6F54269E15BA00A78C5C /* ContentView.swift in Sources */,
-				6A9A6F52269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
+				6A9A6F80269E6D3200A78C5C /* TodayView.swift in Sources */,
+				6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */,
+				6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */,
+				6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */,
+				6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
+				6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */,
+				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
+				6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */,
+				6A9A6F60269E178500A78C5C /* Record.swift in Sources */,
+				6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */,
+				6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */,
+				6A9A6F7D269E457100A78C5C /* Double+Extension.swift in Sources */,
+				6A9A6F6C269E2FE700A78C5C /* RecordStore.swift in Sources */,
+				6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6A922C5226A4574A005782DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A922C4E26A4574A005782DB /* WatchAndroTrack Extension */;
+			targetProxy = 6A922C5126A4574A005782DB /* PBXContainerItemProxy */;
+		};
+		6A922C6626A4574B005782DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A922C4526A45747005782DB /* WatchAndroTrack */;
+			targetProxy = 6A922C6526A4574B005782DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		6A922C6926A4574B005782DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchAndroTrack Extension/WatchAndroTrack Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchAndroTrack Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = C24Y42M3EJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "WatchAndroTrack Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		6A922C6A26A4574B005782DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchAndroTrack Extension/WatchAndroTrack Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchAndroTrack Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = C24Y42M3EJ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "WatchAndroTrack Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		6A922C6D26A4574B005782DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C24Y42M3EJ;
+				IBSC_MODULE = WatchAndroTrack_Extension;
+				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		6A922C6E26A4574B005782DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C24Y42M3EJ;
+				IBSC_MODULE = WatchAndroTrack_Extension;
+				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 		6A9A6F57269E15BA00A78C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -320,6 +746,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AndroTrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				ENABLE_PREVIEWS = YES;
@@ -333,7 +760,7 @@
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -342,6 +769,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AndroTrack.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				ENABLE_PREVIEWS = YES;
@@ -355,62 +783,32 @@
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6A9A6F5D269E15BA00A78C5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = C24Y42M3EJ;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
-				PRODUCT_NAME = AndroTrack;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		6A9A6F5E269E15BA00A78C5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = C24Y42M3EJ;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
-				PRODUCT_NAME = AndroTrack;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6A922C6826A4574B005782DB /* Build configuration list for PBXNativeTarget "WatchAndroTrack Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A922C6926A4574B005782DB /* Debug */,
+				6A922C6A26A4574B005782DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A922C6C26A4574B005782DB /* Build configuration list for PBXNativeTarget "WatchAndroTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A922C6D26A4574B005782DB /* Debug */,
+				6A922C6E26A4574B005782DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6A9A6F3C269E15B800A78C5C /* Build configuration list for PBXProject "AndroTrack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -429,16 +827,31 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A9A6F5C269E15BA00A78C5C /* Build configuration list for PBXNativeTarget "AndroTrack (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6A9A6F5D269E15BA00A78C5C /* Debug */,
-				6A9A6F5E269E15BA00A78C5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6A8B2D8D26A1A3C800D63862 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
+		6A922C7D26A45A49005782DB /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6A9A6F39269E15B800A78C5C /* Project object */;
 }
