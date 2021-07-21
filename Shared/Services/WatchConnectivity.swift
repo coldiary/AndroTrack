@@ -29,7 +29,7 @@ class WatchConnectivity: NSObject, ObservableObject, WCSessionDelegate {
             session.delegate = self
             session.activate()
         } else {
-            print("[WatchConnectivity] WatchConnectivity not supported")
+            AppLogger.warning(context: "WatchConnectivity", "WatchConnectivity not supported")
         }
     }
     
@@ -49,14 +49,14 @@ class WatchConnectivity: NSObject, ObservableObject, WCSessionDelegate {
             do {
                 try session.updateApplicationContext(SettingsStore.shared.appContext)
             } catch {
-                print("[WatchConnectivity] Sync error: \(error.localizedDescription)")
+                AppLogger.error(context: "WatchConnectivity", "Sync error: \(error.localizedDescription)")
             }
         }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
-            print("[WatchConnectivity] Activation error: \(error.localizedDescription)")
+            AppLogger.error(context: "WatchConnectivity", "Activation error: \(error.localizedDescription)")
         }
     }
     
@@ -78,7 +78,7 @@ class WatchConnectivity: NSObject, ObservableObject, WCSessionDelegate {
         #endif
         
         publisher.send(applicationContext)
-        print("[WatchConnectivity] didReceiveApplicationContext: \(applicationContext)")
+        AppLogger.info(context: "WatchConnectivity", "didReceiveApplicationContext: \(applicationContext)")
     }
     
 }

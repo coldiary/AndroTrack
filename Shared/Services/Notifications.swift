@@ -29,7 +29,7 @@ class Notifications {
     static func scheduleNotification(_ content:UNNotificationContent, at dateComps: DateComponents, repeats: Bool = false, forId id: String = UUID().uuidString) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             guard settings.alertSetting == .enabled else {
-                print("[Notifications] Alert Notification unavailable: \(settings.alertSetting)")
+                AppLogger.info(context: "Notifications", "Alert Notification unavailable: \(settings.alertSetting)")
                 return
             }
             

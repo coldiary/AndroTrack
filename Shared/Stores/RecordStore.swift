@@ -28,16 +28,16 @@ class RecordStore: ObservableObject {
         if #available(iOS 14.3, *) {
             HKService.registerForSync(withCallback: { error in
                 if let error = error {
-                    print("[RecordStore] Failure", error.errorDescription!)
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
                 self.refreshHealthData()
             }, completion: { error in
                 if let error = error {
-                    print("[RecordStore] Failure", error.errorDescription!)
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
             })
         } else {
-            print("[RecordStore] HealthKit not supported")
+            AppLogger.warning(context: "RecordStore", "HealthKit not supported")
         }
     }
     
@@ -53,17 +53,18 @@ class RecordStore: ObservableObject {
             if #available(iOS 14.3, *) {
                 HKService.storeRecord(record: records[records.endIndex - 1]) { error in
                     if let error = error {
-                        print(error.errorDescription!)
+                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }
                 }
             }
             if SettingsStore.shared.notifications.notifyEnd {
                 guard let estimatedEnd = current.estimatedEnd(forDuration: SettingsStore.shared.sessionLength) else {
-                    print("[Notifications] Can't determine estimatedEnd")
+                    AppLogger.error(context: "RecordStore", "Can't determine estimatedEnd")
                     return
                 }
                 
                 Notifications.scheduleNotifyEndNotification(at: estimatedEnd)
+                Notifications.cancelReminderStartNotification()
             }
         }
     }
@@ -76,13 +77,14 @@ class RecordStore: ObservableObject {
             if #available(iOS 14.3, *) {
                 HKService.storeRecord(record: records[records.endIndex - 1]) { error in
                     if let error = error {
-                        print(error.errorDescription!)
+                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }
                 }
             }
             
             if SettingsStore.shared.notifications.notifyEnd {
                 Notifications.cancelNotifyEndNotification()
+                Notifications.scheduleReminderStartNotification()
             }
         }
     }
@@ -94,8 +96,8 @@ class RecordStore: ObservableObject {
     public func refreshHealthData() {
         if #available(iOS 14.3, *) {
             HKService.fetchRecords { results, error in
-                guard error == nil else {
-                    print(error!.errorDescription!)
+                if let error = error {
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     return
                 }
                 
@@ -108,7 +110,7 @@ class RecordStore: ObservableObject {
                 }
             }
         } else {
-            print("[RecordStore] HealthKit not supported")
+            AppLogger.warning(context: "RecordStore", "HealthKit not supported")
         }
     }
 }

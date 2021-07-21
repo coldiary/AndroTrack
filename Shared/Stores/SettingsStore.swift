@@ -38,7 +38,7 @@ class SettingsStore: ObservableObject {
             do {
                 try UserDefaults.standard.trySet(notifications, forKey: "notifications")
             } catch {
-                print("[SettingsStore] Unable to save notifications settings")
+                AppLogger.warning(context: "SettingsStore", "Unable to save notifications settings")
             }
         }
     }

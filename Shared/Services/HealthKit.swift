@@ -30,7 +30,6 @@ class HealthKitService {
         
         requestAccess { sucess, error in
             guard error == nil else {
-                print(error.debugDescription)
                 completion(HealthKitServiceError.AccessDenied)
                 return
             }

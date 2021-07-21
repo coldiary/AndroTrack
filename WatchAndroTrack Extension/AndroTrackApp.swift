@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ClockKit
 
 @main
 struct AndroTrackApp: App {
@@ -21,6 +22,12 @@ struct AndroTrackApp: App {
                     .accentColor(settingsStore.themeColor)
                     .environmentObject(recordStore)
                     .environmentObject(settingsStore)
+                    .onAppear() {
+                        let complicationServer = CLKComplicationServer.sharedInstance()
+                        for complication in complicationServer.activeComplications ?? [] {
+                            complicationServer.reloadTimeline(for: complication)
+                        }
+                    }
                     .onReceive(timer) { _ in
                         self.recordStore.objectWillChange.send()
                     }

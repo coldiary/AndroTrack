@@ -120,7 +120,7 @@ struct SettingsView: View {
                         if status == .notDetermined {
                             Notifications.requestAuthorization { error in
                                 if let error = error {
-                                    print(error)
+                                    AppLogger.warning(context: "SettingsView", "Failure: \(error.localizedDescription)")
                                 }
                             }
                         } else {
