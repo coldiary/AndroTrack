@@ -19,6 +19,7 @@
 		6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2D226A041AF00F7081D /* HealthKit.swift */; };
 		6A59423626A8415900986619 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423526A8415900986619 /* AppLogger.swift */; };
 		6A59423726A8415900986619 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423526A8415900986619 /* AppLogger.swift */; };
+		6A59423A26A850D700986619 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423926A850D700986619 /* Complications.swift */; };
 		6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */; };
 		6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2426A46001003DF0CE /* AndroTrackApp.swift */; };
 		6A8B2D8E26A1A3C800D63862 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8B2D8D26A1A3C800D63862 /* DynamicColor */; };
@@ -127,6 +128,7 @@
 		6A4FD2CF269F807600F7081D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A4FD2D226A041AF00F7081D /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		6A59423526A8415900986619 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		6A59423926A850D700986619 /* Complications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complications.swift; sourceTree = "<group>"; };
 		6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackAppDelegate.swift; sourceTree = "<group>"; };
 		6A779C2426A46001003DF0CE /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
 		6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchAndroTrack Extension.entitlements"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		6A779C2626A460E2003DF0CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A59423926A850D700986619 /* Complications.swift */,
 				6A922C5626A4574A005782DB /* ContentView.swift */,
 				6A922C7F26A45B2F005782DB /* TodayView.swift */,
 			);
@@ -248,7 +251,6 @@
 		6A922C5326A4574A005782DB /* WatchAndroTrack Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */,
 				6A779C2626A460E2003DF0CE /* Views */,
 				6A779C2426A46001003DF0CE /* AndroTrackApp.swift */,
 				6A922C5826A4574A005782DB /* NotificationController.swift */,
@@ -256,6 +258,7 @@
 				6A922C5C26A4574A005782DB /* ComplicationController.swift */,
 				6A922C5E26A4574B005782DB /* Assets.xcassets */,
 				6A922C6326A4574B005782DB /* Info.plist */,
+				6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */,
 				6A922C6426A4574B005782DB /* PushNotificationPayload.apns */,
 				6A922C6026A4574B005782DB /* Preview Content */,
 			);
@@ -505,6 +508,7 @@
 				6A59423726A8415900986619 /* AppLogger.swift in Sources */,
 				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
 				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
+				6A59423A26A850D700986619 /* Complications.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
 				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
 				6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */,

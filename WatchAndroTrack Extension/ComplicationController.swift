@@ -13,13 +13,6 @@ enum ComplicationIdentifier: String {
     case EstimatedEnd = "complication_estimatedEnd"
 }
 
-struct ComplicationDisplayedData {
-    var duration: Double
-    var progress: Double
-    var sessionLength: Int
-    var color: Color
-}
-
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
     let recordStore = RecordStore.shared
@@ -34,11 +27,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                 CLKComplicationFamily.graphicCircular,
                 CLKComplicationFamily.graphicCorner,
             ]),
-//            CLKComplicationDescriptor(identifier: ComplicationIdentifier.EstimatedEnd.rawValue, displayName: "Session remaining", supportedFamilies: [
-//                CLKComplicationFamily.circularSmall,
-//                CLKComplicationFamily.graphicCircular,
-//                CLKComplicationFamily.graphicCorner,
-//            ])
             // Multiple complication support can be added here with more descriptors
         ]
         
@@ -68,7 +56,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         // Call the handler with the current timeline entry
         if let template = makeTemplateFor(complication: complication, data: .init(
             duration: recordStore.current.duration,
-            progress: recordStore.current.durationAsProgress(goal: settingsStore.sessionLength),
             sessionLength: settingsStore.sessionLength,
             color: settingsStore.themeColor
         )) {
@@ -79,15 +66,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        let currentProgress = recordStore.current.durationAsProgress(goal: settingsStore.sessionLength)
         var complications: [CLKComplicationTimelineEntry] = []
         var next = date
         while complications.count < limit {
             next = next.advanced(by: TimeInterval.fiveMinutes)
-            if let duration = Calendar.current.dateComponents([.hour], from:  date, to: next).hour {
+            if let duration = Calendar.current.dateComponents([.minute], from:  date, to: next).minute {
                 if let template = makeTemplateFor(complication: complication, data: ComplicationDisplayedData(
-                    duration: recordStore.current.duration + Double(duration),
-                    progress: (currentProgress + (Double(duration) / Double(settingsStore.sessionLength)) * 100).clamped(to: 0...100),
+                    duration: recordStore.current.duration + Double(duration / 60),
                     sessionLength: settingsStore.sessionLength,
                     color: settingsStore.themeColor
                 )) {
@@ -100,7 +85,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        if let template = makeTemplateFor(complication: complication, data: .init(duration: 9, progress: 0.6, sessionLength: 15, color: Color.teal)) {
+        if let template = makeTemplateFor(complication: complication, data: .init(duration: 9, sessionLength: 15, color: Color.teal)) {
             handler(template)
         } else {
             handler(nil)
@@ -112,33 +97,11 @@ extension ComplicationController {
     func makeTemplateFor(complication: CLKComplication, data: ComplicationDisplayedData) -> CLKComplicationTemplate? {
         switch complication.family {
             case .graphicCircular:
-                return CLKComplicationTemplateGraphicCircularOpenGaugeRangeText(
-                    gaugeProvider: CLKSimpleGaugeProvider(
-                        style: .fill,
-                        gaugeColor: UIColor(data.color),
-                        fillFraction: Float(data.progress / 100)
-                    ),
-                    leadingTextProvider: CLKSimpleTextProvider(text: ""),
-                    trailingTextProvider: CLKSimpleTextProvider(text: "\(data.sessionLength)"),
-                    centerTextProvider: CLKSimpleTextProvider(text: "\(Int(data.duration))")
-                )
+                return Complications.makeGraphicCircular(data)
             case .circularSmall:
-                return CLKComplicationTemplateCircularSmallRingText(
-                    textProvider: CLKSimpleTextProvider(text: "\(data.duration)h"),
-                    fillFraction: Float(data.progress / 100),
-                    ringStyle: .open
-                )
+                return Complications.makeCircularSmall(data)
             case .graphicCorner:
-                return CLKComplicationTemplateGraphicCornerGaugeText(
-                    gaugeProvider: CLKSimpleGaugeProvider(
-                        style: .fill,
-                        gaugeColor: UIColor(data.color),
-                        fillFraction: Float(data.progress / 100)
-                    ),
-                    leadingTextProvider: CLKSimpleTextProvider(text: ""),
-                    trailingTextProvider: CLKSimpleTextProvider(text: "\(data.sessionLength)"),
-                    outerTextProvider: CLKSimpleTextProvider(text: "\(Int(data.duration))")
-                )
+                return Complications.makeGraphicCorner(data)
         default:
             return nil
         }

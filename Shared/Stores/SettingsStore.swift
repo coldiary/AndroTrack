@@ -62,15 +62,15 @@ class SettingsStore: ObservableObject {
     
     #if os(watchOS)
     private func onReceiveContextUpdate(context: [String:Any]) {
-        for (key, value) in context {
+        for (key, progress) in context {
             switch key {
                 case "themeColor":
-                    if (self.themeColor != Color(hexString: value as! String)) {
-                        self.themeColor = Color(hexString: value as! String)
+                    if (self.themeColor != Color(hexString: progress as! String)) {
+                        self.themeColor = Color(hexString: progress as! String)
                     }
                 case "sessionLength":
-                    if (self.sessionLength != value as! Int) {
-                        self.sessionLength = value as! Int
+                    if (self.sessionLength != progress as! Int) {
+                        self.sessionLength = progress as! Int
                     }
                 default: continue
             }
