@@ -41,9 +41,6 @@ struct TodayView: View {
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
-                .onAppear() {
-                    print(settingsStore.themeColor.toHexString())
-                }
         }.navigationTitle("Today")
     }
 }

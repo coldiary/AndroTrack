@@ -16,6 +16,6 @@ struct Day {
     }
     
     func estimatedEnd(forDuration sessionLength: Int) -> Date? {
-        return Calendar.current.date(byAdding: .hour, value: Int((Double(sessionLength) - duration).rounded(.up)), to: Date())
+        return Calendar.current.date(byAdding: .second, value: Int((Double(sessionLength) - duration) * 3600), to: Date())
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 enum RingState {
     case worn
@@ -27,16 +28,16 @@ class RecordStore: ObservableObject {
         if #available(iOS 14.3, *) {
             HKService.registerForSync(withCallback: { error in
                 if let error = error {
-                    print("RecordStore: Failure", error.errorDescription!)
+                    print("[RecordStore] Failure", error.errorDescription!)
                 }
                 self.refreshHealthData()
             }, completion: { error in
                 if let error = error {
-                    print("RecordStore: Failure", error.errorDescription!)
+                    print("[RecordStore] Failure", error.errorDescription!)
                 }
             })
         } else {
-            print("RecordStore: HealthKit not supported")
+            print("[RecordStore] HealthKit not supported")
         }
     }
     
@@ -53,10 +54,16 @@ class RecordStore: ObservableObject {
                 HKService.storeRecord(record: records[records.endIndex - 1]) { error in
                     if let error = error {
                         print(error.errorDescription!)
-                    } else {
-                        print("RecordStore: Record saved")
                     }
                 }
+            }
+            if SettingsStore.shared.notifications.notifyEnd {
+                guard let estimatedEnd = current.estimatedEnd(forDuration: SettingsStore.shared.sessionLength) else {
+                    print("[Notifications] Can't determine estimatedEnd")
+                    return
+                }
+                
+                Notifications.scheduleNotifyEndNotification(at: estimatedEnd)
             }
         }
     }
@@ -70,10 +77,12 @@ class RecordStore: ObservableObject {
                 HKService.storeRecord(record: records[records.endIndex - 1]) { error in
                     if let error = error {
                         print(error.errorDescription!)
-                    } else {
-                        print("RecordStore: Record saved")
                     }
                 }
+            }
+            
+            if SettingsStore.shared.notifications.notifyEnd {
+                Notifications.cancelNotifyEndNotification()
             }
         }
     }
@@ -96,11 +105,10 @@ class RecordStore: ObservableObject {
                     if (self.records.count > 0) {
                         self.state = self.records[self.records.endIndex - 1].end != nil ? RingState.off : RingState.worn
                     }
-                    print("RecordStore: Records fetched")
                 }
             }
         } else {
-            print("RecordStore: HealthKit not supported")
+            print("[RecordStore] HealthKit not supported")
         }
     }
 }

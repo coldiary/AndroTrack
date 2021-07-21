@@ -17,5 +17,26 @@ extension UserDefaults {
         guard let hex = string(forKey: key) else { return nil }
         return Color(hexString: hex)
     }
+}
+
+extension UserDefaults {
+    func nonNulInteger(forKey key: String ) -> Int? {
+        let integer = integer(forKey: key)
+        return integer == 0 ? nil : integer
+    }
+}
+
+extension UserDefaults {
+    func trySet<T>(_ object: T, forKey key: String) throws where T: Encodable {
+        let encoded = try JSONEncoder().encode(object)
+        set(encoded, forKey: key)
+    }
     
+    func typed<T>(forKey key: String) -> T? where T: Decodable {
+        if let encoded = data(forKey: key) {
+            return try? JSONDecoder().decode(T.self, from: encoded)
+        } else {
+            return nil
+        }
+    }
 }

@@ -9,4 +9,5 @@ import Foundation
 
 extension TimeInterval {
     static let oneHour = 3600.0
+    static let fiveMinutes = 300.0
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0322DE26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */; };
+		6A0322DF26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */; };
+		6A0322E926A60584008E97C8 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322E826A60584008E97C8 /* Bundle+Extension.swift */; };
+		6A0322EA26A60584008E97C8 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322E826A60584008E97C8 /* Bundle+Extension.swift */; };
+		6A0322ED26A60FA0008E97C8 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */; };
+		6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */; };
 		6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
 		6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2CA269F515800F7081D /* SettingsView.swift */; };
 		6A4FD2D0269F807600F7081D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4FD2CF269F807600F7081D /* HealthKit.framework */; };
@@ -30,7 +36,6 @@
 		6A922C7326A4588F005782DB /* RecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */; };
 		6A922C7426A4588F005782DB /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2D226A041AF00F7081D /* HealthKit.swift */; };
 		6A922C7526A4588F005782DB /* RingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F79269E439400A78C5C /* RingShape.swift */; };
-		6A922C7626A4588F005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A6F40269E15BA00A78C5C /* Assets.xcassets */; };
 		6A922C7826A4588F005782DB /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F5F269E178500A78C5C /* Record.swift */; };
 		6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F75269E402300A78C5C /* Date+Extension.swift */; };
 		6A922C7A26A4588F005782DB /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
@@ -43,6 +48,14 @@
 		6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */; };
 		6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
 		6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
+		6A9A662726A748C800E7526A /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662626A748C800E7526A /* Notifications.swift */; };
+		6A9A662826A748C800E7526A /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662626A748C800E7526A /* Notifications.swift */; };
+		6A9A662A26A7571700E7526A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662926A7571700E7526A /* NotificationType.swift */; };
+		6A9A662B26A7571700E7526A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662926A7571700E7526A /* NotificationType.swift */; };
+		6A9A663326A78A1000E7526A /* GenericModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A663226A78A1000E7526A /* GenericModal.swift */; };
+		6A9A663426A78A1000E7526A /* GenericModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A663226A78A1000E7526A /* GenericModal.swift */; };
+		6A9A663626A7937400E7526A /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A663526A7937400E7526A /* NotificationPermission.swift */; };
+		6A9A663726A7937400E7526A /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A663526A7937400E7526A /* NotificationPermission.swift */; };
 		6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */; };
 		6A9A6F53269E15BA00A78C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F3F269E15B900A78C5C /* ContentView.swift */; };
 		6A9A6F55269E15BA00A78C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A6F40269E15BA00A78C5C /* Assets.xcassets */; };
@@ -58,7 +71,6 @@
 		6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F82269E6D9000A78C5C /* HistoryView.swift */; };
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
-		6AFEEEE726A4BB1B000DDADB /* ComplicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +116,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettings.swift; sourceTree = "<group>"; };
+		6A0322E826A60584008E97C8 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		6A4FD2C4269F0A6D00F7081D /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		6A4FD2CA269F515800F7081D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6A4FD2CD269F807600F7081D /* AndroTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndroTrack.entitlements; sourceTree = "<group>"; };
@@ -129,6 +144,10 @@
 		6A922C8126A45BBA005782DB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extension.swift"; sourceTree = "<group>"; };
+		6A9A662626A748C800E7526A /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		6A9A662926A7571700E7526A /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		6A9A663226A78A1000E7526A /* GenericModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericModal.swift; sourceTree = "<group>"; };
+		6A9A663526A7937400E7526A /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
 		6A9A6F3F269E15B900A78C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A9A6F40269E15BA00A78C5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,7 +165,6 @@
 		6A9A6F82269E6D9000A78C5C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
 		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
-		6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +189,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A0322DC26A5E6F4008E97C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
+				6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */,
+				6A9A6F7F269E6D3200A78C5C /* TodayView.swift */,
+				6A9A6F68269E21B800A78C5C /* RecordView.swift */,
+				6A4FD2CA269F515800F7081D /* SettingsView.swift */,
+				6A9A6F82269E6D9000A78C5C /* HistoryView.swift */,
+				6A9A663226A78A1000E7526A /* GenericModal.swift */,
+				6A9A663526A7937400E7526A /* NotificationPermission.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6A4FD2CE269F807600F7081D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				6A4FD2D226A041AF00F7081D /* HealthKit.swift */,
+				6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */,
+				6A9A662626A748C800E7526A /* Notifications.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -193,7 +228,6 @@
 			children = (
 				6A922C5626A4574A005782DB /* ContentView.swift */,
 				6A922C7F26A45B2F005782DB /* TodayView.swift */,
-				6AFEEEE626A4BB1B000DDADB /* ComplicationViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,9 +287,6 @@
 				6A9A6F66269E1CEB00A78C5C /* Views */,
 				6A9A6F62269E1AB900A78C5C /* Models */,
 				6ADBD5DF26A1D53A009FDB3D /* Stores */,
-				6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */,
-				6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */,
-				6A9A6F40269E15BA00A78C5C /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -273,7 +304,11 @@
 		6A9A6F47269E15BA00A78C5C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6A0322DC26A5E6F4008E97C8 /* Views */,
+				6A9A6F3E269E15B900A78C5C /* AndroTrackApp.swift */,
+				6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */,
 				6A9A6F48269E15BA00A78C5C /* Info.plist */,
+				6A9A6F40269E15BA00A78C5C /* Assets.xcassets */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -283,6 +318,8 @@
 			children = (
 				6A9A6F5F269E178500A78C5C /* Record.swift */,
 				6A4FD2C4269F0A6D00F7081D /* Day.swift */,
+				6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */,
+				6A9A662926A7571700E7526A /* NotificationType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,13 +327,8 @@
 		6A9A6F66269E1CEB00A78C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6A9A6F78269E437B00A78C5C /* TimeRingView */,
-				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
-				6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */,
-				6A9A6F7F269E6D3200A78C5C /* TodayView.swift */,
-				6A9A6F68269E21B800A78C5C /* RecordView.swift */,
-				6A4FD2CA269F515800F7081D /* SettingsView.swift */,
-				6A9A6F82269E6D9000A78C5C /* HistoryView.swift */,
+				6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */,
+				6A9A6F79269E439400A78C5C /* RingShape.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,17 +342,9 @@
 				6A9A6F75269E402300A78C5C /* Date+Extension.swift */,
 				6A9A6F7C269E457100A78C5C /* Double+Extension.swift */,
 				6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */,
+				6A0322E826A60584008E97C8 /* Bundle+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		6A9A6F78269E437B00A78C5C /* TimeRingView */ = {
-			isa = PBXGroup;
-			children = (
-				6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */,
-				6A9A6F79269E439400A78C5C /* RingShape.swift */,
-			);
-			path = TimeRingView;
 			sourceTree = "<group>";
 		};
 		6ADBD5DF26A1D53A009FDB3D /* Stores */ = {
@@ -451,7 +475,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A922C6226A4574B005782DB /* Preview Assets.xcassets in Resources */,
-				6A922C7626A4588F005782DB /* Assets.xcassets in Resources */,
 				6A922C5F26A4574B005782DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,13 +494,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A9A662B26A7571700E7526A /* NotificationType.swift in Sources */,
+				6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */,
+				6A0322DF26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */,
 				6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
 				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
 				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
 				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
 				6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */,
+				6A9A663426A78A1000E7526A /* GenericModal.swift in Sources */,
 				6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
+				6A0322EA26A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6A922C7326A4588F005782DB /* RecordStore.swift in Sources */,
 				6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */,
 				6A922C7826A4588F005782DB /* Record.swift in Sources */,
@@ -485,9 +513,10 @@
 				6A922C7226A4588F005782DB /* Double+Extension.swift in Sources */,
 				6A922C7526A4588F005782DB /* RingShape.swift in Sources */,
 				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
+				6A9A663726A7937400E7526A /* NotificationPermission.swift in Sources */,
 				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
 				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
-				6AFEEEE726A4BB1B000DDADB /* ComplicationViews.swift in Sources */,
+				6A9A662826A748C800E7526A /* Notifications.swift in Sources */,
 				6A922C8026A45B2F005782DB /* TodayView.swift in Sources */,
 				6A922C5B26A4574A005782DB /* NotificationView.swift in Sources */,
 				6A922C7126A4588F005782DB /* UserDefaults+Extension.swift in Sources */,
@@ -498,8 +527,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A0322ED26A60FA0008E97C8 /* WatchConnectivity.swift in Sources */,
 				6A9A6F53269E15BA00A78C5C /* ContentView.swift in Sources */,
 				6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */,
+				6A9A663326A78A1000E7526A /* GenericModal.swift in Sources */,
 				6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */,
 				6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
 				6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */,
@@ -508,17 +539,22 @@
 				6A9A6F80269E6D3200A78C5C /* TodayView.swift in Sources */,
 				6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */,
 				6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */,
+				6A9A663626A7937400E7526A /* NotificationPermission.swift in Sources */,
 				6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */,
 				6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
 				6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */,
 				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
+				6A9A662726A748C800E7526A /* Notifications.swift in Sources */,
 				6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */,
 				6A9A6F60269E178500A78C5C /* Record.swift in Sources */,
+				6A9A662A26A7571700E7526A /* NotificationType.swift in Sources */,
 				6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */,
 				6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */,
+				6A0322E926A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6A9A6F7D269E457100A78C5C /* Double+Extension.swift in Sources */,
 				6A9A6F6C269E2FE700A78C5C /* RecordStore.swift in Sources */,
 				6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */,
+				6A0322DE26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

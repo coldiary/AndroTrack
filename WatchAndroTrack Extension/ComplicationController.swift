@@ -54,7 +54,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         // Call the handler with the last entry date you can currently provide or nil if you can't support future timelines
-        handler(recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength))
+        handler(recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength + 1))
     }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
@@ -83,13 +83,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var complications: [CLKComplicationTimelineEntry] = []
         var next = date
         while complications.count < limit {
-            next = next.advanced(by: TimeInterval.oneHour)
+            next = next.advanced(by: TimeInterval.fiveMinutes)
             if let duration = Calendar.current.dateComponents([.hour], from:  date, to: next).hour {
                 if let template = makeTemplateFor(complication: complication, data: ComplicationDisplayedData(
                     duration: recordStore.current.duration + Double(duration),
                     progress: (currentProgress + (Double(duration) / Double(settingsStore.sessionLength)) * 100).clamped(to: 0...100),
                     sessionLength: settingsStore.sessionLength,
-                    color: Color.teal
+                    color: settingsStore.themeColor
                 )) {
                     complications.append(.init(date: next, complicationTemplate: template))
                 }
@@ -112,17 +112,20 @@ extension ComplicationController {
     func makeTemplateFor(complication: CLKComplication, data: ComplicationDisplayedData) -> CLKComplicationTemplate? {
         switch complication.family {
             case .graphicCircular:
-                return CLKComplicationTemplateGraphicCircularView(
-                    ComplicationViewCircular(
-                        duration: data.duration,
-                        progress: data.progress,
-                        color: data.color
-                    )
+                return CLKComplicationTemplateGraphicCircularOpenGaugeRangeText(
+                    gaugeProvider: CLKSimpleGaugeProvider(
+                        style: .fill,
+                        gaugeColor: UIColor(data.color),
+                        fillFraction: Float(data.progress / 100)
+                    ),
+                    leadingTextProvider: CLKSimpleTextProvider(text: ""),
+                    trailingTextProvider: CLKSimpleTextProvider(text: "\(data.sessionLength)"),
+                    centerTextProvider: CLKSimpleTextProvider(text: "\(Int(data.duration))")
                 )
             case .circularSmall:
                 return CLKComplicationTemplateCircularSmallRingText(
                     textProvider: CLKSimpleTextProvider(text: "\(data.duration)h"),
-                    fillFraction: Float(data.progress),
+                    fillFraction: Float(data.progress / 100),
                     ringStyle: .open
                 )
             case .graphicCorner:
@@ -130,7 +133,7 @@ extension ComplicationController {
                     gaugeProvider: CLKSimpleGaugeProvider(
                         style: .fill,
                         gaugeColor: UIColor(data.color),
-                        fillFraction: Float(data.progress)
+                        fillFraction: Float(data.progress / 100)
                     ),
                     leadingTextProvider: CLKSimpleTextProvider(text: ""),
                     trailingTextProvider: CLKSimpleTextProvider(text: "\(data.sessionLength)"),

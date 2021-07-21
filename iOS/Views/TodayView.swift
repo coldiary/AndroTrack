@@ -37,8 +37,8 @@ struct TodayView: View {
                                     .bold()
                             }
                             .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(Color.white)
+                            .background(settingsStore.themeColor)
+                            .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
                             .cornerRadius(50)
                         }
                     }
@@ -50,9 +50,7 @@ struct TodayView: View {
                                        sessionLength: settingsStore.sessionLength,
                                        showDate: false,
                                        estimatedEnd: recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength)
-                            ).onAppear() {
-                                print(recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength)!)
-                            }
+                            )
                         }
                     }.padding()
                 }
@@ -65,9 +63,6 @@ struct TodayView: View {
                 )
             }
             .padding()
-            .onAppear() {
-                print(settingsStore.themeColor.toHexString())
-            }
             .navigationTitle("Today")
         }
     }

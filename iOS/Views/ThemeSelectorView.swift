@@ -35,7 +35,7 @@ struct ThemeSelectorView: View {
                         })
                         .padding(10)
 
-                    if selected == color {
+                    if selected.toHexString() == color.toHexString() {
                         Circle()
                             .stroke(Color.gradient(colors: [color.darker(by: 0.1), color]), lineWidth: 5)
                             .frame(width: 60, height: 60)
