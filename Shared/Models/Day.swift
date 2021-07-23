@@ -9,7 +9,7 @@ import Foundation
 
 struct Day {
     var records: [Record] = []
-    var duration: Double { records.reduce(0, { $0 + ($1.duration ?? 0) }) }
+    var duration: Double { records.reduce(0, { $0 + ($1.durationInHours ?? 0) }) }
     
     func durationAsProgress(goal: Int) -> Double {
         return (duration / Double(goal)) * 100

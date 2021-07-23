@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var recordStore = RecordStore.shared
+    
+    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         TabView {
             TodayView()
@@ -27,9 +31,11 @@ struct ContentView: View {
                     Image(systemName: "slider.horizontal.3")
                     Text("Settings")
                 }
-            
         }
-        .edgesIgnoringSafeArea(.top)
+        .environmentObject(recordStore)
+        .onReceive(timer) { _ in
+            recordStore.objectWillChange.send()
+        }
     }
 }
 

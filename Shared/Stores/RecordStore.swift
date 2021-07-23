@@ -14,30 +14,26 @@ enum RingState {
 }
 
 class RecordStore: ObservableObject {
-    public static let shared = RecordStore()
+    public static var shared = RecordStore()
     
     @Published var state = RingState.off
     @Published var records: [Record] = [
         Record.yesterday
     ]
     
-    @available(iOS 14.3, *)
-    private lazy var HKService = { HealthKitService() }()
-    
     private init() {
-        if #available(iOS 14.3, *) {
-            HKService.registerForSync(withCallback: { error in
+        if HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized {
+            HealthKitService.shared.registerForSync(withCallback: { error in
                 if let error = error {
                     AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                } else {
+                    self.refreshHealthData()
                 }
-                self.refreshHealthData()
             }, completion: { error in
                 if let error = error {
                     AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
             })
-        } else {
-            AppLogger.warning(context: "RecordStore", "HealthKit not supported")
         }
     }
     
@@ -50,13 +46,12 @@ class RecordStore: ObservableObject {
             state = RingState.worn
             records.append(Record(start: Date()))
             
-            if #available(iOS 14.3, *) {
-                HKService.storeRecord(record: records[records.endIndex - 1]) { error in
-                    if let error = error {
-                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                    }
+            HealthKitService.shared.storeRecord(record: records[records.endIndex - 1]) { error in
+                if let error = error {
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
             }
+
             if SettingsStore.shared.notifications.notifyEnd {
                 guard let estimatedEnd = current.estimatedEnd(forDuration: SettingsStore.shared.sessionLength) else {
                     AppLogger.error(context: "RecordStore", "Can't determine estimatedEnd")
@@ -74,8 +69,14 @@ class RecordStore: ObservableObject {
             state = RingState.off
             records[records.endIndex - 1].markEnded()
             
-            if #available(iOS 14.3, *) {
-                HKService.storeRecord(record: records[records.endIndex - 1]) { error in
+            if records[records.endIndex - 1].durationInMinutes ?? 0 < 3 {
+                HealthKitService.shared.removeRecord(at: records[records.endIndex - 1].start!) { error in
+                    if let error = error {
+                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                    }
+                }
+            } else {
+                HealthKitService.shared.storeRecord(record: records[records.endIndex - 1]) { error in
                     if let error = error {
                         AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }
@@ -94,23 +95,19 @@ class RecordStore: ObservableObject {
     }
     
     public func refreshHealthData() {
-        if #available(iOS 14.3, *) {
-            HKService.fetchRecords { results, error in
-                if let error = error {
-                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                    return
-                }
+        HealthKitService.shared.fetchRecords { results, error in
+            if let error = error {
+                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                return
+            }
+            
+            if let results = results {
+                self.records = results
                 
-                if let results = results {
-                    self.records = results
-                    
-                    if (self.records.count > 0) {
-                        self.state = self.records[self.records.endIndex - 1].end != nil ? RingState.off : RingState.worn
-                    }
+                if (self.records.count > 0) {
+                    self.state = self.records[self.records.endIndex - 1].end != nil ? RingState.off : RingState.worn
                 }
             }
-        } else {
-            AppLogger.warning(context: "RecordStore", "HealthKit not supported")
         }
     }
 }

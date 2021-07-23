@@ -66,12 +66,18 @@ struct SettingsView: View {
                             .bold()
                     }.onChange(of: settingsStore.notifications.notifyEnd) { enabled in
                         if enabled {
-                            checkCanSendNotifications() {
-                                guard let end = recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength) else {
-                                    return
+                            checkCanSendNotifications() { authorized in
+                                if authorized {
+                                    guard let end = recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength) else {
+                                        return
+                                    }
+                                    
+                                    Notifications.scheduleNotifyEndNotification(at: end)
+                                } else {
+                                    DispatchQueue.main.async {
+                                        settingsStore.notifications.notifyEnd = false
+                                    }
                                 }
-                                
-                                Notifications.scheduleNotifyEndNotification(at: end)
                             }
                         } else {
                             Notifications.cancelNotifyEndNotification()
@@ -85,8 +91,14 @@ struct SettingsView: View {
                     }.onChange(of: settingsStore.notifications.reminderStart) { enabled in
                         
                         if enabled {
-                            checkCanSendNotifications() {
-                                Notifications.scheduleReminderStartNotification()
+                            checkCanSendNotifications() { authorized in
+                                if authorized {
+                                    Notifications.scheduleReminderStartNotification()
+                                } else {
+                                    DispatchQueue.main.async {
+                                        settingsStore.notifications.reminderStart = false
+                                    }
+                                }
                             }
                         } else {
                             Notifications.cancelReminderStartNotification()
@@ -114,43 +126,51 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showNotifPermissionModal) {
                 GenericModal() {
-                    NotificationPermission() {
+                    RequestPermission(
+                        title: "Notifications",
+                        description: "In order for the app to send you reminders, you need to grant permission to send notifications.",
+                        illustrationName: "NotificationPermission"
+                    ) { completion in
                         guard let status = notificationsAuthorizationStatus else { return }
                         
                         if status == .notDetermined {
                             Notifications.requestAuthorization { error in
                                 if let error = error {
                                     AppLogger.warning(context: "SettingsView", "Failure: \(error.localizedDescription)")
+                                } else {
+                                    showNotifPermissionModal = false
                                 }
+                                completion()
                             }
                         } else {
                             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                                completion()
                                 return
                             }
 
                             if UIApplication.shared.canOpenURL(settingsUrl) {
-                                UIApplication.shared.open(settingsUrl)
+                                UIApplication.shared.open(settingsUrl) { _ in
+                                    completion()
+                                }
                             }
                         }
                     }
                 }
             }
-            .onAppear() {
-                checkCanSendNotifications()
-            }
             .navigationTitle("Settings")
         }
     }
     
-    private func checkCanSendNotifications(completion: @escaping () -> Void = {}) {
+    private func checkCanSendNotifications(completion: @escaping (Bool) -> Void) {
         Notifications.checkSettings { settings in
             if let authorizationStatus = settings?.authorizationStatus {
                 notificationsAuthorizationStatus = authorizationStatus
                 
                 if (authorizationStatus == .notDetermined || authorizationStatus == .denied) {
                     showNotifPermissionModal = true
+                    completion(false)
                 } else {
-                    completion()
+                    completion(true)
                 }
             }
         }

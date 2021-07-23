@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GenericModal<Content: View>: View {
+    var showDismissButton = true
     let content: () -> Content
-    let showDismissButton = true
     
     @Environment(\.presentationMode) var presentationMode
     

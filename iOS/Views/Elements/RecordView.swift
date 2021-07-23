@@ -75,7 +75,7 @@ struct RecordView: View {
                 ZStack {
                     TimeRingView(progress: progress, ringWidth: 10, color: ringColor)
                         .frame(width: 80, height: 80, alignment: .center)
-                    Text((record.duration != nil ? "\(Int(record.duration!)) h" : "-"))
+                    Text((record.durationInHours != nil ? "\(Int(record.durationInHours!)) h" : "-"))
                         .bold()
                         .padding(.horizontal)
                 }

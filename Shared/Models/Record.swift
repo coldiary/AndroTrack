@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum DurationUnit: Double {
+    case hours = 3600
+    case minutes = 60
+    case seconds = 1
+}
+
 class Record: Identifiable, Codable {
     let id: UUID
     var start: Date?
@@ -20,20 +26,23 @@ class Record: Identifiable, Codable {
 }
 
 extension Record {
-    // Duration in hours
-    var duration: Double? {
+    var durationInHours: Double? { durationIn(.hours) }
+    var durationInMinutes: Double? { durationIn(.minutes)}
+    var durationInSeconds: Double? { durationIn(.seconds)}
+    
+    private func durationIn(_ unit: DurationUnit) -> Double? {
         if let startVal = start {
             if let endVal = end {
-                return Double(Calendar.current.dateComponents([.second], from: startVal, to: endVal).second ?? 0) / 3600
+                return Double(Calendar.current.dateComponents([.second], from: startVal, to: endVal).second ?? 0) / unit.rawValue
             } else {
-                return Double(Calendar.current.dateComponents([.second], from: startVal, to: Date()).second ?? 0) / 3600
+                return Double(Calendar.current.dateComponents([.second], from: startVal, to: Date()).second ?? 0) / unit.rawValue
             }
         }
         return nil
     }
 
     func durationAsProgress(goal: Double) -> Double {
-        return ((duration ?? 0) / goal) * 100
+        return ((durationInHours ?? 0) / goal) * 100
     }
 }
 

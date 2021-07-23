@@ -6,16 +6,66 @@
 //
 
 import Foundation
-#if !os(macOS)
 import HealthKit
 
-@available(iOS 14.3, *)
 class HealthKitService {
+    static let shared = HealthKitService()
+    
     private let store = HKHealthStore()
     
     private let contraceptiveType = HKObjectType.categoryType(forIdentifier: .contraceptive)!
     private lazy var healthKitTypesToWrite: Set<HKSampleType> = { [contraceptiveType] }()
     private lazy var healthKitTypesToRead: Set<HKObjectType> = { [contraceptiveType] }()
+    
+    public var healthKitAuthorizationStatus: HKAuthorizationStatus {
+        print ("Reading:", store.authorizationStatus(for: contraceptiveType))
+        return store.authorizationStatus(for: contraceptiveType)
+    }
+    
+    public func removeRecord(at start: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            completion(HealthKitServiceError.HealthDataUnavailable)
+            return
+        }
+        
+        requestAccess { sucess, error in
+            guard error == nil else {
+                completion(HealthKitServiceError.AccessDenied)
+                return
+            }
+            
+            // Try to found record to remove
+            let predicate = HKQuery.predicateForSamples(withStart: start, end: Date())
+            
+            let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
+                query, results, error in
+                
+                guard error == nil else {
+                    completion(HealthKitServiceError.Failure(error!))
+                    return
+                }
+                
+                guard let samples = results as? [HKCategorySample] else {
+                    completion(HealthKitServiceError.Failure(error!))
+                    return
+                }
+               
+                if (samples.count > 0) {
+                    HKHealthStore().delete(samples[0]) { sucess, error in
+                        if let error = error {
+                            completion(HealthKitServiceError.Failure(error))
+                            return
+                        }
+                        completion(nil)
+                    }
+                } else {
+                    completion(HealthKitServiceError.RecordNotFound(start))
+                }
+            }
+            
+            HKHealthStore().execute(query)
+        }
+    }
     
     public func storeRecord(record: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
@@ -158,7 +208,7 @@ class HealthKitService {
         }
     }
     
-    private func requestAccess(completion: @escaping (Bool, HealthKitServiceError?) -> ()) {
+    public func requestAccess(completion: @escaping (Bool, HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(false, HealthKitServiceError.HealthDataUnavailable)
             return
@@ -172,12 +222,23 @@ class HealthKitService {
             }
         }
     }
+    
+    public func checkAuthorizationRequestStatus(completion: @escaping (HKAuthorizationRequestStatus?, HealthKitServiceError?) -> ()) {
+        store.getRequestStatusForAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { status, error in
+            if let error = error {
+                completion(nil, HealthKitServiceError.Failure(error))
+            } else {
+                completion(status, nil)
+            }
+        }
+    }
 }
 
 enum HealthKitServiceError: Error {
     case HealthDataUnavailable
     case CategoryTypeNotFound
     case InvalidRecord(property: String)
+    case RecordNotFound(Date)
     case AccessDenied
     case Failure(Error)
 }
@@ -195,7 +256,8 @@ extension HealthKitServiceError: LocalizedError {
                 return NSLocalizedString("HealthKit: Access denied to HealthKit data", comment: "")
             case .InvalidRecord(let property):
                 return NSLocalizedString("HealthKit: Invalid record can't be stored. Property \(property) is missing", comment: "")
+        case .RecordNotFound(let start):
+            return NSLocalizedString("HealthKit: Record with start \(start) not found", comment: "")
         }
     }
 }
-#endif
