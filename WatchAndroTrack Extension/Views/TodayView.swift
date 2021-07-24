@@ -41,7 +41,7 @@ struct TodayView: View {
                         }
                     }
                 }.buttonStyle(PlainButtonStyle())
-        }.navigationTitle("Today")
+        }.navigationTitle("TODAY")
     }
 }
 

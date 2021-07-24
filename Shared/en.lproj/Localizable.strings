@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  AndroTrack
+
+  Created by Benoit Sida on 2021-07-23.
+  
+*/
+// TABS
+"TODAY" = "Today";
+"HISTORY" = "History";
+"SETTINGS" = "Settings";
+
+// HEALTHKIT_PERMISSIONS
+"HEALTHKIT_ACCESS.TITLE" = "HealthKit Access";
+"HEALTHKIT_ACCESS.DESCRIPTION_1" = "In order for the app to store records about when you wear the device, you need to grant permission to access HealthKit storage.";
+"HEALTHKIT_ACCESS.DESCRIPTION_2" = "In order for the app to store records, it needs access to write to HealthKit. Please review settings in Health > Data Access & Device > Androtrack, and enable the app to write data.";
+"HEALTHKIT_ACCESS.CTA" = "Open settings";
+
+// NOTIFICATIONS_PERMISSIONS
+"NOTIFICATIONS_PERMISSIONS.TITLE" = "Notifications";
+"NOTIFICATIONS_PERMISSIONS.DESCRIPTION" = "In order for the app to send you reminders, you need to grant permission to send notifications.";
+
+// TODAY_CTA
+"WEAR" = "WEAR";
+"REMOVE" = "REMOVE";
+
+// REQUEST_PERMISSION
+"REQUEST_PERMISSION.DEFAULT_CTA" = "Grant permission";
+
+// RECORD_VIEW
+"START" = "Start";
+"END" = "End";
+
+// NOTIFICATIONS
+"NOTIFY_END_NOTIF.TITLE" = "Sesssion complete !";
+"NOTIFY_END_NOTIF.SUBTITLE" = "It's time to remove the ring now.";
+
+"REMINDED_START_NOTIF.TITLE" = "Sesssion start";
+"REMINDED_START_NOTIF.SUBTITLE" = "Don't forget to put your ring on for the day !";
+
+// SETTINGS_VIEW
+"WATCH_UNREACHABLE" = "Watch unreachable, will be synced on opening";
+"SESSION_LENGTH" = "Session length";
+"THEME_COLOR" = "Theme color";
+"NOTIFICATIONS" = "Notifications";
+"NOTIFY_END_OF_SESSION" = "Notify end of session";
+"SESSION_START_REMINDER" = "Session start reminder";
+"REMINDER_TIME" = "Reminder time :";

@@ -26,7 +26,7 @@ struct RecordView: View {
                 return start.format(timeFormat: .none)
             }
         }
-        return "Today"
+        return "TODAY"
     }
     
     var body: some View {
@@ -42,7 +42,7 @@ struct RecordView: View {
             HStack {
                 HStack(alignment: .center, spacing: 50) {
                     VStack(alignment: .leading) {
-                        Text("Start")
+                        Text("START")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .padding(.bottom, 1)
@@ -53,7 +53,7 @@ struct RecordView: View {
                         }
                     }
                     VStack(alignment: .leading) {
-                        Text("End")
+                        Text("END")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .padding(.bottom, 1)

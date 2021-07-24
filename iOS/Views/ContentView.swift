@@ -17,19 +17,19 @@ struct ContentView: View {
             TodayView()
                 .tabItem {
                     Image(systemName: "circle.circle")
-                    Text("Today")
+                    Text("TODAY")
                 }
             
             HistoryView()
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("History")
+                    Text("HISTORY")
                 }
             
             SettingsView()
                 .tabItem {
                     Image(systemName: "slider.horizontal.3")
-                    Text("Settings")
+                    Text("SETTINGS")
                 }
         }
         .environmentObject(recordStore)

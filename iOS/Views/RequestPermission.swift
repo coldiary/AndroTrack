@@ -11,7 +11,7 @@ struct RequestPermission: View {
     let title: String
     let description: String
     let illustrationName: String
-    var actionLabel = "Grant permission"
+    var actionLabel = "REQUEST_PERMISSION.DEFAULT_CTA"
     let requestPermissionAction: (@escaping () -> Void) -> Void
     
     @EnvironmentObject private var settingsStore: SettingsStore

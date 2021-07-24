@@ -52,8 +52,8 @@ class Notifications {
 extension Notifications {
     static func scheduleNotifyEndNotification(at date: Date) {
         let content = UNMutableNotificationContent()
-        content.title = "Sesssion complete !"
-        content.subtitle = "It's time to remove the ring now."
+        content.title = NSLocalizedString("NOTIFY_END_NOTIF.TITLE", comment: "")
+        content.subtitle = NSLocalizedString("NOTIFY_END_NOTIF.SUBTITLE", comment: "")
         content.sound = UNNotificationSound.default
         
         let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
@@ -69,8 +69,8 @@ extension Notifications {
 extension Notifications {
     static func scheduleReminderStartNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Sesssion start"
-        content.subtitle = "Don't forget to put your ring on for the day !"
+        content.title = NSLocalizedString("REMINDED_START_NOTIF.TITLE", comment: "")
+        content.subtitle = NSLocalizedString("REMINDED_START_NOTIF.SUBTITLE", comment: "")
         content.sound = UNNotificationSound.default
         
         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: SettingsStore.shared.notifications.reminderTime)

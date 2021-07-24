@@ -63,7 +63,7 @@ struct TodayView: View {
                 )
             }
 //            .padding()
-            .navigationTitle("Today")
+            .navigationTitle("TODAY")
         }
     }
 }

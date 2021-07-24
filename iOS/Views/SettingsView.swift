@@ -31,17 +31,17 @@ struct SettingsView: View {
             ScrollView {
                 if watchConnectivity.session.isPaired {
                     if (!watchConnectivity.isReachable) {
-                        Text("Watch unreachable, will be synced on opening").foregroundColor(Color.yellow)
+                        Text("WATCH_UNREACHABLE").foregroundColor(Color.yellow)
                     }
                 }
                 HStack() {
-                    Text("Session length")
+                    Text("SESSION_LENGTH")
                         .font(.title2)
                         .bold()
                     Spacer()
-                    Picker("Session Length", selection: $settingsStore.sessionLength) {
+                    Picker("", selection: $settingsStore.sessionLength) {
                         ForEach(Range(1...24)) { length in
-                            Text("\(length - 1)").tag(length)
+                            Text("\(length - 1)h").tag(length)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
@@ -50,18 +50,18 @@ struct SettingsView: View {
                 }
                 .padding(.horizontal)
                 VStack(alignment: .leading) {
-                    Text("Theme color")
+                    Text("THEME_COLOR")
                         .font(.title2)
                         .bold()
                     ThemeSelectorView(selected: $settingsStore.themeColor)
                 }.padding()
                 VStack(alignment: .leading) {
-                    Text("Notifications")
+                    Text("NOTIFICATIONS")
                         .font(.title2)
                         .bold()
                     
                     Toggle(isOn: $settingsStore.notifications.notifyEnd) {
-                        Text("Notify end of session")
+                        Text("NOTIFY_END_OF_SESSION")
                             .font(.title3)
                             .bold()
                     }.onChange(of: settingsStore.notifications.notifyEnd) { enabled in
@@ -85,7 +85,7 @@ struct SettingsView: View {
                     }
                     
                     Toggle(isOn: $settingsStore.notifications.reminderStart) {
-                        Text("Session start reminder")
+                        Text("SESSION_START_REMINDER")
                             .font(.title3)
                             .bold()
                     }.onChange(of: settingsStore.notifications.reminderStart) { enabled in
@@ -107,7 +107,7 @@ struct SettingsView: View {
                     
                     if settingsStore.notifications.reminderStart {
                         VStack(alignment: .leading) {
-                            Text("Reminder time :")
+                            Text("REMINDER_TIME")
                                 .font(.title3)
                                 .bold()
                             DatePicker("", selection: $settingsStore.notifications.reminderTime,
@@ -127,8 +127,8 @@ struct SettingsView: View {
             .sheet(isPresented: $showNotifPermissionModal) {
                 GenericModal() {
                     RequestPermission(
-                        title: "Notifications",
-                        description: "In order for the app to send you reminders, you need to grant permission to send notifications.",
+                        title: "NOTIFICATIONS_PERMISSIONS.TITLE",
+                        description: "NOTIFICATIONS_PERMISSIONS.DESCRIPTION",
                         illustrationName: "NotificationPermission"
                     ) { completion in
                         guard let status = notificationsAuthorizationStatus else { return }
@@ -157,7 +157,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("SETTINGS")
         }
     }
     

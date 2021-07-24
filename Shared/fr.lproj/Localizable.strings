@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  AndroTrack
+
+  Created by Benoit Sida on 2021-07-23.
+  
+*/
+// TABS
+"TODAY" = "Aujourd'hui";
+"HISTORY" = "Historique";
+"SETTINGS" = "Réglages";
+
+// HEALTHKIT_PERMISSIONS
+"HEALTHKIT_ACCESS.TITLE" = "Accès à Santé";
+"HEALTHKIT_ACCESS.DESCRIPTION_1" = "Afin que l'app puisse suivre quand vous portez l'anneau, vous devez donner l'accès à l'application Santé.";
+"HEALTHKIT_ACCESS.DESCRIPTION_2" = "Afin que l'app puisse suivre quand vous portez l'anneau, elle doit avoir accès en écriture à l'aplication Santé. Révisez les autorisations dans les réglages dans Santé > Accès auc données et appareils > Androtrack, et activez \"AndroTrack\" à écrire des données.";
+"HEALTHKIT_ACCESS.CTA" = "Ouvrir les réglages";
+
+// NOTIFICATIONS_PERMISSIONS
+"NOTIFICATIONS_PERMISSIONS.TITLE" = "Activer les notifications";
+"NOTIFICATIONS_PERMISSIONS.DESCRIPTION" = "Afin que l'application puisse vous avertir ou envoyer des rappels, vous devez l'autoriser à envoyer des notifications.";
+
+// TODAY_CTA
+"WEAR" = "PORTER";
+"REMOVE" = "RETIRER";
+
+// REQUEST_PERMISSION
+"REQUEST_PERMISSION.DEFAULT_CTA" = "Donner accès";
+
+// RECORD_VIEW
+"START" = "Début";
+"END" = "Fin";
+
+// NOTIFICATIONS
+"NOTIFY_END_NOTIF.TITLE" = "Terminé !";
+"NOTIFY_END_NOTIF.SUBTITLE" = "Il est temps de retirer votre anneau.";
+
+"REMINDED_START_NOTIF.TITLE" = "C'est l'heure !";
+"REMINDED_START_NOTIF.SUBTITLE" = "N'oubliez pas de porter l'anneau pour la journée.";
+
+// SETTINGS_VIEW
+"WATCH_UNREACHABLE" = "Montre injoignable, les réglages seront synchronisés à la prochaine ouverture";
+"SESSION_LENGTH" = "Durée de port";
+"THEME_COLOR" = "Couleur du thème";
+"NOTIFICATIONS" = "Notifications";
+"NOTIFY_END_OF_SESSION" = "Notification de durée atteinte";
+"SESSION_START_REMINDER" = "Rappel quotidien";
+"REMINDER_TIME" = "Heure de rappel :";

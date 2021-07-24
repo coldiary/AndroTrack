@@ -17,10 +17,7 @@ class HealthKitService {
     private lazy var healthKitTypesToWrite: Set<HKSampleType> = { [contraceptiveType] }()
     private lazy var healthKitTypesToRead: Set<HKObjectType> = { [contraceptiveType] }()
     
-    public var healthKitAuthorizationStatus: HKAuthorizationStatus {
-        print ("Reading:", store.authorizationStatus(for: contraceptiveType))
-        return store.authorizationStatus(for: contraceptiveType)
-    }
+    public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
     
     public func removeRecord(at start: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {

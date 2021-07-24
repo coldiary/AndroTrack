@@ -20,10 +20,10 @@ struct RequirementView: View {
         } else {
             if hasSeenHealthKitAuthorization {
                 RequestPermission(
-                    title: "HealthKit Access",
-                    description: "In order for the app to store records, it needs access to write to HealthKit. Please review settings in Health > Data Access & Device > Androtrack, and enable the app to write data.",
+                    title: "HEALTHKIT_ACCESS.TITLE",
+                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2",
                     illustrationName: "HealthKitPermission",
-                    actionLabel: "Open settings"
+                    actionLabel: "HEALTHKIT_ACCESS.CTA"
                 ) { completion in
                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                         completion()
@@ -40,8 +40,8 @@ struct RequirementView: View {
                 }
             } else {
                 RequestPermission(
-                    title: "HealthKit Access",
-                    description: "In order for the app to store records about when you wear the device, you need to grant permission to access HealthKit storage.",
+                    title: "HEALTHKIT_ACCESS.TITLE",
+                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2",
                     illustrationName: "HealthKitPermission"
                 ) { completion in
                     HealthKitService.shared.requestAccess { success, error in
