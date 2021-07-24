@@ -42,9 +42,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(RecordStore.shared)
+            .environmentObject(SettingsStore.shared)
             .preferredColorScheme(.dark)
-            .accentColor(.red)
             .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
     }
 }

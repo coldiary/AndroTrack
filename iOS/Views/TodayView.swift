@@ -41,7 +41,7 @@ struct TodayView: View {
                             .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
                             .cornerRadius(50)
                         }
-                    }
+                    }.padding(.top, 50)
                     Spacer()
                     VStack {
                         ForEach(recordStore.current.records.sorted { $0 > $1}) { record in
@@ -62,7 +62,7 @@ struct TodayView: View {
                     alignment: .center
                 )
             }
-            .padding()
+//            .padding()
             .navigationTitle("Today")
         }
     }
@@ -72,6 +72,7 @@ struct TodayView_Previews: PreviewProvider {
     static var previews: some View {
         TodayView()
             .environmentObject(RecordStore.shared)
+            .environmentObject(SettingsStore.shared)
             .preferredColorScheme(.dark)
     }
 }

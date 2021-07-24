@@ -23,7 +23,6 @@ struct HistoryView: View {
                     }
                 }.padding()
             }
-            .padding(.top)
             .navigationTitle("History")
         }
     }
