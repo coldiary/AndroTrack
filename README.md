@@ -26,20 +26,23 @@ Today | History | Settings | Watchapp
 - [x] Watch complication
 - [x] End of session notification
 - [x] Session start reminder notification
+- [x] HealthKit authorization onboarding view
+- [x] Localization
 
 
-## Roadmap
+## Feature suggestions
 
-- [ ] HealthKit authorization onboarding view
 - [ ] Past record editing
-- [ ] Persistant storage fallback (HealthKit unavailable)
-- [ ] HealthKit opt-out
+- [ ] Other persistant storage 
 - [ ] Calendar view for session history
 - [ ] Stats for session history (with mean, streak, goals (?))
 - [ ] Widget
 - [ ] Shortcut
 - [ ] Shortcuts app integration
 - [ ] Siri integration
-- [ ] Localization
 
 ## License
+
+MIT License
+
+Copyright (c) 2021 Benoit SIDA
