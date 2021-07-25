@@ -1,3 +1,3 @@
 ## AndroTrack
 
-AndroTrack est une application permettant de suivre la durée de port journalière d'une contraception masculine thermique.
+AndroTrack is an open source app that allow users to track when they wear a male conraceptive device thorough the day and get indsights.
