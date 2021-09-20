@@ -46,3 +46,9 @@
 "NOTIFY_END_OF_SESSION" = "Notify end of session";
 "SESSION_START_REMINDER" = "Session start reminder";
 "REMINDER_TIME" = "Reminder time :";
+
+// HISTORY_VIEW
+"MODIFY" = "Edit";
+"CANCEL" = "Cancel";
+"EDIT_RECORD" = "Edit record";
+"SAVE" = "Save";

@@ -18,7 +18,9 @@ class RecordStore: ObservableObject {
     
     @Published var state = RingState.off
     @Published var records: [Record] = [
-        Record.yesterday
+        Record.today,
+        Record.yesterday,
+        Record.dayBefore,
     ]
     
     private init() {
@@ -86,6 +88,14 @@ class RecordStore: ObservableObject {
             if SettingsStore.shared.notifications.notifyEnd {
                 Notifications.cancelNotifyEndNotification()
                 Notifications.scheduleReminderStartNotification()
+            }
+        }
+    }
+    
+    public func editRecord(at start: Date, newValues: Record) {
+        HealthKitService.shared.editRecord(at: start, newValues) { error in
+            if let error = error {
+                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
             }
         }
     }

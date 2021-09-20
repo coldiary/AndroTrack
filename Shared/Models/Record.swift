@@ -57,10 +57,24 @@ extension Record {
 }
 
 extension Record {
+    static var today: Record {
+        return Record(
+            start: Date().addingTimeInterval(-18000),
+            end: Date().addingTimeInterval(-18000)
+        )
+    }
+    
     static var yesterday: Record {
         return Record(
-            start: Date.fromString(date: "2021/07/12 08:30"),
-            end: Date.fromString(date: "2021/07/12 17:40")
+            start: Date().addingTimeInterval(-86400),
+            end: Date().addingTimeInterval(-68400)
+        )
+    }
+    
+    static var dayBefore: Record {
+        return Record(
+            start: Date().addingTimeInterval(-172800),
+            end: Date().addingTimeInterval(-154800)
         )
     }
 }

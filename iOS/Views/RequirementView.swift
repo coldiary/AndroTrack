@@ -20,10 +20,10 @@ struct RequirementView: View {
         } else {
             if hasSeenHealthKitAuthorization {
                 RequestPermission(
-                    title: "HEALTHKIT_ACCESS.TITLE",
-                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2",
+                    title: "HEALTHKIT_ACCESS.TITLE".localized,
+                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2".localized,
                     illustrationName: "HealthKitPermission",
-                    actionLabel: "HEALTHKIT_ACCESS.CTA"
+                    actionLabel: "HEALTHKIT_ACCESS.CTA".localized
                 ) { completion in
                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                         completion()
@@ -40,8 +40,8 @@ struct RequirementView: View {
                 }
             } else {
                 RequestPermission(
-                    title: "HEALTHKIT_ACCESS.TITLE",
-                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2",
+                    title: "HEALTHKIT_ACCESS.TITLE".localized,
+                    description: "HEALTHKIT_ACCESS.DESCRIPTION_2".localized,
                     illustrationName: "HealthKitPermission"
                 ) { completion in
                     HealthKitService.shared.requestAccess { success, error in

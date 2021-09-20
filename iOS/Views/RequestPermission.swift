@@ -11,7 +11,7 @@ struct RequestPermission: View {
     let title: String
     let description: String
     let illustrationName: String
-    var actionLabel = "REQUEST_PERMISSION.DEFAULT_CTA"
+    var actionLabel = "REQUEST_PERMISSION.DEFAULT_CTA".localized
     let requestPermissionAction: (@escaping () -> Void) -> Void
     
     @EnvironmentObject private var settingsStore: SettingsStore
@@ -52,6 +52,7 @@ struct RequestPermission: View {
                     Text(actionLabel)
                 }
                 .padding()
+                .frame(minWidth: 200)
                 .foregroundColor(.white)
                 .background(settingsStore.themeColor)
                 .cornerRadius(50)

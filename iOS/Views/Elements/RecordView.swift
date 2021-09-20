@@ -26,7 +26,7 @@ struct RecordView: View {
                 return start.format(timeFormat: .none)
             }
         }
-        return "TODAY"
+        return "TODAY".localized
     }
     
     var body: some View {

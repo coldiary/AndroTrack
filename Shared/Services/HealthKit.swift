@@ -18,6 +18,76 @@ class HealthKitService {
     private lazy var healthKitTypesToRead: Set<HKObjectType> = { [contraceptiveType] }()
     
     public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
+   
+    
+    public func editRecord(at start: Date, _ newValues: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            completion(HealthKitServiceError.HealthDataUnavailable)
+            return
+        }
+        
+        guard let start = newValues.start else {
+            completion(HealthKitServiceError.InvalidRecord(property: "start"))
+            return
+        }
+        
+        guard let end = newValues.end else {
+            completion(HealthKitServiceError.InvalidRecord(property: "end"))
+            return
+        }
+        
+        requestAccess { sucess, error in
+            guard error == nil else {
+                completion(HealthKitServiceError.AccessDenied)
+                return
+            }
+            
+            // Try to found record to replace
+            let predicate = HKQuery.predicateForSamples(withStart: start, end: Date())
+            
+            let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
+                query, results, error in
+                
+                guard error == nil else {
+                    completion(HealthKitServiceError.Failure(error!))
+                    return
+                }
+                
+                guard let samples = results as? [HKCategorySample] else {
+                    completion(HealthKitServiceError.Failure(error!))
+                    return
+                }
+               
+                if (samples.count > 0) {
+                    self.store.delete(samples[0]) { sucess, error in
+                        if let error = error {
+                            completion(HealthKitServiceError.Failure(error))
+                            return
+                        }
+                        
+                        let contraceptiveSample = HKCategorySample(
+                            type: self.contraceptiveType,
+                            value: HKCategoryValueContraceptive.unspecified.rawValue,
+                            start: start, end: end,
+                            metadata: ["name": "AndroSwitch"]
+                        )
+
+                        self.store.save(contraceptiveSample) { (success, error) in
+                            if let error = error {
+                                completion(HealthKitServiceError.Failure(error))
+                            } else {
+                                completion(nil)
+                            }
+                        }
+                    }
+                } else {
+                    completion(HealthKitServiceError.RecordNotFound(start))
+                }
+            }
+            
+            self.store.execute(query)
+        }
+    }
     
     public func removeRecord(at start: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
@@ -48,7 +118,7 @@ class HealthKitService {
                 }
                
                 if (samples.count > 0) {
-                    HKHealthStore().delete(samples[0]) { sucess, error in
+                    self.store.delete(samples[0]) { sucess, error in
                         if let error = error {
                             completion(HealthKitServiceError.Failure(error))
                             return
@@ -60,7 +130,7 @@ class HealthKitService {
                 }
             }
             
-            HKHealthStore().execute(query)
+            self.store.execute(query)
         }
     }
     
@@ -115,7 +185,7 @@ class HealthKitService {
                 }
                
                 if (samples.count > 0) {
-                    HKHealthStore().delete(samples[0]) { sucess, error in
+                    self.store.delete(samples[0]) { sucess, error in
                         if let error = error {
                             completion(HealthKitServiceError.Failure(error))
                             return
@@ -128,7 +198,7 @@ class HealthKitService {
                 }
             }
             
-            HKHealthStore().execute(query)
+            self.store.execute(query)
         }
     }
     
@@ -164,7 +234,7 @@ class HealthKitService {
                 }
             }
             
-            HKHealthStore().execute(query)
+            self.store.execute(query)
             
         }
         

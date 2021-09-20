@@ -127,8 +127,8 @@ struct SettingsView: View {
             .sheet(isPresented: $showNotifPermissionModal) {
                 GenericModal() {
                     RequestPermission(
-                        title: "NOTIFICATIONS_PERMISSIONS.TITLE",
-                        description: "NOTIFICATIONS_PERMISSIONS.DESCRIPTION",
+                        title: "NOTIFICATIONS_PERMISSIONS.TITLE".localized,
+                        description: "NOTIFICATIONS_PERMISSIONS.DESCRIPTION".localized,
                         illustrationName: "NotificationPermission"
                     ) { completion in
                         guard let status = notificationsAuthorizationStatus else { return }

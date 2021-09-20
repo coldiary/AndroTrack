@@ -29,7 +29,7 @@ struct GenericModal<Content: View>: View {
                content()
             }
             Spacer()
-        }
+        }.preferredColorScheme(.dark)
     }
 }
 

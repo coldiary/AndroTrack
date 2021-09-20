@@ -76,6 +76,10 @@
 		6AAC4E6826AA472000FB6401 /* RequirementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC4E6726AA472000FB6401 /* RequirementView.swift */; };
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
+		6AEA3B1926F7CB3700C72CEF /* Wiggling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1826F7CB3700C72CEF /* Wiggling.swift */; };
+		6AEA3B1B26F7CE5200C72CEF /* When.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1A26F7CE5200C72CEF /* When.swift */; };
+		6AEA3B1D26F7D21B00C72CEF /* RecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */; };
+		6AEA3B1F26F7E2D500C72CEF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,8 +128,8 @@
 		6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettings.swift; sourceTree = "<group>"; };
 		6A0322E826A60584008E97C8 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
-		6A045F8B26ABC3EA001BD75D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6A045F8E26ABCCC1001BD75D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6A045F8B26ABC3EA001BD75D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6A045F8E26ABCCC1001BD75D /* fr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A17458B26A8C4FB00B337BE /* RequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermission.swift; sourceTree = "<group>"; };
 		6A4FD2C4269F0A6D00F7081D /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		6A4FD2CA269F515800F7081D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,10 @@
 		6AAC4E6726AA472000FB6401 /* RequirementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementView.swift; sourceTree = "<group>"; };
 		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
 		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		6AEA3B1826F7CB3700C72CEF /* Wiggling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiggling.swift; sourceTree = "<group>"; };
+		6AEA3B1A26F7CE5200C72CEF /* When.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = When.swift; sourceTree = "<group>"; };
+		6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEditView.swift; sourceTree = "<group>"; };
+		6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +212,7 @@
 			children = (
 				6AAC4E6426AA1F1200FB6401 /* Elements */,
 				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
+				6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */,
 				6AAC4E6726AA472000FB6401 /* RequirementView.swift */,
 				6A9A6F7F269E6D3200A78C5C /* TodayView.swift */,
 				6A4FD2CA269F515800F7081D /* SettingsView.swift */,
@@ -293,6 +302,7 @@
 		6A9A6F3D269E15B800A78C5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6AEA3B1726F7CB2000C72CEF /* Modifiers */,
 				6AAC4E6526AA1F2500FB6401 /* Views */,
 				6A4FD2D126A0419F00F7081D /* Services */,
 				6A9A6F71269E3CB100A78C5C /* Extensions */,
@@ -355,6 +365,7 @@
 				6A9A6F7C269E457100A78C5C /* Double+Extension.swift */,
 				6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */,
 				6A0322E826A60584008E97C8 /* Bundle+Extension.swift */,
+				6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -392,6 +403,15 @@
 				6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		6AEA3B1726F7CB2000C72CEF /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				6AEA3B1826F7CB3700C72CEF /* Wiggling.swift */,
+				6AEA3B1A26F7CE5200C72CEF /* When.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,7 +502,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				fr,
 			);
 			mainGroup = 6A9A6F38269E15B800A78C5C;
@@ -577,6 +596,7 @@
 				6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */,
 				6A59423626A8415900986619 /* AppLogger.swift in Sources */,
 				6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
+				6AEA3B1F26F7E2D500C72CEF /* String+Extension.swift in Sources */,
 				6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */,
 				6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */,
 				6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
@@ -590,11 +610,14 @@
 				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
 				6A9A662726A748C800E7526A /* Notifications.swift in Sources */,
 				6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */,
+				6AEA3B1926F7CB3700C72CEF /* Wiggling.swift in Sources */,
 				6A9A6F60269E178500A78C5C /* Record.swift in Sources */,
+				6AEA3B1B26F7CE5200C72CEF /* When.swift in Sources */,
 				6A9A662A26A7571700E7526A /* NotificationType.swift in Sources */,
 				6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */,
 				6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */,
 				6A0322E926A60584008E97C8 /* Bundle+Extension.swift in Sources */,
+				6AEA3B1D26F7D21B00C72CEF /* RecordEditView.swift in Sources */,
 				6A9A6F7D269E457100A78C5C /* Double+Extension.swift in Sources */,
 				6A9A6F6C269E2FE700A78C5C /* RecordStore.swift in Sources */,
 				6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */,
@@ -726,6 +749,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -773,6 +797,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -785,6 +810,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -826,6 +852,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

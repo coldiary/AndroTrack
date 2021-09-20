@@ -46,3 +46,9 @@
 "NOTIFY_END_OF_SESSION" = "Notification de durée atteinte";
 "SESSION_START_REMINDER" = "Rappel quotidien";
 "REMINDER_TIME" = "Heure de rappel :";
+
+// HISTORY_VIEW
+"MODIFY" = "Modifier";
+"CANCEL" = "Annuler";
+"EDIT_RECORD" = "Modifier l'enregistrement";
+"SAVE" = "Enregistrer";
