@@ -21,8 +21,8 @@ extension UserDefaults {
 
 extension UserDefaults {
     func nonNulInteger(forKey key: String ) -> Int? {
-        let integer = integer(forKey: key)
-        return integer == 0 ? nil : integer
+        let intValue = integer(forKey: key)
+        return intValue == 0 ? nil : intValue
     }
 }
 
