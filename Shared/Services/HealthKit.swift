@@ -20,7 +20,7 @@ class HealthKitService {
     public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
    
     
-    public func editRecord(at start: Date, _ newValues: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func editRecord(at: Date, _ newValues: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(HealthKitServiceError.HealthDataUnavailable)
             return
@@ -43,7 +43,7 @@ class HealthKitService {
             }
             
             // Try to found record to replace
-            let predicate = HKQuery.predicateForSamples(withStart: start, end: Date())
+            let predicate = HKQuery.predicateForSamples(withStart: at, end: Date())
             
             let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
                 query, results, error in
@@ -81,7 +81,7 @@ class HealthKitService {
                         }
                     }
                 } else {
-                    completion(HealthKitServiceError.RecordNotFound(start))
+                    completion(HealthKitServiceError.RecordNotFound(at))
                 }
             }
             
@@ -89,7 +89,7 @@ class HealthKitService {
         }
     }
     
-    public func removeRecord(at start: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func removeRecord(at: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(HealthKitServiceError.HealthDataUnavailable)
             return
@@ -102,7 +102,7 @@ class HealthKitService {
             }
             
             // Try to found record to remove
-            let predicate = HKQuery.predicateForSamples(withStart: start, end: Date())
+            let predicate = HKQuery.predicateForSamples(withStart: at, end: Date())
             
             let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
                 query, results, error in
@@ -126,7 +126,7 @@ class HealthKitService {
                         completion(nil)
                     }
                 } else {
-                    completion(HealthKitServiceError.RecordNotFound(start))
+                    completion(HealthKitServiceError.RecordNotFound(at))
                 }
             }
             
