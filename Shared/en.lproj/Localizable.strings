@@ -50,5 +50,6 @@
 // HISTORY_VIEW
 "MODIFY" = "Edit";
 "CANCEL" = "Cancel";
+"END" = "Finished";
 "EDIT_RECORD" = "Edit record";
 "SAVE" = "Save";

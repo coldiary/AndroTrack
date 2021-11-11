@@ -81,9 +81,9 @@ struct RecordView: View {
                 }
             }
         }
-        .padding()
-        .background(Color(red: 0.1, green: 0.1, blue: 0.1))
-        .cornerRadius(12)
+//        .padding()
+//        .background(Color(red: 0.1, green: 0.1, blue: 0.1))
+//        .cornerRadius(12)
     }
 }
 

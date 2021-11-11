@@ -50,7 +50,9 @@ struct TodayView: View {
                                        sessionLength: settingsStore.sessionLength,
                                        showDate: false,
                                        estimatedEnd: recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength)
-                            )
+                            ).padding()
+                            .background(Color(red: 0.1, green: 0.1, blue: 0.1))
+                            .cornerRadius(12)
                         }
                     }.padding()
                 }
@@ -62,9 +64,8 @@ struct TodayView: View {
                     alignment: .center
                 )
             }
-//            .padding()
             .navigationTitle("TODAY")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

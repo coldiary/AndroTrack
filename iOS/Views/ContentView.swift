@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var settingsStore: SettingsStore
     @StateObject private var recordStore = RecordStore.shared
     
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
@@ -32,6 +33,7 @@ struct ContentView: View {
                     Text("SETTINGS")
                 }
         }
+        .accentColor(settingsStore.themeColor)
         .environmentObject(recordStore)
         .onReceive(timer) { _ in
             recordStore.objectWillChange.send()
