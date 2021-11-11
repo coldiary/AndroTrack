@@ -27,11 +27,10 @@ Projet is not distributed on the stores yet
 - [x] Session start reminder notification
 - [x] HealthKit authorization onboarding view
 - [x] Localization
-
+- [x] Past record editing
 
 ## Feature suggestions
 
-- [ ] Past record editing
 - [ ] Other persistant storage 
 - [ ] Calendar view for session history
 - [ ] Stats for session history (with mean, streak, goals (?))
