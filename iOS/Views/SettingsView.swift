@@ -41,7 +41,7 @@ struct SettingsView: View {
                     Spacer()
                     Picker("", selection: $settingsStore.sessionLength) {
                         ForEach(Range(1...24)) { length in
-                            Text("\(length - 1)h").tag(length)
+                            Text("\(length - 1)h").tag(length - 1)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
@@ -124,6 +124,7 @@ struct SettingsView: View {
                     }
                 }.padding()
             }
+            
             .sheet(isPresented: $showNotifPermissionModal) {
                 GenericModal() {
                     RequestPermission(
@@ -158,7 +159,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("SETTINGS")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func checkCanSendNotifications(completion: @escaping (Bool) -> Void) {
