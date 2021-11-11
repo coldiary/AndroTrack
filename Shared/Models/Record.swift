@@ -100,6 +100,4 @@ extension Record: CustomStringConvertible {
     var description: String {
         "{ start: \(start?.description ?? "nil"), end: \(end?.description ?? "nil") }"
     }
-    
-    
 }
