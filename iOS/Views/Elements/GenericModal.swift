@@ -24,19 +24,19 @@ struct GenericModal<Content: View>: View {
                         .font(.title)
                 }.buttonStyle(PlainButtonStyle())
             }
-            .padding()
-            VStack {
-               content()
-            }
-            Spacer()
-        }.preferredColorScheme(.dark)
+            .padding(.top, 20)
+            .padding(.trailing, 20)
+           content()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .preferredColorScheme(.dark)
     }
 }
 
 struct NotificationPermissionModal_Previews: PreviewProvider {
     static var previews: some View {
-        GenericModal() {
-            Text("ok")
+        VStack {
+            
         }
             .preferredColorScheme(.dark)
             .sheet(isPresented: .constant(true)) {

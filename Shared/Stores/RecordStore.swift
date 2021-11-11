@@ -92,6 +92,14 @@ class RecordStore: ObservableObject {
         }
     }
     
+    public func deleteRecord(at start: Date) {
+        HealthKitService.shared.removeRecord(at: start) { error in
+            if let error = error {
+                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            }
+        }
+    }
+    
     public func editRecord(at start: Date, newValues: Record) {
         HealthKitService.shared.editRecord(at: start, newValues) { error in
             if let error = error {

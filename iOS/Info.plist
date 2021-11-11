@@ -15,15 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>AndroTrack a besoin de votre autorisation pour afficher les statistiques du port de l&apos;anneau.</string>
+	<string>AndroTrack a besoin de votre autorisation pour afficher les statistiques du port de l'anneau.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>AndroTrack a besoin de votre autorisation pour mettre à jour les statistiques du port de l&apos;anneau.</string>
+	<string>AndroTrack a besoin de votre autorisation pour mettre à jour les statistiques du port de l'anneau.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -54,8 +56,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>
 </plist>
