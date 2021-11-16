@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TimeRingView: View {
     var progress: Double
-    var ringWidth: CGFloat = 30
+    @State var ringWidth: CGFloat = 30
     var color: Color = .accentColor
     
     
@@ -88,6 +88,9 @@ struct TimeRingView: View {
                 
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .onAppear() {
+                ringWidth = geometry.size.width < 50 ? 3 : geometry.size.width < 150 ? 10 : 30
+            }
         }
         .padding(ringWidth / 2)
     }
@@ -96,6 +99,7 @@ struct TimeRingView: View {
 struct TimeRingView_Previews: PreviewProvider {
     static var previews: some View {
         TimeRingView(progress: 72, color: .accentColor)
+            .frame(width: 100, height: 100)
             .preferredColorScheme(.dark)
     }
 }

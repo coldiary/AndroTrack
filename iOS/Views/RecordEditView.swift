@@ -81,7 +81,6 @@ struct RecordEditView: View {
             Spacer()
             Button(action: {
                 if let at = at {
-                    print(at, record);
                     recordStore.editRecord(at: at, newValues: record)
                     presentationMode.wrappedValue.dismiss()
                 }

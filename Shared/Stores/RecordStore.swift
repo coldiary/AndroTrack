@@ -18,9 +18,9 @@ class RecordStore: ObservableObject {
     
     @Published var state = RingState.off
     @Published var records: [Record] = [
-        Record.today,
-        Record.yesterday,
         Record.dayBefore,
+        Record.yesterday,
+        Record.today,
     ]
     
     private init() {
@@ -108,7 +108,7 @@ class RecordStore: ObservableObject {
         }
     }
     
-    private func getDay(forDate date: Date) -> Day {
+    public func getDay(forDate date: Date) -> Day {
         return Day(records: records.filter({ $0.start != nil && Calendar.current.isDate($0.start!, inSameDayAs: date) }))
     }
     
