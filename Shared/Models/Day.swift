@@ -19,3 +19,9 @@ struct Day {
         return Calendar.current.date(byAdding: .second, value: Int((Double(sessionLength) - duration) * 3600), to: Date())
     }
 }
+
+extension Day: CustomStringConvertible {
+    var description: String {
+        "{ records: \(records.count), date: \(records.count != 0 ? records.first!.start!.format() : "unknown") }"
+    }
+}
