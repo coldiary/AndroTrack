@@ -9,8 +9,14 @@ import SwiftUI
 
 struct HistoryDayView: View {
     let date: Date
+    
     var day: Day {
-        recordStore.getDay(forDate: date)
+        return recordStore.getDay(forDate: date)
+    }
+    
+    var durationAsText: String {
+        let duration = Int(day.duration)
+        return "\(duration) h"
     }
     
     @EnvironmentObject var recordStore: RecordStore
@@ -22,7 +28,7 @@ struct HistoryDayView: View {
                 TimeRingView(progress: day.durationAsProgress(goal: settingsStore.sessionLength), color: settingsStore.themeColor)
                     .frame(width: 150, height: 150)
                 VStack {
-                    Text("\(Int(day.duration)) h")
+                    Text(durationAsText)
                         .font(.largeTitle)
                 }
             }.padding(.top, 50)

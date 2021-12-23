@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,19 +15,28 @@
 		6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */; };
 		6A045F8726ABC3DF001BD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A045F8A26ABC3DF001BD75D /* Localizable.strings */; };
 		6A045F8826ABC3DF001BD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A045F8A26ABC3DF001BD75D /* Localizable.strings */; };
+		6A0D4904277215B50043125F /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0D4903277215B50043125F /* Number+Extension.swift */; };
+		6A0D4905277219970043125F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */; };
+		6A0D4906277219DA0043125F /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0D4903277215B50043125F /* Number+Extension.swift */; };
+		6A32848127737C8200D1A45F /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A32848027737C8200D1A45F /* DataCell.swift */; };
+		6A3284832773D5B600D1A45F /* MeanWearingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3284822773D5B600D1A45F /* MeanWearingTimeView.swift */; };
 		6A4E5FD02704949A00E09AC4 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E5FCF2704949A00E09AC4 /* Bool+Extension.swift */; };
 		6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
 		6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2CA269F515800F7081D /* SettingsView.swift */; };
-		6A4FD2D0269F807600F7081D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4FD2CF269F807600F7081D /* HealthKit.framework */; };
 		6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2D226A041AF00F7081D /* HealthKit.swift */; };
 		6A59423626A8415900986619 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423526A8415900986619 /* AppLogger.swift */; };
 		6A59423726A8415900986619 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423526A8415900986619 /* AppLogger.swift */; };
 		6A59423A26A850D700986619 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59423926A850D700986619 /* Complications.swift */; };
+		6A6051112773FFE000492AA2 /* MeanNonWearingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6051102773FFE000492AA2 /* MeanNonWearingTimeView.swift */; };
+		6A6051132774010500492AA2 /* ConsecutiveAchievedGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6051122774010500492AA2 /* ConsecutiveAchievedGoalView.swift */; };
+		6A60511527740B4700492AA2 /* MeanWearOnHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A60511427740B4700492AA2 /* MeanWearOnHourView.swift */; };
+		6A60E1D427458D970043652C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A60E1D327458D970043652C /* GraphView.swift */; };
+		6A60E1D62745992F0043652C /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A60E1D52745992F0043652C /* StatsView.swift */; };
 		6A6281C426ABD0C500C32322 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A045F8A26ABC3DF001BD75D /* Localizable.strings */; };
+		6A64377227710B78004E814B /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A64377127710B78004E814B /* Graph.swift */; };
 		6A6AFB8F26A8C64E00DC2785 /* RequestPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A17458B26A8C4FB00B337BE /* RequestPermission.swift */; };
 		6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */; };
 		6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2426A46001003DF0CE /* AndroTrackApp.swift */; };
-		6A8B2D8E26A1A3C800D63862 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8B2D8D26A1A3C800D63862 /* DynamicColor */; };
 		6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */; };
 		6A922C4926A4574A005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C4826A4574A005782DB /* Assets.xcassets */; };
 		6A922C5026A4574A005782DB /* WatchAndroTrack Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -49,9 +58,7 @@
 		6A922C7A26A4588F005782DB /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4FD2C4269F0A6D00F7081D /* Day.swift */; };
 		6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
 		6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F6E269E3C6C00A78C5C /* TimeRingView.swift */; };
-		6A922C7E26A45A49005782DB /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6A922C7D26A45A49005782DB /* DynamicColor */; };
 		6A922C8026A45B2F005782DB /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C7F26A45B2F005782DB /* TodayView.swift */; };
-		6A922C8226A45BBA005782DB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A922C8126A45BBA005782DB /* HealthKit.framework */; };
 		6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */; };
 		6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */; };
 		6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
@@ -78,6 +85,11 @@
 		6AB8DD772705E1B7002EEB0B /* Wiggling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8DD762705E1B6002EEB0B /* Wiggling.swift */; };
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
+		6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */; };
+		6AE3694827741B3B00D8C36D /* FirstRecordDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */; };
+		6AE3694A27741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */; };
+		6AE8ED932772B41900C4680F /* HistoryCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE8ED922772B41900C4680F /* HistoryCalendarDayView.swift */; };
+		6AE8ED962772B99C00C4680F /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE8ED952772B99C00C4680F /* DataView.swift */; };
 		6AE99A3227417A91002837B7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE99A3127417A91002837B7 /* CalendarView.swift */; };
 		6AE99A35274289E5002837B7 /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE99A34274289E5002837B7 /* DateFormatter+extension.swift */; };
 		6AE99A3727428A02002837B7 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE99A3627428A02002837B7 /* Calendar+Extension.swift */; };
@@ -140,15 +152,23 @@
 		6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
 		6A045F8B26ABC3EA001BD75D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A045F8E26ABCCC1001BD75D /* fr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6A0D4903277215B50043125F /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
 		6A17458B26A8C4FB00B337BE /* RequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermission.swift; sourceTree = "<group>"; };
+		6A32848027737C8200D1A45F /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
+		6A3284822773D5B600D1A45F /* MeanWearingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanWearingTimeView.swift; sourceTree = "<group>"; };
 		6A4E5FCF2704949A00E09AC4 /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		6A4FD2C4269F0A6D00F7081D /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		6A4FD2CA269F515800F7081D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6A4FD2CD269F807600F7081D /* AndroTrack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndroTrack.entitlements; sourceTree = "<group>"; };
-		6A4FD2CF269F807600F7081D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A4FD2D226A041AF00F7081D /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		6A59423526A8415900986619 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		6A59423926A850D700986619 /* Complications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complications.swift; sourceTree = "<group>"; };
+		6A6051102773FFE000492AA2 /* MeanNonWearingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanNonWearingTimeView.swift; sourceTree = "<group>"; };
+		6A6051122774010500492AA2 /* ConsecutiveAchievedGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsecutiveAchievedGoalView.swift; sourceTree = "<group>"; };
+		6A60511427740B4700492AA2 /* MeanWearOnHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanWearOnHourView.swift; sourceTree = "<group>"; };
+		6A60E1D327458D970043652C /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		6A60E1D52745992F0043652C /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		6A64377127710B78004E814B /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackAppDelegate.swift; sourceTree = "<group>"; };
 		6A779C2426A46001003DF0CE /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
 		6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchAndroTrack Extension.entitlements"; sourceTree = "<group>"; };
@@ -166,7 +186,6 @@
 		6A922C6326A4574B005782DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A922C6426A4574B005782DB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6A922C7F26A45B2F005782DB /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
-		6A922C8126A45BBA005782DB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A93AF2A26A5A10B00702DC7 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extension.swift"; sourceTree = "<group>"; };
 		6A9A662626A748C800E7526A /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -191,6 +210,11 @@
 		6AB8DD762705E1B6002EEB0B /* Wiggling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wiggling.swift; sourceTree = "<group>"; };
 		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
 		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanWearOffHourView.swift; sourceTree = "<group>"; };
+		6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecordDateView.swift; sourceTree = "<group>"; };
+		6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentConsecutiveSerieStartView.swift; sourceTree = "<group>"; };
+		6AE8ED922772B41900C4680F /* HistoryCalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCalendarDayView.swift; sourceTree = "<group>"; };
+		6AE8ED952772B99C00C4680F /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		6AE99A3127417A91002837B7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		6AE99A34274289E5002837B7 /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		6AE99A3627428A02002837B7 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
@@ -210,8 +234,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A922C8226A45BBA005782DB /* HealthKit.framework in Frameworks */,
-				6A922C7E26A45A49005782DB /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +241,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A8B2D8E26A1A3C800D63862 /* DynamicColor in Frameworks */,
-				6A4FD2D0269F807600F7081D /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +250,7 @@
 		6A0322DC26A5E6F4008E97C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6AE8ED912772B35500C4680F /* Stats */,
 				6AAC4E6426AA1F1200FB6401 /* Elements */,
 				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
 				6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */,
@@ -242,11 +263,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		6A32847F27737C6D00D1A45F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */,
+				6A60511427740B4700492AA2 /* MeanWearOnHourView.swift */,
+				6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */,
+				6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */,
+				6A6051102773FFE000492AA2 /* MeanNonWearingTimeView.swift */,
+				6A6051122774010500492AA2 /* ConsecutiveAchievedGoalView.swift */,
+				6AE8ED952772B99C00C4680F /* DataView.swift */,
+				6A32848027737C8200D1A45F /* DataCell.swift */,
+				6A3284822773D5B600D1A45F /* MeanWearingTimeView.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		6A4FD2CE269F807600F7081D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6A922C8126A45BBA005782DB /* HealthKit.framework */,
-				6A4FD2CF269F807600F7081D /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,8 +289,8 @@
 		6A4FD2D126A0419F00F7081D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6A4FD2D226A041AF00F7081D /* HealthKit.swift */,
 				6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */,
+				6A4FD2D226A041AF00F7081D /* HealthKit.swift */,
 				6A9A662626A748C800E7526A /* Notifications.swift */,
 				6A59423526A8415900986619 /* AppLogger.swift */,
 			);
@@ -389,6 +424,7 @@
 				6A4E5FCF2704949A00E09AC4 /* Bool+Extension.swift */,
 				6AE99A34274289E5002837B7 /* DateFormatter+extension.swift */,
 				6AE99A3627428A02002837B7 /* Calendar+Extension.swift */,
+				6A0D4903277215B50043125F /* Number+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,6 +436,7 @@
 				6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */,
 				6A9A6F68269E21B800A78C5C /* RecordView.swift */,
 				6A9A663226A78A1000E7526A /* GenericModal.swift */,
+				6A64377127710B78004E814B /* Graph.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -429,6 +466,16 @@
 			path = Stores;
 			sourceTree = "<group>";
 		};
+		6AE8ED912772B35500C4680F /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				6A32847F27737C6D00D1A45F /* Data */,
+				6A60E1D52745992F0043652C /* StatsView.swift */,
+				6A60E1D327458D970043652C /* GraphView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		6AE99A332742893A002837B7 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +491,7 @@
 			children = (
 				6A9A6F82269E6D9000A78C5C /* HistoryView.swift */,
 				6AE99A3D2742AD91002837B7 /* HistoryCalendarView.swift */,
+				6AE8ED922772B41900C4680F /* HistoryCalendarDayView.swift */,
 				6AE99A3F2742B074002837B7 /* HistoryListView.swift */,
 				6AE99A4327430F88002837B7 /* HistoryListCompatView.swift */,
 				6AE99A41274300F5002837B7 /* HistoryDayView.swift */,
@@ -494,7 +542,6 @@
 			);
 			name = "WatchAndroTrack Extension";
 			packageProductDependencies = (
-				6A922C7D26A45A49005782DB /* DynamicColor */,
 			);
 			productName = "WatchAndroTrack Extension";
 			productReference = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */;
@@ -516,7 +563,6 @@
 			);
 			name = "AndroTrack (iOS)";
 			packageProductDependencies = (
-				6A8B2D8D26A1A3C800D63862 /* DynamicColor */,
 			);
 			productName = "AndroTrack (iOS)";
 			productReference = 6A9A6F45269E15BA00A78C5C /* AndroTrack.app */;
@@ -553,7 +599,6 @@
 			);
 			mainGroup = 6A9A6F38269E15B800A78C5C;
 			packageReferences = (
-				6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 6A9A6F46269E15BA00A78C5C /* Products */;
 			projectDirPath = "";
@@ -608,6 +653,7 @@
 				6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
 				6A59423726A8415900986619 /* AppLogger.swift in Sources */,
 				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
+				6A0D4906277219DA0043125F /* Number+Extension.swift in Sources */,
 				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
 				6A59423A26A850D700986619 /* Complications.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
@@ -621,6 +667,7 @@
 				6A922C7A26A4588F005782DB /* Day.swift in Sources */,
 				6A922C7226A4588F005782DB /* Double+Extension.swift in Sources */,
 				6A922C7526A4588F005782DB /* RingShape.swift in Sources */,
+				6A0D4905277219970043125F /* String+Extension.swift in Sources */,
 				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
 				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
 				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
@@ -635,6 +682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A6051132774010500492AA2 /* ConsecutiveAchievedGoalView.swift in Sources */,
 				6A0322ED26A60FA0008E97C8 /* WatchConnectivity.swift in Sources */,
 				6AE99A4427430F88002837B7 /* HistoryListCompatView.swift in Sources */,
 				6AE99A3727428A02002837B7 /* Calendar+Extension.swift in Sources */,
@@ -645,6 +693,7 @@
 				6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */,
 				6A9A663326A78A1000E7526A /* GenericModal.swift in Sources */,
 				6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */,
+				6AE3694A27741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift in Sources */,
 				6AE99A402742B074002837B7 /* HistoryListView.swift in Sources */,
 				6A59423626A8415900986619 /* AppLogger.swift in Sources */,
 				6A93AF2B26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
@@ -653,18 +702,30 @@
 				6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */,
 				6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */,
 				6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
+				6A0D4904277215B50043125F /* Number+Extension.swift in Sources */,
 				6AE99A3E2742AD91002837B7 /* HistoryCalendarView.swift in Sources */,
+				6A3284832773D5B600D1A45F /* MeanWearingTimeView.swift in Sources */,
 				6A9A6F80269E6D3200A78C5C /* TodayView.swift in Sources */,
+				6A60E1D62745992F0043652C /* StatsView.swift in Sources */,
+				6A64377227710B78004E814B /* Graph.swift in Sources */,
 				6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */,
 				6AE99A3227417A91002837B7 /* CalendarView.swift in Sources */,
 				6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */,
 				6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */,
+				6A60E1D427458D970043652C /* GraphView.swift in Sources */,
 				6A4E5FD02704949A00E09AC4 /* Bool+Extension.swift in Sources */,
 				6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
 				6A6AFB8F26A8C64E00DC2785 /* RequestPermission.swift in Sources */,
+				6A6051112773FFE000492AA2 /* MeanNonWearingTimeView.swift in Sources */,
+				6A32848127737C8200D1A45F /* DataCell.swift in Sources */,
 				6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */,
+				6AE8ED962772B99C00C4680F /* DataView.swift in Sources */,
+				6A60511527740B4700492AA2 /* MeanWearOnHourView.swift in Sources */,
+				6AE3694827741B3B00D8C36D /* FirstRecordDateView.swift in Sources */,
 				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
 				6A9A662726A748C800E7526A /* Notifications.swift in Sources */,
+				6AE8ED932772B41900C4680F /* HistoryCalendarDayView.swift in Sources */,
+				6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */,
 				6AE99A42274300F5002837B7 /* HistoryDayView.swift in Sources */,
 				6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */,
 				6A9A6F60269E178500A78C5C /* Record.swift in Sources */,
@@ -725,7 +786,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -751,7 +812,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -773,7 +834,7 @@
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				IBSC_MODULE = WatchAndroTrack_Extension;
 				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -794,7 +855,7 @@
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				IBSC_MODULE = WatchAndroTrack_Extension;
 				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -862,6 +923,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=500 -Xfrontend -warn-long-expression-type-checking=200";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -916,6 +978,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=500 -Xfrontend -warn-long-expression-type-checking=200";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -936,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
@@ -960,7 +1023,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
@@ -1010,30 +1073,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6A8B2D8D26A1A3C800D63862 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		6A922C7D26A45A49005782DB /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A8B2D8C26A1A3C800D63862 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6A9A6F39269E15B800A78C5C /* Project object */;
 }

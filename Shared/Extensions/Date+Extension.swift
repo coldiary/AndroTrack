@@ -16,6 +16,10 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func shortDate() -> String {
+        self.format(dateFormat: .medium, timeFormat: .none)
+    }
+    
     static func fromString(date: String, format: String = "yyyy/MM/dd HH:mm") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

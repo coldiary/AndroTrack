@@ -49,7 +49,11 @@ class SettingsStore: ObservableObject {
     ]}
     
     private init() {
-        themeColor = UserDefaults.standard.color(forKey: "themeColor") ?? Color.teal
+        if let storedThemeColor = UserDefaults.standard.color(forKey: "themeColor") {
+            themeColor = storedThemeColor
+        } else {
+            themeColor = Color.red
+        }
         sessionLength = UserDefaults.standard.nonNulInteger(forKey: "sessionLength") ?? 15
         notifications = UserDefaults.standard.typed(forKey: "notifications") ?? NotificationsSettings()
         
@@ -66,7 +70,7 @@ class SettingsStore: ObservableObject {
             switch key {
                 case "themeColor":
                     if (self.themeColor != Color(hexString: progress as! String)) {
-                        self.themeColor = Color(hexString: progress as! String)
+                        self.themeColor = Color(hexString: progress as! String) ?? Color.tealCompat
                     }
                 case "sessionLength":
                     if (self.sessionLength != progress as! Int) {

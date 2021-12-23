@@ -15,5 +15,16 @@ extension String {
     func localizedWith(comment: String? = nil) -> String {
         return NSLocalizedString(self, comment: comment ?? "")
     }
+    
+    func hexToUInt64() -> UInt64? {
+        let hexTrimmed: String = self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let hexSanitized: String = hexTrimmed.replacingOccurrences(of: "#", with: "")
+
+        var rgb: UInt64 = 0
+
+        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
+        
+        return rgb
+    }
 
 }

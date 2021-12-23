@@ -29,6 +29,15 @@ struct RecordView: View {
         return "TODAY".localized
     }
     
+    var recordDurationAsText: String {
+        if let durationInHours = record.durationInHours {
+            let durationInHoursInt = Int(durationInHours)
+            return "\(durationInHoursInt) h"
+        } else {
+            return "-"
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if showDate {
@@ -67,7 +76,8 @@ struct RecordView: View {
                                 }
                                 .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true))
                         } else {
-                            Text("-").padding(.horizontal)
+                            Text("-")
+                                .padding(.horizontal)
                         }
                     }
                 }
@@ -75,15 +85,12 @@ struct RecordView: View {
                 ZStack {
                     TimeRingView(progress: progress, ringWidth: 10, color: ringColor)
                         .frame(width: 80, height: 80, alignment: .center)
-                    Text((record.durationInHours != nil ? "\(Int(record.durationInHours!)) h" : "-"))
+                    Text(recordDurationAsText)
                         .bold()
                         .padding(.horizontal)
                 }
             }
         }
-//        .padding()
-//        .background(Color(red: 0.1, green: 0.1, blue: 0.1))
-//        .cornerRadius(12)
     }
 }
 

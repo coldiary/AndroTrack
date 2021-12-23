@@ -10,14 +10,16 @@ import UserNotifications
 
 class Notifications {
     
+    static let UNCenter = UNUserNotificationCenter.current()
+    
     static func checkSettings(completion: @escaping (UNNotificationSettings?) -> Void) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
+        UNCenter.getNotificationSettings { settings in
             completion(settings)
         }
     }
     
     static func requestAuthorization(completion: @escaping (Error?) -> Void) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+        UNCenter.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if let error = error {
                 completion(error)
             } else {
@@ -27,8 +29,8 @@ class Notifications {
     }
     
     static func scheduleNotification(_ content:UNNotificationContent, at dateComps: DateComponents, repeats: Bool = false, forId id: String = UUID().uuidString) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            guard settings.alertSetting == .enabled else {
+        UNCenter.getNotificationSettings { settings in
+            guard settings.alertSetting == UNNotificationSetting.enabled else {
                 AppLogger.info(context: "Notifications", "Alert Notification unavailable: \(settings.alertSetting)")
                 return
             }
@@ -40,12 +42,12 @@ class Notifications {
             let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
             // add our notification request
-            UNUserNotificationCenter.current().add(request)
+            UNCenter.add(request)
         }
     }
     
     static func cancelNotificationWith(id: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+        UNCenter.removePendingNotificationRequests(withIdentifiers: [id])
     }
 }
 

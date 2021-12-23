@@ -14,7 +14,7 @@ struct TimeRingView: View {
     
     
     private var backgroundColor: Color { color.opacity(0.25) }
-    private var foregroundColor: Color { color.lighter(by: 0.1) }
+    private var foregroundColor: Color { color.lighter(by: 10) ?? color }
     private let startAngle: Double = -90
     
     private static let ShadowColor: Color = Color.black.opacity(0.2)
@@ -48,7 +48,10 @@ struct TimeRingView: View {
     private var ringGradient: AngularGradient {
         let gradientStartAngle = progress >= 100 ? relativePercentageAngle - 360 : startAngle
         return AngularGradient(
-            gradient: Gradient(colors: [color.darker(by: 0.1), color.lighter(by: 0.1)]),
+            gradient: Gradient(colors: [
+                color.darker(by: 10) ?? color,
+                color.lighter(by: 10) ?? color
+            ]),
             center: .center,
             startAngle: Angle(degrees: gradientStartAngle),
             endAngle: Angle(degrees: relativePercentageAngle)
@@ -87,7 +90,7 @@ struct TimeRingView: View {
                 }
                 
             }
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .onAppear() {
                 ringWidth = geometry.size.width < 50 ? 3 : geometry.size.width < 150 ? 10 : 30
             }

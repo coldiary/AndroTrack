@@ -46,7 +46,7 @@ struct Complications {
         if progress >= 1 {
             return CLKComplicationTemplateGraphicCircularView(
                 CircularOpenGaugeCenterImageView(
-                    progress: progress,
+                    progress: 1,
                     imageName: "checkmark.circle.fill",
                     color: data.color,
                     trailingText: "\(data.sessionLength)"
@@ -93,7 +93,7 @@ struct Complications {
                 gaugeProvider: CLKSimpleGaugeProvider(
                     style: .fill,
                     gaugeColor: UIColor(data.color),
-                    fillFraction: progress
+                    fillFraction: 1
                 ),
                 imageProvider: CLKFullColorImageProvider(
                     fullColorImage: UIImage(systemName: "checkmark.circle.fill")!
@@ -105,7 +105,7 @@ struct Complications {
 }
 
 struct GraphicCircular_Previews: PreviewProvider {
-    static let data = ComplicationDisplayedData(duration: 16, sessionLength: 15, color: Color.teal)
+    static let data = ComplicationDisplayedData(duration: 16, sessionLength: 15, color: Color.tealCompat)
     static var previews: some View {
         Group {
             Complications.makeGraphicCircular(data)

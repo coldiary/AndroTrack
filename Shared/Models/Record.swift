@@ -60,7 +60,7 @@ extension Record {
     static var today: Record {
         return Record(
             start: Date().addingTimeInterval(-18000),
-            end: Date().addingTimeInterval(-18000)
+            end: Date().addingTimeInterval(-14000)
         )
     }
     
@@ -81,10 +81,11 @@ extension Record {
 
 extension Record: Equatable {
     static func == (lhs: Record, rhs: Record) -> Bool {
-        return (
-            (lhs.start?.timeIntervalSince1970 ?? 0) == (rhs.start?.timeIntervalSince1970 ?? 0) &&
-            (lhs.end?.timeIntervalSince1970 ?? 0) == (rhs.end?.timeIntervalSince1970 ?? 0)
-        )
+        let lhsStart = lhs.start?.timeIntervalSince1970 ?? 0
+        let rhsStart = rhs.start?.timeIntervalSince1970 ?? 0
+        let lhsEnd = lhs.end?.timeIntervalSince1970 ?? 0
+        let rhsEnd = rhs.end?.timeIntervalSince1970 ?? 0
+        return (lhsStart == rhsStart && lhsEnd == rhsEnd)
     }
     
     

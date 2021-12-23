@@ -27,6 +27,12 @@ struct ContentView: View {
                     Text("HISTORY")
                 }
             
+            StatsView()
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                    Text("STATS")
+                }
+            
             SettingsView()
                 .tabItem {
                     Image(systemName: "slider.horizontal.3")

@@ -85,7 +85,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        if let template = makeTemplateFor(complication: complication, data: .init(duration: 9, sessionLength: 15, color: Color.teal)) {
+        if let template = makeTemplateFor(complication: complication, data: .init(duration: 9, sessionLength: 15, color: Color.tealCompat)) {
             handler(template)
         } else {
             handler(nil)

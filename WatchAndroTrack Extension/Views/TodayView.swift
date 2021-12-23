@@ -17,8 +17,17 @@ struct TodayView: View {
         return recordStore.current.durationAsProgress(goal: settingsStore.sessionLength)
     }
     
+    var durationAsText: String {
+        return "\(Int(recordStore.current.duration)) h"
+    }
+    
     var body: some View {
         VStack(alignment: .center) {
+                Text("TODAY")
+                .font(.largeTitle)
+                .foregroundColor(settingsStore.themeColor)
+                .padding(.bottom)
+            
                 Button(action: {
                     if recordStore.state == .off {
                         recordStore.markAsWorn()
@@ -33,15 +42,17 @@ struct TodayView: View {
                             color: settingsStore.themeColor
                         ).scaledToFit()
                         VStack {
-                            Text("\(Int(recordStore.current.duration)) h")
+                            Text(durationAsText)
                                 .font(.title3)
                                 .padding(.bottom)
                             Text(recordStore.state == .off ? "WEAR" : "REMOVE")
                                 .bold()
                         }
+                    }.onAppear {
+                        print(settingsStore.themeColor.toHexString())
                     }
                 }.buttonStyle(PlainButtonStyle())
-        }.navigationTitle("TODAY")
+        }
     }
 }
 

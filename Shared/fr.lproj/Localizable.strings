@@ -55,3 +55,15 @@
 "SAVE" = "Enregistrer";
 "CONFIRM_DELETE" = "Êtes-vous sûr de vouloir supprimer cet enregistrement ?";
 "YES" = "Oui";
+
+// STATS_VIEW
+"STATS" = "Statistiques";
+"WEARING_TIME" = "Durée de port";
+"MEAN_WEARING_TIME" = "Durée moyenne de port (30 jours)";
+"MEAN_NON_WEARING_TIME" = "Durée moyenne de non-port (30 jours)";
+"CONSECUTIVE_ACHIEVED_GOAL" = "Objectifs consécutifs atteints";
+"MEAN_WEAR_ON_HOUR" = "Heure habituelle de début de session";
+"MEAN_WEAR_OFF_HOUR" = "Heure habituelle de fin de session";
+"FIRST_RECORD_DATE" = "Date de la première session";
+"CURRENT_CONSECUTIVE_SERIE_START" = "Début de la série consécutive";
+"DAYS" = "jours";

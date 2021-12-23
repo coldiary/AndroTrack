@@ -21,31 +21,17 @@ struct HistoryCalendarView: View {
     }
     
     var body: some View {
-        LazyVStack {
+        VStack {
             if let interval = interval {
                 HStack {
                     CalendarView(interval: interval) { date in
                         if let day = recordStore.getDay(forDate: date) {
-                            NavigationLink(destination: HistoryDayView(date: date)) {
-                                VStack {
-                                    Text(String(Calendar.current.component(.day, from: date)))
-                                    ZStack {
-                                            if Calendar.current.isDateInToday(date) {
-                                                Circle()
-                                                    .fill(settingsStore.themeColor)
-                                                    .opacity(0.33)
-                                                    .clipShape(Circle())
-                                            }
-                                            TimeRingView(progress: day.durationAsProgress(goal: settingsStore.sessionLength), color: settingsStore.themeColor)
-                                            Text(day.duration > 0 ? "\(Int(day.duration))h" : "-")
-                                                .opacity(0.8)
-                                                .padding(12)
-                                                .minimumScaleFactor(0.01)
-                                                .lineLimit(1)
-                                    }
-                                }
-                            }.buttonStyle(PlainButtonStyle())
-                            
+                            HistoryCalendarDayView(
+                                date: date,
+                                day: day,
+                                sessionLength: settingsStore.sessionLength,
+                                color: settingsStore.themeColor
+                            )
                         }
                     }
                 }

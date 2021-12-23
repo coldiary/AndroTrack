@@ -18,7 +18,7 @@ struct WiggleModifier: ViewModifier {
     @State private var isWiggling = false
     
     private static func randomize(interval: TimeInterval, withVariance variance: Double) -> TimeInterval {
-        let random = (Double(arc4random_uniform(1000)) - 500.0) / 500.0
+        let random: Double = (Double(arc4random_uniform(1000)) - 500.0) / 500.0
         return interval + variance * random
     }
     

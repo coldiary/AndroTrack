@@ -1,31 +1,34 @@
 //
-//  HistoryView.swift
-//  AndroTrack
+//  StatsView.swift
+//  AndroTrack (iOS)
 //
-//  Created by Benoit Sida on 2021-07-13.
+//  Created by Benoit Sida on 2021-11-17.
 //
 
 import SwiftUI
 
-struct HistoryView: View {
+struct StatsView: View {
     @EnvironmentObject var recordStore: RecordStore
     
     var body: some View {
         NavigationView {
-            ScrollView() {
-                HistoryCalendarView()
+            ScrollView {
+                DataView()
+                    .padding()
+                GraphView()
+                    .padding()
             }
-            .navigationTitle("HISTORY")
+            .navigationTitle("STATS")
         }.navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }
 
-struct HistoryView_Previews: PreviewProvider {
+struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        StatsView()
             .environmentObject(RecordStore.shared)
             .environmentObject(SettingsStore.shared)
             .preferredColorScheme(.dark)
+            .previewDevice("iPhone 8")
     }
 }

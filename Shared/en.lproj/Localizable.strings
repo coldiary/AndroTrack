@@ -53,3 +53,17 @@
 "END" = "Finished";
 "EDIT_RECORD" = "Edit record";
 "SAVE" = "Save";
+"CONFIRM_DELETE" = "Are you sure you want to delete this record ?";
+"YES" = "Yes";
+
+// STATS_VIEW
+"STATS" = "Statistiques";
+"WEARING_TIME" = "Wearing time";
+"MEAN_WEARING_TIME" = "Mean wearing time (30 days)";
+"MEAN_NON_WEARING_TIME" = "Mean non-wearing time (30 days)";
+"CONSECUTIVE_ACHIEVED_GOAL" = "Consecutive achieved goals";
+"MEAN_WEAR_ON_HOUR" = "Usual wear-on hour";
+"MEAN_WEAR_OFF_HOUR" = "Usual wear-off hour";
+"FIRST_RECORD_DATE" = "First record date";
+"CURRENT_CONSECUTIVE_SERIE_START" = "Start of current consecutive serie";
+"DAYS" = "days";

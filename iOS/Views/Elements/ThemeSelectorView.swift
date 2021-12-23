@@ -10,8 +10,8 @@ import SwiftUI
 struct ThemeSelectorView: View {
     @Binding var selected: Color
     
-    let colors = [
-        Color.teal,
+    let colors: [Color] = [
+        Color.tealCompat,
         Color.blue,
         Color.purple,
         Color.red,
@@ -28,7 +28,7 @@ struct ThemeSelectorView: View {
             ForEach(colors, id: \.self){ color in
                 ZStack {
                     Circle()
-                        .fill(Color.gradient(colors: [color.darker(by: 0.1), color]))
+                        .fill(Color.gradient(colors: [color.darker(by: 10) ?? color, color]))
                         .frame(width: 50, height: 50)
                         .onTapGesture(perform: {
                             selected = color
@@ -37,7 +37,7 @@ struct ThemeSelectorView: View {
 
                     if selected.toHexString() == color.toHexString() {
                         Circle()
-                            .stroke(Color.gradient(colors: [color.darker(by: 0.1), color]), lineWidth: 5)
+                            .stroke(Color.gradient(colors: [color.darker(by: 10) ?? color, color]), lineWidth: 5)
                             .frame(width: 60, height: 60)
                     }
                 }
