@@ -29,7 +29,7 @@ struct HistoryListView: View {
                                    ringColor: settingsStore.themeColor,
                                    sessionLength: settingsStore.sessionLength,
                                    showDate: false
-                        ).padding()
+                        ).padding(.vertical)
                         .swipeActions(content: {
                             Button(role: .destructive, action: {
                                 showConfirmModal = true

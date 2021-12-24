@@ -111,6 +111,14 @@ class RecordStore: ObservableObject {
         }
     }
     
+    public func addRecord(newValues: Record) {
+        HealthKitService.shared.storeRecord(record: newValues) { error in
+            if let error = error {
+                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            }
+        }
+    }
+    
     public func getDay(forDate date: Date) -> Day {
         return Day(records: records.filter({ $0.start != nil && Calendar.current.isDate($0.start!, inSameDayAs: date) }))
     }

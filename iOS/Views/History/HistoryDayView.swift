@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryDayView: View {
     let date: Date
+    @State private var showAddModal = false
     
     var day: Day {
         return recordStore.getDay(forDate: date)
@@ -38,7 +39,25 @@ struct HistoryDayView: View {
             } else {
                 HistoryListCompatView(date: date)
             }
-        }.navigationTitle(date.format(dateFormat: .long, timeFormat: .none).capitalized)
+        }.toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showAddModal = true
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .sheet(isPresented: $showAddModal) { [] in
+            GenericModal() {
+                VStack {
+                    RecordAddView(at: date)
+                        .environmentObject(self.settingsStore)
+                        .padding()
+                }
+            }
+        }
+        .navigationTitle(date.format(dateFormat: .long, timeFormat: .none).capitalized)
     }
 }
 
