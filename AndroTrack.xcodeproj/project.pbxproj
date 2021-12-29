@@ -13,6 +13,8 @@
 		6A0322EA26A60584008E97C8 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322E826A60584008E97C8 /* Bundle+Extension.swift */; };
 		6A0322ED26A60FA0008E97C8 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */; };
 		6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */; };
+		6A040AA2277CF52000D69C0A /* CSVFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A040AA1277CF52000D69C0A /* CSVFile.swift */; };
+		6A040AA4277CFB2000D69C0A /* RecordStore+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A040AA3277CFB2000D69C0A /* RecordStore+Extension.swift */; };
 		6A045F8726ABC3DF001BD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A045F8A26ABC3DF001BD75D /* Localizable.strings */; };
 		6A045F8826ABC3DF001BD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A045F8A26ABC3DF001BD75D /* Localizable.strings */; };
 		6A084D0527761A4F009A8256 /* RecordAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A084D0427761A4F009A8256 /* RecordAddView.swift */; };
@@ -86,6 +88,7 @@
 		6AB8DD772705E1B7002EEB0B /* Wiggling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8DD762705E1B6002EEB0B /* Wiggling.swift */; };
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
+		6AE14C68277D28B300501866 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE14C67277D28B300501866 /* HealthKit.framework */; };
 		6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */; };
 		6AE3694827741B3B00D8C36D /* FirstRecordDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */; };
 		6AE3694A27741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */; };
@@ -151,6 +154,8 @@
 		6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettings.swift; sourceTree = "<group>"; };
 		6A0322E826A60584008E97C8 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		6A0322EC26A60FA0008E97C8 /* WatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivity.swift; sourceTree = "<group>"; };
+		6A040AA1277CF52000D69C0A /* CSVFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFile.swift; sourceTree = "<group>"; };
+		6A040AA3277CFB2000D69C0A /* RecordStore+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordStore+Extension.swift"; sourceTree = "<group>"; };
 		6A045F8B26ABC3EA001BD75D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A045F8E26ABCCC1001BD75D /* fr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A084D0427761A4F009A8256 /* RecordAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAddView.swift; sourceTree = "<group>"; };
@@ -212,6 +217,7 @@
 		6AB8DD762705E1B6002EEB0B /* Wiggling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wiggling.swift; sourceTree = "<group>"; };
 		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
 		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		6AE14C67277D28B300501866 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanWearOffHourView.swift; sourceTree = "<group>"; };
 		6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRecordDateView.swift; sourceTree = "<group>"; };
 		6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentConsecutiveSerieStartView.swift; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AE14C68277D28B300501866 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +292,7 @@
 		6A4FD2CE269F807600F7081D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AE14C67277D28B300501866 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -428,6 +436,7 @@
 				6AE99A34274289E5002837B7 /* DateFormatter+extension.swift */,
 				6AE99A3627428A02002837B7 /* Calendar+Extension.swift */,
 				6A0D4903277215B50043125F /* Number+Extension.swift */,
+				6A040AA1277CF52000D69C0A /* CSVFile.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				6A9A6F6B269E2FE700A78C5C /* RecordStore.swift */,
+				6A040AA3277CFB2000D69C0A /* RecordStore+Extension.swift */,
 				6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */,
 			);
 			path = Stores;
@@ -706,6 +716,7 @@
 				6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */,
 				6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
 				6A0D4904277215B50043125F /* Number+Extension.swift in Sources */,
+				6A040AA4277CFB2000D69C0A /* RecordStore+Extension.swift in Sources */,
 				6AE99A3E2742AD91002837B7 /* HistoryCalendarView.swift in Sources */,
 				6A3284832773D5B600D1A45F /* MeanWearingTimeView.swift in Sources */,
 				6A084D0527761A4F009A8256 /* RecordAddView.swift in Sources */,
@@ -737,6 +748,7 @@
 				6AEA3B1B26F7CE5200C72CEF /* When.swift in Sources */,
 				6A9A662A26A7571700E7526A /* NotificationType.swift in Sources */,
 				6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */,
+				6A040AA2277CF52000D69C0A /* CSVFile.swift in Sources */,
 				6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */,
 				6A0322E926A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6AEA3B1D26F7D21B00C72CEF /* RecordEditView.swift in Sources */,

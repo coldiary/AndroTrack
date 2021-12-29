@@ -55,7 +55,10 @@
 "ADD_RECORD" = "Ajouter un enregistrement";
 "SAVE" = "Enregistrer";
 "CONFIRM_DELETE" = "Êtes-vous sûr de vouloir supprimer cet enregistrement ?";
+"CONFIRM_EXPORT" = "Souhaitez-vous exporter tous les enregistrements dans un fichier CSV ?";
 "YES" = "Oui";
+"EXPORT_SUCCESS" = "Export effectué avec succès";
+"EXPORT_FAILURE" = "Export échoué";
 
 // STATS_VIEW
 "STATS" = "Statistiques";
