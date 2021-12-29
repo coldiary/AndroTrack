@@ -67,7 +67,6 @@
 		6A93AF2E26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
 		6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A93AF2D26A5B22600702DC7 /* Comparable+Extension.swift */; };
 		6A9A662726A748C800E7526A /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662626A748C800E7526A /* Notifications.swift */; };
-		6A9A662826A748C800E7526A /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662626A748C800E7526A /* Notifications.swift */; };
 		6A9A662A26A7571700E7526A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662926A7571700E7526A /* NotificationType.swift */; };
 		6A9A662B26A7571700E7526A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662926A7571700E7526A /* NotificationType.swift */; };
 		6A9A663326A78A1000E7526A /* GenericModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A663226A78A1000E7526A /* GenericModal.swift */; };
@@ -89,6 +88,7 @@
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
 		6AE14C68277D28B300501866 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE14C67277D28B300501866 /* HealthKit.framework */; };
+		6AE14C69277D2BBF00501866 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A662626A748C800E7526A /* Notifications.swift */; };
 		6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE36945277419F100D8C36D /* MeanWearOffHourView.swift */; };
 		6AE3694827741B3B00D8C36D /* FirstRecordDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694727741B3B00D8C36D /* FirstRecordDateView.swift */; };
 		6AE3694A27741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3694927741C0200D8C36D /* CurrentConsecutiveSerieStartView.swift */; };
@@ -668,6 +668,7 @@
 				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
 				6A0D4906277219DA0043125F /* Number+Extension.swift in Sources */,
 				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
+				6AE14C69277D2BBF00501866 /* Notifications.swift in Sources */,
 				6A59423A26A850D700986619 /* Complications.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
 				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
@@ -684,7 +685,6 @@
 				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
 				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
 				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
-				6A9A662826A748C800E7526A /* Notifications.swift in Sources */,
 				6A922C8026A45B2F005782DB /* TodayView.swift in Sources */,
 				6A922C5B26A4574A005782DB /* NotificationView.swift in Sources */,
 				6A922C7126A4588F005782DB /* UserDefaults+Extension.swift in Sources */,
@@ -802,7 +802,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -828,7 +828,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -850,7 +850,7 @@
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				IBSC_MODULE = WatchAndroTrack_Extension;
 				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -871,7 +871,7 @@
 				DEVELOPMENT_TEAM = C24Y42M3EJ;
 				IBSC_MODULE = WatchAndroTrack_Extension;
 				INFOPLIST_FILE = WatchAndroTrack/Info.plist;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1015,7 +1015,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
@@ -1039,7 +1039,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.coldiary.AndroTrack;
 				PRODUCT_NAME = AndroTrack;
 				SDKROOT = iphoneos;
