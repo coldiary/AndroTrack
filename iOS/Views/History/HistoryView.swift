@@ -24,12 +24,12 @@ struct HistoryView: View {
             .alert(isPresented: $showConfirmModal) {
                 if lastExportResult == nil {
                     return Alert(
-                        title: Text("Exporter les données"),
+                        title: Text(""),
                         message: Text("CONFIRM_EXPORT"),
                         primaryButton: .cancel(Text("CANCEL"), action: {}),
                         secondaryButton: .default(Text("YES"), action: {
-                            showExporter = true
                             document = recordStore.exportAsCSVFile()
+                            showExporter = true
                         })
                     )
                 } else {
@@ -42,10 +42,10 @@ struct HistoryView: View {
                                 lastExportResult = nil
                             })
                         )
-                    case .failure(_):
+                    case .failure(let error):
                         return Alert(
                             title: Text(""),
-                            message: Text("EXPORT_FAILURE"),
+                            message: Text("\("EXPORT_FAILURE".localized)\n\(error.localizedDescription)"),
                             dismissButton: .default(Text("OK"), action: {
                                 lastExportResult = nil
                             })
@@ -61,9 +61,21 @@ struct HistoryView: View {
                     }
                 }
             }
-            .fileExporter(isPresented: $showExporter, document: document, contentType: .plainText, defaultFilename: "AndroTrack_export_\(Date().compactDate()).csv") { result in
+            .fileExporter(
+                isPresented: $showExporter,
+                document: document,
+                contentType: .plainText,
+                defaultFilename: "AndroTrack_export_\(Date().compactDate()).csv"
+            ) { result in
                 lastExportResult = result
                 showConfirmModal = true
+                switch result {
+                    case .success(_):
+                        break
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                }
+                
             }
             .navigationTitle("HISTORY")
             .toolbar {
