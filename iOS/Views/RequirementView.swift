@@ -14,6 +14,54 @@ struct RequirementView: View {
         HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized
     }()
     
+    private func openSettings(completion: (@escaping () -> Void)) -> Void {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            completion()
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl) { _ in
+                completion()
+            }
+        }
+    }
+    
+    private func requestAuthorization(completion: (@escaping () -> Void)) -> Void {
+        HealthKitService.shared.requestAccess { success, error in
+            if let error = error {
+                AppLogger.error(context: "ContentView", error.errorDescription!)
+            } else {
+                HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
+                    if let error = error {
+                        AppLogger.error(context: "ContentView", error.errorDescription!)
+                    } else {
+                        if status == .unnecessary {
+                            hasSeenHealthKitAuthorization = true
+                        }
+                    }
+                }
+            }
+            completion()
+        }
+    }
+    
+    private func updateHKRequestStatus() {
+        HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
+            if let error = error {
+                AppLogger.error(context: "ContentView", error.errorDescription!)
+            } else {
+                if status == .unnecessary {
+                     hasSeenHealthKitAuthorization = true
+                }
+            }
+        }
+    }
+    
+    private func updateHKAuthorization() {
+        hasHealthKitAuthorization = HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized
+    }
+    
     var body: some View {
         if hasHealthKitAuthorization {
             ContentView()
@@ -23,54 +71,18 @@ struct RequirementView: View {
                     title: "HEALTHKIT_ACCESS.TITLE".localized,
                     description: "HEALTHKIT_ACCESS.DESCRIPTION_2".localized,
                     illustrationName: "HealthKitPermission",
-                    actionLabel: "HEALTHKIT_ACCESS.CTA".localized
-                ) { completion in
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                        completion()
-                        return
-                    }
-
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.open(settingsUrl) { _ in
-                            completion()
-                        }
-                    }
-                }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    hasHealthKitAuthorization = HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized
-                }
+                    actionLabel: "HEALTHKIT_ACCESS.CTA".localized,
+                    requestPermissionAction: openSettings
+                )
+                .onAppear(perform: updateHKAuthorization)
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in updateHKAuthorization() }
             } else {
                 RequestPermission(
                     title: "HEALTHKIT_ACCESS.TITLE".localized,
                     description: "HEALTHKIT_ACCESS.DESCRIPTION_2".localized,
-                    illustrationName: "HealthKitPermission"
-                ) { completion in
-                    HealthKitService.shared.requestAccess { success, error in
-                        if let error = error {
-                            AppLogger.error(context: "ContentView", error.errorDescription!)
-                        } else {
-                            HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
-                                if let error = error {
-                                    AppLogger.error(context: "ContentView", error.errorDescription!)
-                                } else {
-                                    if status == .unnecessary {
-                                        hasSeenHealthKitAuthorization = true
-                                    }
-                                }
-                            }
-                        }
-                        completion()
-                    }
-                }.onAppear() {
-                    HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
-                        if let error = error {
-                            AppLogger.error(context: "ContentView", error.errorDescription!)
-                        } else {
-                            if status == .unnecessary {
-                                 hasSeenHealthKitAuthorization = true
-                            }
-                        }
-                    }
-                }
+                    illustrationName: "HealthKitPermission",
+                    requestPermissionAction: requestAuthorization
+                ).onAppear(perform: updateHKRequestStatus)
             }
         }
     }
