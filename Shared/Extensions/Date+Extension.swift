@@ -8,11 +8,11 @@
 import Foundation
 
 extension Date {
-    func format(dateFormat: DateFormatter.Style = .medium, timeFormat: DateFormatter.Style = .medium) -> String {
+    func format(dateFormat: DateFormatter.Style = .medium, timeFormat: DateFormatter.Style = .medium, locale: Locale = .current) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = dateFormat
         dateFormatter.timeStyle = timeFormat
-        dateFormatter.locale = Locale.current
+        dateFormatter.locale = locale
         return dateFormatter.string(from: self)
     }
     
@@ -27,7 +27,7 @@ extension Date {
     
     // Ex: 2021-12-29
     func compactDate() -> String {
-        self.format(dateFormat: .short, timeFormat: .none)
+        return self.format(dateFormat: .short, timeFormat: .none, locale: Locale(identifier: "fr_CA"))
     }
     
     static func fromString(date: String, format: String = "yyyy/MM/dd HH:mm") -> Date? {
