@@ -66,6 +66,19 @@ extension Notifications {
     static func cancelNotifyEndNotification() {
         Notifications.cancelNotificationWith(id: NotificationType.notifyEnd.rawValue)
     }
+    
+    static func scheduleNotifyEnd() {
+        if SettingsStore.shared.notifications.notifyEnd {
+            guard let estimatedEnd = RecordStore.shared.current.estimatedEnd(forDuration: SettingsStore.shared.sessionLength) else {
+                AppLogger.error(context: "RecordStore", "Can't determine estimatedEnd")
+                return
+            }
+            
+            Notifications.cancelReminderStartNotification()
+            Notifications.cancelNotifyEndNotification()
+            Notifications.scheduleNotifyEndNotification(at: estimatedEnd)
+        }
+    }
 }
 
 extension Notifications {
@@ -82,5 +95,13 @@ extension Notifications {
     
     static func cancelReminderStartNotification() {
         Notifications.cancelNotificationWith(id: NotificationType.reminderStart.rawValue)
+    }
+    
+    static func scheduleReminderStart() {
+        if SettingsStore.shared.notifications.reminderStart {
+            Notifications.cancelNotifyEndNotification()
+            Notifications.cancelReminderStartNotification()
+            Notifications.scheduleReminderStartNotification()
+        }
     }
 }

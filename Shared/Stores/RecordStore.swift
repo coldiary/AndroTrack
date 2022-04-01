@@ -57,15 +57,7 @@ class RecordStore: ObservableObject {
                 }
             }
 
-            if SettingsStore.shared.notifications.notifyEnd {
-                guard let estimatedEnd = current.estimatedEnd(forDuration: SettingsStore.shared.sessionLength) else {
-                    AppLogger.error(context: "RecordStore", "Can't determine estimatedEnd")
-                    return
-                }
-                
-                Notifications.scheduleNotifyEndNotification(at: estimatedEnd)
-                Notifications.cancelReminderStartNotification()
-            }
+            Notifications.scheduleNotifyEnd()
         }
     }
     
@@ -88,10 +80,7 @@ class RecordStore: ObservableObject {
                 }
             }
             
-            if SettingsStore.shared.notifications.notifyEnd {
-                Notifications.cancelNotifyEndNotification()
-                Notifications.scheduleReminderStartNotification()
-            }
+            Notifications.scheduleReminderStart()
         }
     }
     

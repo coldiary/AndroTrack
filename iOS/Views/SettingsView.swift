@@ -40,7 +40,7 @@ struct SettingsView: View {
                         .bold()
                     Spacer()
                     Picker("", selection: $settingsStore.sessionLength) {
-                        ForEach(Range(1...24)) { length in
+                        ForEach(1...24, id: \.self) { length in
                             Text("\(length - 1)h").tag(length - 1)
                         }
                     }
