@@ -30,6 +30,7 @@ class SettingsStore: ObservableObject {
         didSet {
             UserDefaults.standard.set(sessionLength, forKey: "sessionLength")
             watchConnectivity.sync()
+            Notifications.scheduleNotifyEnd()
         }
     }
     
