@@ -66,7 +66,7 @@ extension Record {
     
     static var yesterday: Record {
         return Record(
-            start: Date().addingTimeInterval(-86400),
+            start: Date().addingTimeInterval(-122400),
             end: Date().addingTimeInterval(-68400)
         )
     }
