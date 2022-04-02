@@ -27,6 +27,9 @@ struct GraphBar: View {
                     if item.value > 0 {
                         Text(item.label)
                           .font(.footnote)
+                          .lineLimit(1)
+                          .allowsTightening(true)
+                          .minimumScaleFactor(0.75)
                           .rotationEffect(.degrees(-90))
                           .offset(y: item.value > 4 ? 35 : 0)
                           .zIndex(1)
