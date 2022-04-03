@@ -13,7 +13,7 @@
 // HEALTHKIT_PERMISSIONS
 "HEALTHKIT_ACCESS.TITLE" = "HealthKit Access";
 "HEALTHKIT_ACCESS.DESCRIPTION_1" = "In order for the app to store records about when you wear the device, you need to grant permission to access HealthKit storage.";
-"HEALTHKIT_ACCESS.DESCRIPTION_2" = "In order for the app to store records, it needs access to write to HealthKit. Please review settings in Health > Data Access & Device > Androtrack, and enable the app to write data.";
+"HEALTHKIT_ACCESS.DESCRIPTION_2" = "In order for the app to store records, it needs access to write to HealthKit. \n\n Please review settings in Health > Data Access & Device > Androtrack, and allow the app to write data.";
 "HEALTHKIT_ACCESS.CTA" = "Open settings";
 
 // NOTIFICATIONS_PERMISSIONS

@@ -13,7 +13,7 @@
 // HEALTHKIT_PERMISSIONS
 "HEALTHKIT_ACCESS.TITLE" = "Accès à Santé";
 "HEALTHKIT_ACCESS.DESCRIPTION_1" = "Afin que l'app puisse suivre quand vous portez l'anneau, vous devez donner l'accès à l'application Santé.";
-"HEALTHKIT_ACCESS.DESCRIPTION_2" = "Afin que l'app puisse suivre quand vous portez l'anneau, elle doit avoir accès en écriture à l'aplication Santé. Révisez les autorisations dans les réglages dans Santé > Accès auc données et appareils > Androtrack, et activez \"AndroTrack\" à écrire des données.";
+"HEALTHKIT_ACCESS.DESCRIPTION_2" = "Afin que l'app puisse suivre quand vous portez l'anneau, elle doit avoir accès en écriture à l'aplication Santé.\n\n Révisez les autorisations dans les réglages dans Santé > Accès aux données et appareils > AndroTrack, et autorisez \"AndroTrack\" à écrire des données.";
 "HEALTHKIT_ACCESS.CTA" = "Ouvrir les réglages";
 
 // NOTIFICATIONS_PERMISSIONS
