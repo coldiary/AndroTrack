@@ -85,25 +85,43 @@ class RecordStore: ObservableObject {
     }
     
     public func deleteRecord(at start: Date) {
+        let editingCurrent = RecordStore.shared.current.records.contains { start == $0.start }
+        
         HealthKitService.shared.removeRecord(at: start) { error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            } else if editingCurrent {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    Notifications.scheduleNotifyEnd()
+                }
             }
         }
     }
     
     public func editRecord(at start: Date, newValues: Record) {
+        let editingCurrent = RecordStore.shared.current.records.contains { start == $0.start }
+        
         HealthKitService.shared.editRecord(at: start, newValues) { error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            } else if editingCurrent {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    Notifications.scheduleNotifyEnd()
+                }
             }
         }
     }
     
     public func addRecord(newValues: Record) {
+        let editingCurrent = newValues.start.map { Calendar.current.isDateInToday($0) } ?? false
+        
         HealthKitService.shared.storeRecord(record: newValues) { error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            } else if editingCurrent {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    Notifications.scheduleNotifyEnd()
+                }
             }
         }
     }
