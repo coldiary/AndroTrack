@@ -65,13 +65,13 @@ struct RecordAddView: View {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Text("SAVE")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(settingsStore.themeColor)
+                    .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
+                    .cornerRadius(50)
             }
             .disabled(end == start)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(settingsStore.themeColor)
-            .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
-            .cornerRadius(50)
         }
         .onAppear {
             start = at

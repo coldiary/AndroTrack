@@ -86,13 +86,13 @@ struct RecordEditView: View {
                 }
             }) {
                 Text("SAVE")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(settingsStore.themeColor)
+                    .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
+                    .cornerRadius(50)
             }
             .disabled(at == nil)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(settingsStore.themeColor)
-            .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
-            .cornerRadius(50)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

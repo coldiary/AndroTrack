@@ -35,11 +35,11 @@ struct TodayView: View {
                             }) {
                                 Text(recordStore.state == .off ? "WEAR" : "REMOVE")
                                     .bold()
+                                    .padding()
+                                    .background(settingsStore.themeColor)
+                                    .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
+                                    .cornerRadius(50)
                             }
-                            .padding()
-                            .background(settingsStore.themeColor)
-                            .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
-                            .cornerRadius(50)
                         }
                     }.padding(.top, 50)
                     Spacer()
