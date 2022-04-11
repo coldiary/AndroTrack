@@ -50,12 +50,12 @@ struct RequestPermission: View {
                     }
                 }) {
                     Text(actionLabel)
+                        .padding()
+                        .frame(minWidth: 200)
+                        .foregroundColor(.white)
+                        .background(settingsStore.themeColor)
+                        .cornerRadius(50)
                 }
-                .padding()
-                .frame(minWidth: 200)
-                .foregroundColor(.white)
-                .background(settingsStore.themeColor)
-                .cornerRadius(50)
                 .padding(.bottom)
             }
         }.padding(.horizontal)
