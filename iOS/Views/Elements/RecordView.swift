@@ -17,7 +17,7 @@ struct RecordView: View {
     @State private var estimatedEndOpacity = 1.0
     
     var progress: Double {
-        return record.durationAsProgress(goal: 15)
+        return record.durationAsProgress(goal: Double(sessionLength))
     }
     
     var title: String {
