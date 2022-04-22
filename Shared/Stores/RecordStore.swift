@@ -42,8 +42,8 @@ class RecordStore: ObservableObject {
         }
     }
     
-    var current: Day {
-        return getDay(forDate: Date())
+    var current: SessionGroup {
+        return SettingsStore.shared.currentView == .Today ? getDay(forDate: Date()) : getLast24()
     }
     
     public func markAsWorn() {
@@ -51,9 +51,9 @@ class RecordStore: ObservableObject {
             state = RingState.worn
             records.append(Record(start: Date()))
             
-            HealthKitService.shared.storeRecord(record: records[records.endIndex - 1]) { error in
+            HealthKitService.shared.addRecord(record: records[records.endIndex - 1]) {  _, error  in
                 if let error = error {
-                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                    return AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
             }
 
@@ -64,19 +64,25 @@ class RecordStore: ObservableObject {
     public func markAsRemoved() {
         if state == RingState.worn {
             state = RingState.off
-            records[records.endIndex - 1].markEnded()
+            records[records.endIndex - 1].markEnded(goal: SettingsStore.shared.sessionLength)
             
-            if records[records.endIndex - 1].durationInMinutes ?? 0 < 3 {
-                HealthKitService.shared.removeRecord(at: records[records.endIndex - 1].start!) { error in
+            if records[records.endIndex - 1].durationInMinutes < 3 {
+                HealthKitService.shared.removeRecord(id: records.popLast()!.id) { error in
                     if let error = error {
                         AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }
                 }
             } else {
-                HealthKitService.shared.storeRecord(record: records[records.endIndex - 1]) { error in
+                HealthKitService.shared.addRecord(record: records[records.endIndex - 1]) { id, error in
                     if let error = error {
                         AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }
+                    
+                    guard let id = id else {
+                        return AppLogger.error(context: "RecordStore", "Failure: No UUID returned.")
+                    }
+                    
+                    self.records[self.records.endIndex - 1].updateId(id)
                 }
             }
             
@@ -84,10 +90,10 @@ class RecordStore: ObservableObject {
         }
     }
     
-    public func deleteRecord(at start: Date) {
-        let editingCurrent = RecordStore.shared.current.records.contains { start == $0.start }
+    public func deleteRecord(with id: UUID) {
+        let editingCurrent = RecordStore.shared.current.records.contains { id == $0.id }
         
-        HealthKitService.shared.removeRecord(at: start) { error in
+        HealthKitService.shared.removeRecord(id: id) { error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
             } else if editingCurrent {
@@ -98,10 +104,10 @@ class RecordStore: ObservableObject {
         }
     }
     
-    public func editRecord(at start: Date, newValues: Record) {
-        let editingCurrent = RecordStore.shared.current.records.contains { start == $0.start }
+    public func editRecord(with id: UUID, newValues: Record) {
+        let editingCurrent = RecordStore.shared.current.records.contains { id == $0.id }
         
-        HealthKitService.shared.editRecord(at: start, newValues) { error in
+        HealthKitService.shared.editRecord(id: id, newValues) { _, error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
             } else if editingCurrent {
@@ -113,9 +119,9 @@ class RecordStore: ObservableObject {
     }
     
     public func addRecord(newValues: Record) {
-        let editingCurrent = newValues.start.map { Calendar.current.isDateInToday($0) } ?? false
+        let editingCurrent = Calendar.current.isDateInToday(newValues.start)
         
-        HealthKitService.shared.storeRecord(record: newValues) { error in
+        HealthKitService.shared.addRecord(record: newValues) { _, error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
             } else if editingCurrent {
@@ -127,7 +133,12 @@ class RecordStore: ObservableObject {
     }
     
     public func getDay(forDate date: Date) -> Day {
-        return Day(records: records.filter({ $0.start != nil && Calendar.current.isDate($0.start!, inSameDayAs: date) }))
+        return Day(records: records.filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
+    }
+    
+    public func getLast24() -> Last24 {
+        let start = Date().removeHours(24)
+        return Last24(records: records.filter({ $0.end > start }))
     }
     
     public func refreshHealthData() {
@@ -141,7 +152,7 @@ class RecordStore: ObservableObject {
                 self.records = results
                 
                 if (self.records.count > 0) {
-                    self.state = self.records[self.records.endIndex - 1].end != nil ? RingState.off : RingState.worn
+                    self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn
                 }
             }
         }

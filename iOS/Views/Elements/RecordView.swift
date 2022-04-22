@@ -13,28 +13,30 @@ struct RecordView: View {
     var sessionLength = 15
     var showDate = true
     var estimatedEnd: Date?
+    var progressFrom: Date?
     
     @State private var estimatedEndOpacity = 1.0
     
     var progress: Double {
-        return record.durationAsProgress(goal: Double(sessionLength))
+        if let progressFrom = progressFrom {
+            return record.durationAsProgressFrom(progressFrom, goal: sessionLength)
+        } else {
+            return record.durationAsProgress(goal: sessionLength)
+        }
     }
     
     var title: String {
-        if let start = record.start {
-            if (!Calendar.current.isDateInToday(start)) {
-                return start.format(timeFormat: .none)
-            }
+        if (!Calendar.current.isDateInToday(record.start)) {
+            return record.start.format(timeFormat: .none)
         }
         return "TODAY".localized
     }
     
     var recordDurationAsText: String {
-        if let durationInHours = record.durationInHours {
-            let durationInHoursInt = Int(durationInHours)
-            return "\(durationInHoursInt) h"
+        if let progressFrom = progressFrom {
+            return "\(Int(record.durationFrom(progressFrom, in: .hour))) h"
         } else {
-            return "-"
+            return "\(Int(record.durationInHours)) h"
         }
     }
     
@@ -66,9 +68,9 @@ struct RecordView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                             .padding(.bottom, 1)
-                        if let end = record.end {
-                            Text(end, style: .time)
-                        } else if record.start != nil && estimatedEnd != nil {
+                        if record.end != Date.distantFuture {
+                            Text(record.end, style: .time)
+                        } else if estimatedEnd != nil {
                             Text(estimatedEnd!, style: .time)
                                 .opacity(estimatedEndOpacity)
                                 .onAppear() {

@@ -32,6 +32,7 @@ struct HistoryListView: View {
                         ).padding(.vertical)
                         .swipeActions(content: {
                             Button(role: .destructive, action: {
+                                editedRecord = record
                                 showConfirmModal = true
                             }) {
                                 Image(systemName: "trash")
@@ -51,18 +52,20 @@ struct HistoryListView: View {
                         ) {
                             Button("YES", role: .destructive) {
                                 withAnimation {
-                                    recordStore.deleteRecord(at: record.start!)
+                                    recordStore.deleteRecord(with: editedRecord!.id)
                                 }
                             }
 
-                            Button("CANCEL", role: .cancel) {}
+                            Button("CANCEL", role: .cancel) {
+                                editedRecord = nil
+                            }
                         }
                 }
                 .padding(.top)
         }
         .sheet(isPresented: $showEditModal) { [editedRecord] in
             GenericModal() {
-                RecordEditView(record: editedRecord)
+                RecordEditView(record: editedRecord!)
                     .environmentObject(self.settingsStore)
                     .padding()
             }

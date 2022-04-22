@@ -21,6 +21,14 @@
 		6A0D4904277215B50043125F /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0D4903277215B50043125F /* Number+Extension.swift */; };
 		6A0D4905277219970043125F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */; };
 		6A0D4906277219DA0043125F /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0D4903277215B50043125F /* Number+Extension.swift */; };
+		6A2334DA280F0B6D005AABA9 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334D9280F0B6D005AABA9 /* Collection+Extension.swift */; };
+		6A2334DB280F0C21005AABA9 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334D9280F0B6D005AABA9 /* Collection+Extension.swift */; };
+		6A2334DD28104D34005AABA9 /* Last24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334DC28104D34005AABA9 /* Last24.swift */; };
+		6A2334DE28104D34005AABA9 /* Last24.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334DC28104D34005AABA9 /* Last24.swift */; };
+		6A2334E028104D7E005AABA9 /* SessionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334DF28104D7E005AABA9 /* SessionGroup.swift */; };
+		6A2334E128104D7E005AABA9 /* SessionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334DF28104D7E005AABA9 /* SessionGroup.swift */; };
+		6A2334E828122A39005AABA9 /* CurrentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */; };
+		6A2334E928122BCD005AABA9 /* CurrentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */; };
 		6A32848127737C8200D1A45F /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A32848027737C8200D1A45F /* DataCell.swift */; };
 		6A3284832773D5B600D1A45F /* MeanWearingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3284822773D5B600D1A45F /* MeanWearingTimeView.swift */; };
 		6A4E5FD02704949A00E09AC4 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4E5FCF2704949A00E09AC4 /* Bool+Extension.swift */; };
@@ -85,6 +93,7 @@
 		6A9A6F83269E6D9000A78C5C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A6F82269E6D9000A78C5C /* HistoryView.swift */; };
 		6AAC4E6826AA472000FB6401 /* RequirementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAC4E6726AA472000FB6401 /* RequirementView.swift */; };
 		6AB8DD772705E1B7002EEB0B /* Wiggling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8DD762705E1B6002EEB0B /* Wiggling.swift */; };
+		6AB92E1C28122E86009441A5 /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB92E1B28122E86009441A5 /* CurrentView.swift */; };
 		6ADBD5D626A1C053009FDB3D /* ThemeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */; };
 		6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */; };
 		6AE14C68277D28B300501866 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE14C67277D28B300501866 /* HealthKit.framework */; };
@@ -161,6 +170,10 @@
 		6A084D0427761A4F009A8256 /* RecordAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAddView.swift; sourceTree = "<group>"; };
 		6A0D4903277215B50043125F /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
 		6A17458B26A8C4FB00B337BE /* RequestPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPermission.swift; sourceTree = "<group>"; };
+		6A2334D9280F0B6D005AABA9 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		6A2334DC28104D34005AABA9 /* Last24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Last24.swift; sourceTree = "<group>"; };
+		6A2334DF28104D7E005AABA9 /* SessionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionGroup.swift; sourceTree = "<group>"; };
+		6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewSettings.swift; sourceTree = "<group>"; };
 		6A32848027737C8200D1A45F /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		6A3284822773D5B600D1A45F /* MeanWearingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanWearingTimeView.swift; sourceTree = "<group>"; };
 		6A4E5FCF2704949A00E09AC4 /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
@@ -215,6 +228,7 @@
 		6A9A6F82269E6D9000A78C5C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		6AAC4E6726AA472000FB6401 /* RequirementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementView.swift; sourceTree = "<group>"; };
 		6AB8DD762705E1B6002EEB0B /* Wiggling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wiggling.swift; sourceTree = "<group>"; };
+		6AB92E1B28122E86009441A5 /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		6ADBD5D526A1C053009FDB3D /* ThemeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectorView.swift; sourceTree = "<group>"; };
 		6ADBD5DD26A1D4FF009FDB3D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		6AE14C67277D28B300501866 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -262,6 +276,7 @@
 				6AE8ED912772B35500C4680F /* Stats */,
 				6AAC4E6426AA1F1200FB6401 /* Elements */,
 				6A9A6F3F269E15B900A78C5C /* ContentView.swift */,
+				6AB92E1B28122E86009441A5 /* CurrentView.swift */,
 				6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */,
 				6A084D0427761A4F009A8256 /* RecordAddView.swift */,
 				6AAC4E6726AA472000FB6401 /* RequirementView.swift */,
@@ -408,6 +423,9 @@
 				6A4FD2C4269F0A6D00F7081D /* Day.swift */,
 				6A0322DD26A5E7D0008E97C8 /* NotificationsSettings.swift */,
 				6A9A662926A7571700E7526A /* NotificationType.swift */,
+				6A2334DC28104D34005AABA9 /* Last24.swift */,
+				6A2334DF28104D7E005AABA9 /* SessionGroup.swift */,
+				6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,6 +455,7 @@
 				6AE99A3627428A02002837B7 /* Calendar+Extension.swift */,
 				6A0D4903277215B50043125F /* Number+Extension.swift */,
 				6A040AA1277CF52000D69C0A /* CSVFile.swift */,
+				6A2334D9280F0B6D005AABA9 /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -663,16 +682,19 @@
 				6A9A662B26A7571700E7526A /* NotificationType.swift in Sources */,
 				6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */,
 				6A0322DF26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */,
+				6A2334E928122BCD005AABA9 /* CurrentViewSettings.swift in Sources */,
 				6A93AF2F26A5B22600702DC7 /* Comparable+Extension.swift in Sources */,
 				6A59423726A8415900986619 /* AppLogger.swift in Sources */,
 				6A922C5926A4574A005782DB /* NotificationController.swift in Sources */,
 				6A0D4906277219DA0043125F /* Number+Extension.swift in Sources */,
 				6A922C7026A4588F005782DB /* Color+Extension.swift in Sources */,
 				6AE14C69277D2BBF00501866 /* Notifications.swift in Sources */,
+				6A2334DE28104D34005AABA9 /* Last24.swift in Sources */,
 				6A59423A26A850D700986619 /* Complications.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
 				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
 				6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */,
+				6A2334DB280F0C21005AABA9 /* Collection+Extension.swift in Sources */,
 				6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
 				6A0322EA26A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6A922C7326A4588F005782DB /* RecordStore.swift in Sources */,
@@ -684,6 +706,7 @@
 				6A0D4905277219970043125F /* String+Extension.swift in Sources */,
 				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
 				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
+				6A2334E128104D7E005AABA9 /* SessionGroup.swift in Sources */,
 				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
 				6A922C8026A45B2F005782DB /* TodayView.swift in Sources */,
 				6A922C5B26A4574A005782DB /* NotificationView.swift in Sources */,
@@ -713,6 +736,7 @@
 				6AE99A3B27428AC6002837B7 /* MonthView.swift in Sources */,
 				6AEA3B1F26F7E2D500C72CEF /* String+Extension.swift in Sources */,
 				6A9A6F6F269E3C6C00A78C5C /* TimeRingView.swift in Sources */,
+				6A2334DD28104D34005AABA9 /* Last24.swift in Sources */,
 				6A9A6F73269E3CBC00A78C5C /* Color+Extension.swift in Sources */,
 				6A9A6F51269E15BA00A78C5C /* AndroTrackApp.swift in Sources */,
 				6A0D4904277215B50043125F /* Number+Extension.swift in Sources */,
@@ -724,6 +748,7 @@
 				6A60E1D62745992F0043652C /* StatsView.swift in Sources */,
 				6A64377227710B78004E814B /* Graph.swift in Sources */,
 				6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */,
+				6A2334E028104D7E005AABA9 /* SessionGroup.swift in Sources */,
 				6AE99A3227417A91002837B7 /* CalendarView.swift in Sources */,
 				6A4FD2C5269F0A6D00F7081D /* Day.swift in Sources */,
 				6A4FD2CB269F515800F7081D /* SettingsView.swift in Sources */,
@@ -736,10 +761,12 @@
 				6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */,
 				6AE8ED962772B99C00C4680F /* DataView.swift in Sources */,
 				6A60511527740B4700492AA2 /* MeanWearOnHourView.swift in Sources */,
+				6AB92E1C28122E86009441A5 /* CurrentView.swift in Sources */,
 				6AE3694827741B3B00D8C36D /* FirstRecordDateView.swift in Sources */,
 				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
 				6A9A662726A748C800E7526A /* Notifications.swift in Sources */,
 				6AE8ED932772B41900C4680F /* HistoryCalendarDayView.swift in Sources */,
+				6A2334E828122A39005AABA9 /* CurrentViewSettings.swift in Sources */,
 				6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */,
 				6AE99A42274300F5002837B7 /* HistoryDayView.swift in Sources */,
 				6A9A6F76269E402300A78C5C /* Date+Extension.swift in Sources */,
@@ -750,6 +777,7 @@
 				6A9A6F7A269E439400A78C5C /* RingShape.swift in Sources */,
 				6A040AA2277CF52000D69C0A /* CSVFile.swift in Sources */,
 				6A4FD2D326A041AF00F7081D /* HealthKit.swift in Sources */,
+				6A2334DA280F0B6D005AABA9 /* Collection+Extension.swift in Sources */,
 				6A0322E926A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6AEA3B1D26F7D21B00C72CEF /* RecordEditView.swift in Sources */,
 				6A9A6F7D269E457100A78C5C /* Double+Extension.swift in Sources */,

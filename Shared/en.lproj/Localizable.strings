@@ -7,6 +7,7 @@
 */
 // TABS
 "TODAY" = "Today";
+"RECENT" = "Last 24h";
 "HISTORY" = "History";
 "SETTINGS" = "Settings";
 
@@ -41,6 +42,7 @@
 // SETTINGS_VIEW
 "WATCH_UNREACHABLE" = "Watch unreachable, will be synced on opening";
 "SESSION_LENGTH" = "Session length";
+"CURRENT_VIEW" = "Current view";
 "THEME_COLOR" = "Theme color";
 "NOTIFICATIONS" = "Notifications";
 "NOTIFY_END_OF_SESSION" = "Notify end of session";

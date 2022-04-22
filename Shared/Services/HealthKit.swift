@@ -19,69 +19,62 @@ class HealthKitService {
     
     public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
    
-    
-    public func editRecord(at: Date, _ newValues: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func editRecord(id: UUID, _ newValues: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(HealthKitServiceError.HealthDataUnavailable)
-            return
-        }
-        
-        guard let start = newValues.start else {
-            completion(HealthKitServiceError.InvalidRecord(property: "start"))
-            return
-        }
-        
-        guard let end = newValues.end else {
-            completion(HealthKitServiceError.InvalidRecord(property: "end"))
+            completion(nil, HealthKitServiceError.HealthDataUnavailable)
             return
         }
         
         requestAccess { sucess, error in
             guard error == nil else {
-                completion(HealthKitServiceError.AccessDenied)
+                completion(nil, HealthKitServiceError.AccessDenied)
                 return
             }
             
             // Try to found record to replace
-            let predicate = HKQuery.predicateForSamples(withStart: at, end: Date())
+            let predicate = HKQuery.predicateForObject(with: id)
             
             let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
                 query, results, error in
                 
                 guard error == nil else {
-                    completion(HealthKitServiceError.Failure(error!))
+                    completion(nil, HealthKitServiceError.Failure(error!))
                     return
                 }
                 
                 guard let samples = results as? [HKCategorySample] else {
-                    completion(HealthKitServiceError.Failure(error!))
+                    completion(nil, HealthKitServiceError.Failure(error!))
                     return
                 }
                
                 if (samples.count > 0) {
                     self.store.delete(samples[0]) { sucess, error in
                         if let error = error {
-                            completion(HealthKitServiceError.Failure(error))
+                            completion(nil, HealthKitServiceError.Failure(error))
                             return
                         }
                         
                         let contraceptiveSample = HKCategorySample(
                             type: self.contraceptiveType,
                             value: HKCategoryValueContraceptive.unspecified.rawValue,
-                            start: start, end: end,
-                            metadata: ["name": "AndroSwitch"]
+                            start: newValues.start,
+                            end: newValues.end,
+                            metadata: [
+                                "name": "AndroSwitch",
+                                "goal": newValues.goal?.description ?? "",
+                            ]
                         )
 
                         self.store.save(contraceptiveSample) { (success, error) in
                             if let error = error {
-                                completion(HealthKitServiceError.Failure(error))
+                                completion(nil, HealthKitServiceError.Failure(error))
                             } else {
-                                completion(nil)
+                                completion(contraceptiveSample.uuid, nil)
                             }
                         }
                     }
                 } else {
-                    completion(HealthKitServiceError.RecordNotFound(at))
+                    completion(nil, HealthKitServiceError.RecordNotFound(id))
                 }
             }
             
@@ -89,7 +82,7 @@ class HealthKitService {
         }
     }
     
-    public func removeRecord(at: Date, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func removeRecord(id: UUID, completion: @escaping (HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(HealthKitServiceError.HealthDataUnavailable)
             return
@@ -102,7 +95,7 @@ class HealthKitService {
             }
             
             // Try to found record to remove
-            let predicate = HKQuery.predicateForSamples(withStart: at, end: Date())
+            let predicate = HKQuery.predicateForObject(with: id)
             
             let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
                 query, results, error in
@@ -126,7 +119,7 @@ class HealthKitService {
                         completion(nil)
                     }
                 } else {
-                    completion(HealthKitServiceError.RecordNotFound(at))
+                    completion(HealthKitServiceError.RecordNotFound(id))
                 }
             }
             
@@ -134,60 +127,59 @@ class HealthKitService {
         }
     }
     
-    public func storeRecord(record: Record, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func addRecord(record: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(HealthKitServiceError.HealthDataUnavailable)
-            return
-        }
-        
-        guard let start = record.start else {
-            completion(HealthKitServiceError.InvalidRecord(property: "start"))
+            completion(nil, HealthKitServiceError.HealthDataUnavailable)
             return
         }
         
         requestAccess { sucess, error in
             guard error == nil else {
-                completion(HealthKitServiceError.AccessDenied)
+                completion(nil, HealthKitServiceError.AccessDenied)
                 return
             }
 
-            let proceedStoringRecord = { (record: Record, completion: @escaping (HealthKitServiceError?) -> ()) in
+            let proceedStoringRecord = { (record: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) in
                 let contraceptiveSample = HKCategorySample(
                     type: self.contraceptiveType,
                     value: HKCategoryValueContraceptive.unspecified.rawValue,
-                    start: start, end: record.end ?? start,
-                    metadata: ["name": "AndroSwitch"]
+                    start: record.start,
+                    end: record.end,
+                    metadata: [
+                        "name": "AndroSwitch",
+                        "goal": record.goal?.description ?? "",
+                    ]
                 )
 
                 self.store.save(contraceptiveSample) { (success, error) in
                     if let error = error {
-                        completion(HealthKitServiceError.Failure(error))
+                        completion(nil, HealthKitServiceError.Failure(error))
                     } else {
-                        completion(nil)
+                        completion(contraceptiveSample.uuid, nil)
                     }
                 }
             }
             
             // Try to found incomplete record to replace
-            let predicate = HKQuery.predicateForSamples(withStart: record.start, end: Date())
+            let predicate = HKQuery.predicateForObject(with: record.id)
             
             let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
                 query, results, error in
                 
                 guard error == nil else {
-                    completion(HealthKitServiceError.Failure(error!))
+                    completion(nil, HealthKitServiceError.Failure(error!))
                     return
                 }
                 
                 guard let samples = results as? [HKCategorySample] else {
-                    completion(HealthKitServiceError.Failure(error!))
+                    completion(nil, HealthKitServiceError.Failure(error!))
                     return
                 }
                
                 if (samples.count > 0) {
                     self.store.delete(samples[0]) { sucess, error in
                         if let error = error {
-                            completion(HealthKitServiceError.Failure(error))
+                            completion(nil, HealthKitServiceError.Failure(error))
                             return
                         }
                         
@@ -227,7 +219,16 @@ class HealthKitService {
                     return
                 }
                
-                let records = samples.map { Record(start: $0.startDate, end: $0.startDate == $0.endDate ? nil : $0.endDate) }
+                let records = samples.map { sample -> Record in
+                    let goal = Int(sample.metadata?["goal"] as! String? ?? "") ?? 15
+                    let hasUdeterminedDuration = sample.hasUndeterminedDuration || sample.startDate == sample.endDate
+                    return Record(
+                        id: sample.uuid,
+                        start: sample.startDate,
+                        end: hasUdeterminedDuration ? Date.distantFuture : sample.endDate,
+                        goal: hasUdeterminedDuration ? nil : goal
+                    )
+                }
                 
                 DispatchQueue.main.async {
                     completion(records, nil)
@@ -305,7 +306,7 @@ enum HealthKitServiceError: Error {
     case HealthDataUnavailable
     case CategoryTypeNotFound
     case InvalidRecord(property: String)
-    case RecordNotFound(Date)
+    case RecordNotFound(UUID)
     case AccessDenied
     case Failure(Error)
 }

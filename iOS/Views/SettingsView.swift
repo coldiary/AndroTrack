@@ -34,27 +34,51 @@ struct SettingsView: View {
                         Text("WATCH_UNREACHABLE").foregroundColor(Color.yellow)
                     }
                 }
-                HStack() {
+                
+                VStack(alignment: .leading) {
+                    Text("CURRENT_VIEW")
+                        .font(.title2)
+                        .bold()
+                    Picker("", selection: $settingsStore.currentView) {
+                        Text("TODAY").tag(CurrentViewSettings.Today)
+                        Text("RECENT").tag(CurrentViewSettings.Last24)
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                .padding()
+                
+                HStack {
                     Text("SESSION_LENGTH")
                         .font(.title2)
                         .bold()
+                    
                     Spacer()
-                    Picker("", selection: $settingsStore.sessionLength) {
-                        ForEach(1...24, id: \.self) { length in
-                            Text("\(length - 1)h").tag(length - 1)
-                        }
-                    }
-                    .pickerStyle(WheelPickerStyle())
-                    .frame(width: 80, height: 100)
-                    .clipped()
+                    
+                    Stepper("", value: $settingsStore.sessionLength, in: 1...24, step: 1)
+                        .padding(.horizontal)
+                    
+                    Text("\(settingsStore.sessionLength)h")
+                        .font(.title2)
+                        .bold()
+                    
+//                    Picker("", selection: $settingsStore.sessionLength) {
+//                        ForEach(1...24, id: \.self) { length in
+//                            Text("\(length - 1)h").tag(length - 1)
+//                        }
+//                    }
+//                    .pickerStyle()
+//                    .frame(width: 80, height: 80)
+//                    .clipped()
+//                    .padding(.vertical)
                 }
-                .padding(.horizontal)
+                .padding()
+                
                 VStack(alignment: .leading) {
                     Text("THEME_COLOR")
                         .font(.title2)
                         .bold()
                     ThemeSelectorView(selected: $settingsStore.themeColor)
                 }.padding()
+                
                 VStack(alignment: .leading) {
                     Text("NOTIFICATIONS")
                         .font(.title2)
@@ -68,11 +92,7 @@ struct SettingsView: View {
                         if enabled {
                             checkCanSendNotifications() { authorized in
                                 if authorized {
-                                    guard let end = recordStore.current.estimatedEnd(forDuration: settingsStore.sessionLength) else {
-                                        return
-                                    }
-                                    
-                                    Notifications.scheduleNotifyEndNotification(at: end)
+                                    Notifications.scheduleNotifyEnd()
                                 } else {
                                     DispatchQueue.main.async {
                                         settingsStore.notifications.notifyEnd = false

@@ -35,4 +35,12 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: date)
     }
+    
+    func distance(to date: Date, as unit: DurationUnit) -> Double {
+        Double(Calendar.current.dateComponents([.second], from: self, to: date).second ?? 0) / unit.rawValue
+    }
+    
+    func removeHours(_ hours: Int) -> Date {
+        self.addingTimeInterval(TimeInterval(-hours * 3600))
+    }
 }

@@ -7,21 +7,23 @@
 
 import Foundation
 
-struct Day {
+struct Day: SessionGroup {
     var records: [Record] = []
-    var duration: Double { records.reduce(0, { $0 + ($1.durationInHours ?? 0) }) }
-    
-    func durationAsProgress(goal: Int) -> Double {
-        return (duration / Double(goal)) * 100
-    }
-    
-    func estimatedEnd(forDuration sessionLength: Int) -> Date? {
-        return Calendar.current.date(byAdding: .second, value: Int((Double(sessionLength) - duration) * 3600), to: Date())
+    var duration: Double { records.reduce(0) { $0 + $1.durationInHours } }
+    var goal: Int? {
+        records[safe: records.endIndex - 1]?.goal
     }
 }
 
 extension Day: CustomStringConvertible {
     var description: String {
-        "{ records: \(records.count), date: \(records.count != 0 ? records.first!.start!.format() : "unknown") }"
+        """
+        {
+          records: \(records.count),
+          duration: \(self.duration),
+          goal: \(self.goal?.description ?? "-"),
+          date: \(records.count != 0 ? records.first!.start.format() : "unknown")
+        }
+        """
     }
 }

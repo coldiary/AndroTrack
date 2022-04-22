@@ -7,6 +7,7 @@
 */
 // TABS
 "TODAY" = "Aujourd'hui";
+"RECENT" = "Dernières 24h";
 "HISTORY" = "Historique";
 "SETTINGS" = "Réglages";
 
@@ -41,6 +42,7 @@
 // SETTINGS_VIEW
 "WATCH_UNREACHABLE" = "Montre injoignable, les réglages seront synchronisés à la prochaine ouverture";
 "SESSION_LENGTH" = "Durée de port";
+"CURRENT_VIEW" = "Vue principale";
 "THEME_COLOR" = "Couleur du thème";
 "NOTIFICATIONS" = "Notifications";
 "NOTIFY_END_OF_SESSION" = "Notification de durée atteinte";

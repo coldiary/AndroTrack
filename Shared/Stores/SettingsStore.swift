@@ -44,6 +44,16 @@ class SettingsStore: ObservableObject {
         }
     }
     
+    @Published var currentView: CurrentViewSettings {
+        didSet {
+            do {
+                try UserDefaults.standard.trySet(currentView, forKey: "currentView")
+            } catch {
+                AppLogger.warning(context: "SettingsStore", "Unable to save currentView settings")
+            }
+        }
+    }
+    
     public var appContext: [String:Any] {[
         "themeColor": themeColor.toHexString(),
         "sessionLength": sessionLength
@@ -57,6 +67,7 @@ class SettingsStore: ObservableObject {
         }
         sessionLength = UserDefaults.standard.nonNulInteger(forKey: "sessionLength") ?? 15
         notifications = UserDefaults.standard.typed(forKey: "notifications") ?? NotificationsSettings()
+        currentView = UserDefaults.standard.typed(forKey: "currentView") ?? CurrentViewSettings.Today
         
         #if os(watchOS)
         subscription = watchConnectivity.publisher

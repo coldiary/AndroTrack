@@ -15,11 +15,20 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            TodayView()
-                .tabItem {
-                    Image(systemName: "circle.circle")
-                    Text("TODAY")
-                }
+            if settingsStore.currentView == .Today {
+                TodayView()
+                    .tabItem {
+                        Image(systemName: "circle.circle")
+                        Text("TODAY")
+                    }
+            } else {
+                CurrentView()
+                    .tabItem {
+                        Image(systemName: "circle.circle")
+                        Text("RECENT")
+                    }
+            }
+            
             
             HistoryView()
                 .tabItem {

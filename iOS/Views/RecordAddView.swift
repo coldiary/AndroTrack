@@ -52,9 +52,9 @@ struct RecordAddView: View {
                     .scaleEffect(1.5)
             }.padding(.bottom, 20)
             ZStack {
-                TimeRingView(progress: record.durationAsProgress(goal: Double(settingsStore.sessionLength)), ringWidth: 10, color: settingsStore.themeColor)
+                TimeRingView(progress: record.durationAsProgress(goal: settingsStore.sessionLength), ringWidth: 10, color: settingsStore.themeColor)
                     .frame(width: 150, height: 150, alignment: .center)
-                Text((record.durationInHours != nil ? "\(Int(record.durationInHours!)) h" : "-"))
+                Text("\(Int(record.durationInHours)) h")
                     .font(.largeTitle)
                     .bold()
                     .padding(.horizontal)

@@ -59,7 +59,7 @@ struct HistoryListCompatView: View {
         }
         .sheet(isPresented: $showEditModal) { [editedRecord] in
             GenericModal() {
-                RecordEditView(record: editedRecord)
+                RecordEditView(record: editedRecord!)
                     .environmentObject(self.settingsStore)
                     .padding()
             }

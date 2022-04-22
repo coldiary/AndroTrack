@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RecordEditView: View {
-    private let at: Date?
+    private let id: UUID
+
     @State private var start: Date
     @State private var end: Date
     
@@ -22,20 +23,11 @@ struct RecordEditView: View {
     @EnvironmentObject private var recordStore: RecordStore
     @Environment(\.presentationMode) var presentationMode
     
-    init(record: Record?) {
-        unfinished = record != nil && record?.end == nil
-        at = record?.start ?? nil
-        if let start = record?.start {
-            _start = State(initialValue: start)
-            if let end = record?.end {
-                _end = State(initialValue: end)
-            } else {
-                _end = State(initialValue: start)
-            }
-        } else {
-            _start = State(initialValue: Date())
-            _end = State(initialValue: Date())
-        }
+    init(record: Record) {
+        id = record.id
+        unfinished = record.end == Date.distantFuture
+        _start = State(initialValue: record.start)
+        _end = State(initialValue: unfinished ? record.start : record.end)
     }
     
     var body: some View {
@@ -71,19 +63,17 @@ struct RecordEditView: View {
                     .scaleEffect(1.5)
             }.padding(.bottom, 20)
             ZStack {
-                TimeRingView(progress: record.durationAsProgress(goal: Double(settingsStore.sessionLength)), ringWidth: 10, color: settingsStore.themeColor)
+                TimeRingView(progress: record.durationAsProgress(goal: settingsStore.sessionLength), ringWidth: 10, color: settingsStore.themeColor)
                     .frame(width: 150, height: 150, alignment: .center)
-                Text((record.durationInHours != nil ? "\(Int(record.durationInHours!)) h" : "-"))
+                Text("\(Int(record.durationInHours)) h")
                     .font(.largeTitle)
                     .bold()
                     .padding(.horizontal)
             }.padding(.top)
             Spacer()
             Button(action: {
-                if let at = at {
-                    recordStore.editRecord(at: at, newValues: record)
-                    presentationMode.wrappedValue.dismiss()
-                }
+                recordStore.editRecord(with: id, newValues: record)
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("SAVE")
                     .padding()
@@ -92,7 +82,6 @@ struct RecordEditView: View {
                     .foregroundColor(settingsStore.themeColor == Color.white ? Color.black : Color.white)
                     .cornerRadius(50)
             }
-            .disabled(at == nil)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
