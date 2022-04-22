@@ -73,7 +73,7 @@ class RecordStore: ObservableObject {
                     }
                 }
             } else {
-                HealthKitService.shared.addRecord(record: records[records.endIndex - 1]) { id, error in
+                HealthKitService.shared.editRecord(id: records[records.endIndex - 1].id, records[records.endIndex - 1]) { id, error in
                     if let error = error {
                         AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     }

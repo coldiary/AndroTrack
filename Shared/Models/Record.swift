@@ -98,7 +98,7 @@ extension Record: Equatable {
         let rhsStart = rhs.start.timeIntervalSince1970
         let lhsEnd = lhs.end.timeIntervalSince1970
         let rhsEnd = rhs.end.timeIntervalSince1970
-        return (lhsStart == rhsStart && lhsEnd == rhsEnd)
+        return (lhsStart == rhsStart && lhsEnd == rhsEnd && lhs.goal == rhs.goal)
     }
     
     

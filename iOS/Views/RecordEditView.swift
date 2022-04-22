@@ -12,9 +12,10 @@ struct RecordEditView: View {
 
     @State private var start: Date
     @State private var end: Date
+    @State private var goal: Int
     
     var record: Record {
-        return Record(id: UUID(), start: start, end: end)
+        return Record(id: UUID(), start: start, end: end, goal: goal)
     }
     
     let unfinished: Bool
@@ -28,6 +29,7 @@ struct RecordEditView: View {
         unfinished = record.end == Date.distantFuture
         _start = State(initialValue: record.start)
         _end = State(initialValue: unfinished ? record.start : record.end)
+        _goal = State(initialValue: record.goal ?? 15)
     }
     
     var body: some View {
@@ -62,8 +64,28 @@ struct RecordEditView: View {
                     .frame(maxWidth: .infinity)
                     .scaleEffect(1.5)
             }.padding(.bottom, 20)
+            if !unfinished {
+                VStack(alignment: .leading, spacing: 30) {
+                    Text("GOAL")
+                        .font(.title3)
+                        .bold()
+                    HStack {
+                        Stepper("", value: $goal, in: 1...24)
+                            .disabled(unfinished)
+                            .labelsHidden()
+                            .scaleEffect(1.5)
+                            .padding(.horizontal)
+                        Text("\(goal) h")
+                            .font(.title2)
+                            .bold()
+                            .padding(.leading, 20)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding(.bottom, 20)
+            }
             ZStack {
-                TimeRingView(progress: record.durationAsProgress(goal: settingsStore.sessionLength), ringWidth: 10, color: settingsStore.themeColor)
+                TimeRingView(progress: record.durationAsProgress(goal: goal), ringWidth: 10, color: settingsStore.themeColor)
                     .frame(width: 150, height: 150, alignment: .center)
                 Text("\(Int(record.durationInHours)) h")
                     .font(.largeTitle)

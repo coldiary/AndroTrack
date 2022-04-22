@@ -31,6 +31,7 @@
 // RECORD_VIEW
 "START" = "Début";
 "END" = "Fin";
+"GOAL" = "Objectif";
 
 // NOTIFICATIONS
 "NOTIFY_END_NOTIF.TITLE" = "Terminé !";
@@ -52,7 +53,6 @@
 // HISTORY_VIEW
 "MODIFY" = "Modifier";
 "CANCEL" = "Annuler";
-"END" = "Terminé";
 "EDIT_RECORD" = "Modifier l'enregistrement";
 "ADD_RECORD" = "Ajouter un enregistrement";
 "SAVE" = "Enregistrer";

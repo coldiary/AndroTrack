@@ -31,6 +31,7 @@
 // RECORD_VIEW
 "START" = "Start";
 "END" = "End";
+"GOAL" = "Goal";
 
 // NOTIFICATIONS
 "NOTIFY_END_NOTIF.TITLE" = "Sesssion complete !";
@@ -52,7 +53,6 @@
 // HISTORY_VIEW
 "MODIFY" = "Edit";
 "CANCEL" = "Cancel";
-"END" = "Finished";
 "EDIT_RECORD" = "Edit record";
 "ADD_RECORD" = "Add a record";
 "SAVE" = "Save";

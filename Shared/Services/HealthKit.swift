@@ -139,58 +139,24 @@ class HealthKitService {
                 return
             }
 
-            let proceedStoringRecord = { (record: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) in
-                let contraceptiveSample = HKCategorySample(
-                    type: self.contraceptiveType,
-                    value: HKCategoryValueContraceptive.unspecified.rawValue,
-                    start: record.start,
-                    end: record.end,
-                    metadata: [
-                        "name": "AndroSwitch",
-                        "goal": record.goal?.description ?? "",
-                    ]
-                )
+            let contraceptiveSample = HKCategorySample(
+                type: self.contraceptiveType,
+                value: HKCategoryValueContraceptive.unspecified.rawValue,
+                start: record.start,
+                end: record.end,
+                metadata: [
+                    "name": "AndroSwitch",
+                    "goal": record.goal?.description ?? "",
+                ]
+            )
 
-                self.store.save(contraceptiveSample) { (success, error) in
-                    if let error = error {
-                        completion(nil, HealthKitServiceError.Failure(error))
-                    } else {
-                        completion(contraceptiveSample.uuid, nil)
-                    }
-                }
-            }
-            
-            // Try to found incomplete record to replace
-            let predicate = HKQuery.predicateForObject(with: record.id)
-            
-            let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: 1, sortDescriptors: nil) {
-                query, results, error in
-                
-                guard error == nil else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
-                }
-                
-                guard let samples = results as? [HKCategorySample] else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
-                }
-               
-                if (samples.count > 0) {
-                    self.store.delete(samples[0]) { sucess, error in
-                        if let error = error {
-                            completion(nil, HealthKitServiceError.Failure(error))
-                            return
-                        }
-                        
-                        proceedStoringRecord(record, completion)
-                    }
+            self.store.save(contraceptiveSample) { (success, error) in
+                if let error = error {
+                    completion(nil, HealthKitServiceError.Failure(error))
                 } else {
-                    proceedStoringRecord(record, completion)
+                    completion(contraceptiveSample.uuid, nil)
                 }
             }
-            
-            self.store.execute(query)
         }
     }
     

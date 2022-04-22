@@ -11,9 +11,10 @@ struct RecordAddView: View {
     public let at: Date
     @State private var start: Date = Date()
     @State private var end: Date = Date()
+    @State private var goal: Int = 15
     
     var record: Record {
-        return Record(id: UUID(), start: start, end: end)
+        return Record(id: UUID(), start: start, end: end, goal: goal)
     }
     
     @EnvironmentObject private var settingsStore: SettingsStore
@@ -45,12 +46,29 @@ struct RecordAddView: View {
                 Text("END")
                     .font(.title3)
                     .bold()
-                DatePicker("", selection: $end, in: start...Date())
+                DatePicker("", selection: $end, in: start...)
                     .labelsHidden()
                     .datePickerStyle(DefaultDatePickerStyle())
                     .frame(maxWidth: .infinity)
                     .scaleEffect(1.5)
             }.padding(.bottom, 20)
+            VStack(alignment: .leading, spacing: 30) {
+                Text("GOAL")
+                    .font(.title3)
+                    .bold()
+                HStack {
+                    Stepper("", value: $goal, in: 1...24)
+                        .labelsHidden()
+                        .scaleEffect(1.5)
+                        .padding(.horizontal)
+                    Text("\(goal) h")
+                        .font(.title2)
+                        .bold()
+                        .padding(.leading, 20)
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .padding(.bottom, 20)
             ZStack {
                 TimeRingView(progress: record.durationAsProgress(goal: settingsStore.sessionLength), ringWidth: 10, color: settingsStore.themeColor)
                     .frame(width: 150, height: 150, alignment: .center)
@@ -76,6 +94,7 @@ struct RecordAddView: View {
         .onAppear {
             start = at
             end = at
+            goal = settingsStore.sessionLength
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
