@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CalendarView<DateView>: View where DateView: View {
-    @Environment(\.calendar) var calendar
-
     let interval: DateInterval
     let content: (Date) -> DateView
 
@@ -19,7 +17,7 @@ struct CalendarView<DateView>: View where DateView: View {
     }
 
     private var months: [Date] {
-        calendar.generateDates(
+        Calendar.current.generateDates(
             inside: interval,
             matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
         ).reversed()
@@ -27,7 +25,7 @@ struct CalendarView<DateView>: View where DateView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack {
+            LazyVStack {
                 ForEach(months, id: \.self) { month in
                     MonthView(month: month, content: self.content)
                 }
@@ -37,30 +35,22 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 struct CalendarView_Previews: PreviewProvider {
-    static let calendarViews: [DateInterval] = [
-        Calendar.current.dateInterval(of: .month, for: Date())!,
-        Calendar.current.dateInterval(of: .month, for: Calendar.current.date(byAdding: .month, value: -1, to: Date())!)!,
-        Calendar.current.dateInterval(of: .month, for: Calendar.current.date(byAdding: .month, value: -2, to: Date())!)!,
-
-        Calendar.current.dateInterval(of: .month, for: Calendar.current.date(byAdding: .month, value: -3, to: Date())!)!,
-    ]
+    static let interval: DateInterval = DateInterval(
+            start: Calendar.current.date(byAdding: .month, value: -3, to: Date())!,
+            end: Date()
+    )
+    
     static var previews: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(calendarViews.indices, id: \.self) { index in
-                    CalendarView(interval: calendarViews[index]) { date in
-                        Text("30")
-                            .hidden()
-                            .padding(8)
-                            .background(Color.blue)
-                            .clipShape(Circle())
-                            .padding(.vertical, 4)
-                            .overlay(
-                                Text(String(Calendar.current.component(.day, from: date)))
-                            )
-                    }
-                }
-            }
+        CalendarView(interval: interval) { date in
+            Text("30")
+                .hidden()
+                .padding(8)
+                .background(Color.blue)
+                .clipShape(Circle())
+                .padding(.vertical, 4)
+                .overlay(
+                    Text(String(Calendar.current.component(.day, from: date)))
+                )
         }.preferredColorScheme(.dark)
     }
 }

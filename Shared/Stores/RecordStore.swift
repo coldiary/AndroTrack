@@ -8,11 +8,6 @@
 import Foundation
 import UserNotifications
 
-enum RingState {
-    case worn
-    case off
-}
-
 class RecordStore: ObservableObject {
     public static var shared = RecordStore()
     
@@ -22,6 +17,7 @@ class RecordStore: ObservableObject {
         Record.yesterday,
         Record.today,
     ]
+    @Published var pagedQuaterlyRecords: [Int:[Record]] = [:]
     
     private init() {
         guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
@@ -133,7 +129,12 @@ class RecordStore: ObservableObject {
     }
     
     public func getDay(forDate date: Date) -> Day {
-        return Day(records: records.filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
+        if Calendar.current.isDateInToday(date) {
+            return Day(records: records.filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
+        }
+        
+        let page = (Calendar.current.dateComponents([.month], from: date, to: Date()).month ?? 0) / 3
+        return Day(records: (pagedQuaterlyRecords[page] ?? []).filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
     }
     
     public func getLast24() -> Last24 {
@@ -141,15 +142,35 @@ class RecordStore: ObservableObject {
         return Last24(records: records.filter({ $0.end > start }))
     }
     
+    public func loadHealthData(forQuarterAgo quarter: Int, completion: ((Error?) -> ())? = nil) {
+        if let end = Calendar.current.date(byAdding: DateComponents(month: quarter * -3), to: Date()),
+           let start = Calendar.current.date(byAdding: DateComponents(month: (quarter + 1) * -3), to: Date()),
+           let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.month, .year], from: start)) {
+            HealthKitService.shared.fetchRecords(from: startOfMonth, to: end) { results, error in
+                if let error = error {
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                    completion?(error)
+                    return
+                }
+                
+                if let results = results {
+                    self.pagedQuaterlyRecords[quarter] = results
+                    completion?(nil)
+                }
+            }
+        }
+    }
+    
     public func refreshHealthData() {
-        HealthKitService.shared.fetchRecords { results, error in
+        loadHealthData(forQuarterAgo: 0) { error in
             if let error = error {
-                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                AppLogger.error(context: "RecordStore", "Failure: \(error.localizedDescription)")
                 return
             }
             
-            if let results = results {
-                self.records = results
+            if let dayBefore = Calendar.current.dayBefore(),
+               let lastQuarter = self.pagedQuaterlyRecords[0] {
+                self.records = lastQuarter.filter({ $0.end > dayBefore })
                 
                 if (self.records.count > 0) {
                     self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn

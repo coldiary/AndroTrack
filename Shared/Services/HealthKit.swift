@@ -160,7 +160,7 @@ class HealthKitService {
         }
     }
     
-    public func fetchRecords(completion: @escaping ([Record]?, HealthKitServiceError?) -> ()) {
+    public func fetchRecords(from: Date? = nil, to: Date? = nil, completion: @escaping ([Record]?, HealthKitServiceError?) -> ()) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(nil, HealthKitServiceError.HealthDataUnavailable)
             return
@@ -172,7 +172,12 @@ class HealthKitService {
                 return
             }
             
-            let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: nil, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
+            var predicate: NSPredicate? = nil;
+            if let from = from {
+                predicate = HKQuery.predicateForSamples(withStart: from, end: to)
+            }
+            
+            let query = HKSampleQuery(sampleType: self.contraceptiveType, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
                 query, results, error in
                 
                 guard error == nil else {

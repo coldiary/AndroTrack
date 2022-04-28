@@ -115,6 +115,11 @@
 		6AEA3B1B26F7CE5200C72CEF /* When.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1A26F7CE5200C72CEF /* When.swift */; };
 		6AEA3B1D26F7D21B00C72CEF /* RecordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */; };
 		6AEA3B1F26F7E2D500C72CEF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */; };
+		6AF01B7128197E3D006D43F5 /* RingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF01B7028197E3D006D43F5 /* RingState.swift */; };
+		6AF01B7228197E3D006D43F5 /* RingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF01B7028197E3D006D43F5 /* RingState.swift */; };
+		6AF01B7428197E86006D43F5 /* DurationUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF01B7328197E86006D43F5 /* DurationUnit.swift */; };
+		6AF01B7528197E86006D43F5 /* DurationUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF01B7328197E86006D43F5 /* DurationUnit.swift */; };
+		6AF01B76281987AB006D43F5 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE99A3627428A02002837B7 /* Calendar+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +254,8 @@
 		6AEA3B1A26F7CE5200C72CEF /* When.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = When.swift; sourceTree = "<group>"; };
 		6AEA3B1C26F7D21B00C72CEF /* RecordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEditView.swift; sourceTree = "<group>"; };
 		6AEA3B1E26F7E2D500C72CEF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6AF01B7028197E3D006D43F5 /* RingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingState.swift; sourceTree = "<group>"; };
+		6AF01B7328197E86006D43F5 /* DurationUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationUnit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +433,8 @@
 				6A2334DC28104D34005AABA9 /* Last24.swift */,
 				6A2334DF28104D7E005AABA9 /* SessionGroup.swift */,
 				6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */,
+				6AF01B7028197E3D006D43F5 /* RingState.swift */,
+				6AF01B7328197E86006D43F5 /* DurationUnit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -693,11 +702,13 @@
 				6A59423A26A850D700986619 /* Complications.swift in Sources */,
 				6A922C7426A4588F005782DB /* HealthKit.swift in Sources */,
 				6A922C5726A4574A005782DB /* ContentView.swift in Sources */,
+				6AF01B76281987AB006D43F5 /* Calendar+Extension.swift in Sources */,
 				6A922C5D26A4574A005782DB /* ComplicationController.swift in Sources */,
 				6A2334DB280F0C21005AABA9 /* Collection+Extension.swift in Sources */,
 				6A93AF2C26A5A10B00702DC7 /* TimeInterval+Extension.swift in Sources */,
 				6A0322EA26A60584008E97C8 /* Bundle+Extension.swift in Sources */,
 				6A922C7326A4588F005782DB /* RecordStore.swift in Sources */,
+				6AF01B7228197E3D006D43F5 /* RingState.swift in Sources */,
 				6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */,
 				6A922C7826A4588F005782DB /* Record.swift in Sources */,
 				6A922C7A26A4588F005782DB /* Day.swift in Sources */,
@@ -705,6 +716,7 @@
 				6A922C7526A4588F005782DB /* RingShape.swift in Sources */,
 				6A0D4905277219970043125F /* String+Extension.swift in Sources */,
 				6A922C7B26A4588F005782DB /* SettingsStore.swift in Sources */,
+				6AF01B7528197E86006D43F5 /* DurationUnit.swift in Sources */,
 				6A922C7926A4588F005782DB /* Date+Extension.swift in Sources */,
 				6A2334E128104D7E005AABA9 /* SessionGroup.swift in Sources */,
 				6A922C7C26A4588F005782DB /* TimeRingView.swift in Sources */,
@@ -745,6 +757,7 @@
 				6A3284832773D5B600D1A45F /* MeanWearingTimeView.swift in Sources */,
 				6A084D0527761A4F009A8256 /* RecordAddView.swift in Sources */,
 				6A9A6F80269E6D3200A78C5C /* TodayView.swift in Sources */,
+				6AF01B7428197E86006D43F5 /* DurationUnit.swift in Sources */,
 				6A60E1D62745992F0043652C /* StatsView.swift in Sources */,
 				6A64377227710B78004E814B /* Graph.swift in Sources */,
 				6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */,
@@ -759,6 +772,7 @@
 				6A6051112773FFE000492AA2 /* MeanNonWearingTimeView.swift in Sources */,
 				6A32848127737C8200D1A45F /* DataCell.swift in Sources */,
 				6ADBD5DE26A1D4FF009FDB3D /* SettingsStore.swift in Sources */,
+				6AF01B7128197E3D006D43F5 /* RingState.swift in Sources */,
 				6AE8ED962772B99C00C4680F /* DataView.swift in Sources */,
 				6A60511527740B4700492AA2 /* MeanWearOnHourView.swift in Sources */,
 				6AB92E1C28122E86009441A5 /* CurrentView.swift in Sources */,

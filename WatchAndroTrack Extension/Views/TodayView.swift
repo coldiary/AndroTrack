@@ -48,8 +48,6 @@ struct TodayView: View {
                             Text(recordStore.state == .off ? "WEAR" : "REMOVE")
                                 .bold()
                         }
-                    }.onAppear {
-                        print(settingsStore.themeColor.toHexString())
                     }
                 }.buttonStyle(PlainButtonStyle())
         }

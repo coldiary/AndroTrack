@@ -69,7 +69,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var complications: [CLKComplicationTimelineEntry] = []
         var next = date
         while complications.count < limit {
-            next = next.advanced(by: TimeInterval.fiveMinutes)
+            next = next.advanced(by: .minutes(5))
             if let duration = Calendar.current.dateComponents([.minute], from:  date, to: next).minute {
                 if let template = makeTemplateFor(complication: complication, data: ComplicationDisplayedData(
                     duration: recordStore.current.duration + Double(duration / 60),

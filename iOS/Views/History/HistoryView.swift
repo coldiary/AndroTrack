@@ -18,9 +18,7 @@ struct HistoryView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView() {
-                HistoryCalendarView()
-            }
+            HistoryCalendarView()
             .alert(isPresented: $showConfirmModal) {
                 if lastExportResult == nil {
                     return Alert(
@@ -73,9 +71,8 @@ struct HistoryView: View {
                     case .success(_):
                         break
                     case .failure(let err):
-                        print(err.localizedDescription)
+                        AppLogger.error(context: "HistoryView", "Export failed: \(err.localizedDescription)")
                 }
-                
             }
             .navigationTitle("HISTORY")
             .toolbar {

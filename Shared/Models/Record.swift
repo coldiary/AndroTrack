@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum DurationUnit: Double {
-    case hour = 3600
-    case minute = 60
-    case second = 1
-}
-
 class Record: Identifiable, Codable {
     var id: UUID
     var start: Date
@@ -34,12 +28,12 @@ extension Record {
     
     private func durationIn(_ unit: DurationUnit) -> Double {
         let endVal = end == Date.distantFuture ? Date() : end
-        return Double(Calendar.current.dateComponents([.second], from: start, to: endVal).second ?? 0) / unit.rawValue
+        return Double(Calendar.current.secondsBetween(start: start, end: endVal)) / unit.rawValue
     }
     
     func durationFrom(_ date: Date, in unit: DurationUnit) -> Double {
         let endVal = end == Date.distantFuture ? Date() : end
-        return Double(Calendar.current.dateComponents([.second], from: date, to: endVal).second ?? 0) / DurationUnit.hour.rawValue
+        return Double(Calendar.current.secondsBetween(start: start, end: endVal)) / unit.rawValue
     }
 
     func durationAsProgress(goal currentGoalSetting: Int) -> Double {
@@ -72,33 +66,29 @@ extension Record {
 extension Record {
     static var today: Record {
         return Record(
-            start: Date().addingTimeInterval(-5 * DurationUnit.hour.rawValue),
-            end: Date().addingTimeInterval(-4 * DurationUnit.hour.rawValue)
+            start: Date().addingTimeInterval(.hours(-5)),
+            end: Date().addingTimeInterval(.hours(-4))
         )
     }
     
     static var yesterday: Record {
         return Record(
-            start: Date().addingTimeInterval(-34 * DurationUnit.hour.rawValue),
-            end: Date().addingTimeInterval(-19 * DurationUnit.hour.rawValue)
+            start: Date().addingTimeInterval(.hours(-34)),
+            end: Date().addingTimeInterval(.hours(-19))
         )
     }
     
     static var dayBefore: Record {
         return Record(
-            start: Date().addingTimeInterval(-48 * DurationUnit.hour.rawValue),
-            end: Date().addingTimeInterval(-43 * DurationUnit.hour.rawValue)
+            start: Date().addingTimeInterval(.hours(-48)),
+            end: Date().addingTimeInterval(.hours(-43))
         )
     }
 }
 
 extension Record: Equatable {
     static func == (lhs: Record, rhs: Record) -> Bool {
-        let lhsStart = lhs.start.timeIntervalSince1970
-        let rhsStart = rhs.start.timeIntervalSince1970
-        let lhsEnd = lhs.end.timeIntervalSince1970
-        let rhsEnd = rhs.end.timeIntervalSince1970
-        return (lhsStart == rhsStart && lhsEnd == rhsEnd && lhs.goal == rhs.goal)
+        lhs.start == rhs.start && lhs.end == rhs.end && lhs.goal == rhs.goal
     }
     
     
