@@ -27,11 +27,7 @@ struct HistoryCalendarDayView: View {
     }
     
     var body: some View {
-        ZStack {
-            NavigationLink(destination: HistoryDayView(date: date)) {
-                EmptyView()
-            }
-            .buttonStyle(PlainButtonStyle())
+        NavigationLink(destination: HistoryDayView(date: date)) {
             VStack {
                 Text(String(Calendar.current.component(.day, from: date)))
                 ZStack {
@@ -50,7 +46,7 @@ struct HistoryCalendarDayView: View {
                 }
             }
         }
-        
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
