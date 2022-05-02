@@ -295,8 +295,8 @@ extension HealthKitServiceError: LocalizedError {
                 return NSLocalizedString("HealthKit: Access denied to HealthKit data", comment: "")
             case .InvalidRecord(let property):
                 return NSLocalizedString("HealthKit: Invalid record can't be stored. Property \(property) is missing", comment: "")
-        case .RecordNotFound(let start):
-            return NSLocalizedString("HealthKit: Record with start \(start) not found", comment: "")
+            case .RecordNotFound(let id):
+                return NSLocalizedString("HealthKit: Record with UUID \(id) not found", comment: "")
         }
     }
 }

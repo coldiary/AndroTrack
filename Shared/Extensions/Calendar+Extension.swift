@@ -34,11 +34,15 @@ extension Calendar {
 }
 
 extension Calendar {
+    func getDateBack(to: Int) -> Date? {
+        return self.date(byAdding: .day, value: to * -1, to: Date())
+    }
+    
     func dayBefore() -> Date? {
-        Calendar.current.date(byAdding: DateComponents(hour: -24), to: Date())
+        self.date(byAdding: DateComponents(hour: -24), to: Date())
     }
     
     func secondsBetween(start: Date, end: Date) -> Int {
-        Calendar.current.dateComponents([.second], from: start, to: end).second ?? 0
+        self.dateComponents([.second], from: start, to: end).second ?? 0
     }
 }

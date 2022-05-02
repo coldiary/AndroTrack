@@ -14,7 +14,7 @@ struct FirstRecordDateView: View {
     var body: some View {
         DataCell(
             label: "FIRST_RECORD_DATE".localized,
-            value: recordStore.firstRecordDate(),
+            value: recordStore.stats?.firstRecordDate ?? "-",
             color: settingsStore.themeColor,
             labelSize: 11,
             valueSize: 24

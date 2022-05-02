@@ -18,14 +18,14 @@ struct DataView: View {
             MeanWearingTimeView()
             MeanNonWearingTimeView()
             ConsecutiveAchievedGoalView()
-            
+
             HStack(alignment: .top) {
                 MeanWearOnHourView()
                 MeanWearOffHourView()
             }
-            
+
             CurrentConsecutiveSerieStartView()
-            
+
             FirstRecordDateView()
         }
     }

@@ -12,14 +12,8 @@ struct GraphView: View {
     @EnvironmentObject var recordStore: RecordStore
     @EnvironmentObject var settingsStore: SettingsStore
     
-    let dates: [Date] = Calendar.current.generateDates(inside: DateInterval(start: Calendar.current.date(byAdding: .day, value: -30, to: Date())!, end: Date()), matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0))
-    
-    func getDateBack(to: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: to * -1, to: Date())
-    }
-    
     func dayAbbreviationBack(to: Int) -> String {
-        guard let date = getDateBack(to: to) else { return "" }
+        guard let date = Calendar.current.getDateBack(to: to) else { return "" }
         return Calendar.current.veryShortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1]
     }
     
@@ -33,7 +27,7 @@ struct GraphView: View {
             label: "",
             axisLabel: dayAbbreviationBack(to: 13 - dayBack)
         )
-        if let dateBack = getDateBack(to: 13 - dayBack) {
+        if let dateBack = Calendar.current.getDateBack(to: 13 - dayBack) {
            let day = getDayFromDate(date: dateBack)
             return GraphValue(
                 value: day.duration,
@@ -50,7 +44,7 @@ struct GraphView: View {
     }
     
     var dateRangeText: String {
-        let startText = getDateBack(to: 14)?.shortDate() ?? ""
+        let startText = Calendar.current.getDateBack(to: 14)?.shortDate() ?? ""
         let endText = Date().shortDate()
         return "\(startText) - \(endText)"
     }

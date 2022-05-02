@@ -49,6 +49,7 @@
 		6A779C2226A45E03003DF0CE /* AndroTrackAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2126A45E03003DF0CE /* AndroTrackAppDelegate.swift */; };
 		6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2426A46001003DF0CE /* AndroTrackApp.swift */; };
 		6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */; };
+		6A8E6DFC28201A1600991C32 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E6DFB28201A1600991C32 /* Stats.swift */; };
 		6A922C4926A4574A005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C4826A4574A005782DB /* Assets.xcassets */; };
 		6A922C5026A4574A005782DB /* WatchAndroTrack Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6A922C5726A4574A005782DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5626A4574A005782DB /* ContentView.swift */; };
@@ -198,6 +199,7 @@
 		6A779C2426A46001003DF0CE /* AndroTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroTrackApp.swift; sourceTree = "<group>"; };
 		6A779C2726A46585003DF0CE /* WatchAndroTrack Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchAndroTrack Extension.entitlements"; sourceTree = "<group>"; };
 		6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		6A8E6DFB28201A1600991C32 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		6A922C4626A45747005782DB /* WatchAndroTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchAndroTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A922C4826A4574A005782DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A922C4A26A4574A005782DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				6A2334E728122A39005AABA9 /* CurrentViewSettings.swift */,
 				6AF01B7028197E3D006D43F5 /* RingState.swift */,
 				6AF01B7328197E86006D43F5 /* DurationUnit.swift */,
+				6A8E6DFB28201A1600991C32 /* Stats.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				6A9A6F69269E21B800A78C5C /* RecordView.swift in Sources */,
 				6A9A662726A748C800E7526A /* Notifications.swift in Sources */,
 				6AE8ED932772B41900C4680F /* HistoryCalendarDayView.swift in Sources */,
+				6A8E6DFC28201A1600991C32 /* Stats.swift in Sources */,
 				6A2334E828122A39005AABA9 /* CurrentViewSettings.swift in Sources */,
 				6AE36946277419F100D8C36D /* MeanWearOffHourView.swift in Sources */,
 				6AE99A42274300F5002837B7 /* HistoryDayView.swift in Sources */,

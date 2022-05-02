@@ -18,6 +18,11 @@ class RecordStore: ObservableObject {
         Record.today,
     ]
     @Published var pagedQuaterlyRecords: [Int:[Record]] = [:]
+    @Published var all: [Record]?
+    
+    #if os(iOS)
+    @Published var stats: Stats?
+    #endif
     
     private init() {
         guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
@@ -128,13 +133,17 @@ class RecordStore: ObservableObject {
         }
     }
     
+    public func getDayFromDate(date: Date) -> Day {
+        return getDay(forDate: date)
+    }
+    
     public func getDay(forDate date: Date) -> Day {
         if Calendar.current.isDateInToday(date) {
             return Day(records: records.filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
         }
         
         let page = (Calendar.current.dateComponents([.month], from: date, to: Date()).month ?? 0) / 3
-        return Day(records: (pagedQuaterlyRecords[page] ?? []).filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
+        return Day(records: (pagedQuaterlyRecords[page] ?? all ?? []).filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
     }
     
     public func getLast24() -> Last24 {
@@ -143,10 +152,9 @@ class RecordStore: ObservableObject {
     }
     
     public func loadHealthData(forQuarterAgo quarter: Int, completion: ((Error?) -> ())? = nil) {
-        if let end = Calendar.current.date(byAdding: DateComponents(month: quarter * -3), to: Date()),
-           let start = Calendar.current.date(byAdding: DateComponents(month: (quarter + 1) * -3), to: Date()),
-           let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.month, .year], from: start)) {
-            HealthKitService.shared.fetchRecords(from: startOfMonth, to: end) { results, error in
+        if let end = Calendar.current.date(byAdding: DateComponents(month: quarter * -3), to: Date())?.endOfMonth,
+           let start = Calendar.current.date(byAdding: DateComponents(month: (quarter + 1) * -3), to: Date())?.startOfMonth {
+            HealthKitService.shared.fetchRecords(from: start, to: end) { results, error in
                 if let error = error {
                     AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                     completion?(error)

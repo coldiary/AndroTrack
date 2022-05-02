@@ -14,7 +14,7 @@ struct MeanWearOffHourView: View {
     var body: some View {
         DataCell(
             label: "MEAN_WEAR_OFF_HOUR".localized,
-            value: recordStore.meanWearOffHour(),
+            value: recordStore.stats?.meanWearOffHour ?? "-",
             color: settingsStore.themeColor,
             labelSize: 11,
             valueSize: 24

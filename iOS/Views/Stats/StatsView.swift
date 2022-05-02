@@ -18,6 +18,11 @@ struct StatsView: View {
                 GraphView()
                     .padding()
             }
+            .onAppear {
+                if recordStore.stats == nil {
+                    recordStore.computeStats()
+                }
+            }
             .navigationTitle("STATS")
         }.navigationViewStyle(StackNavigationViewStyle())
     }
@@ -29,6 +34,5 @@ struct StatsView_Previews: PreviewProvider {
             .environmentObject(RecordStore.shared)
             .environmentObject(SettingsStore.shared)
             .preferredColorScheme(.dark)
-            .previewDevice("iPhone 8")
     }
 }

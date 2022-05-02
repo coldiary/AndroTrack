@@ -14,7 +14,7 @@ struct CurrentConsecutiveSerieStartView: View {
     var body: some View {
         DataCell(
             label: "CURRENT_CONSECUTIVE_SERIE_START".localized,
-            value: recordStore.consecutiveSerieStart(goal: settingsStore.sessionLength),
+            value: recordStore.stats?.consecutiveSerieStart ?? "-",
             color: settingsStore.themeColor,
             labelSize: 11,
             valueSize: 24

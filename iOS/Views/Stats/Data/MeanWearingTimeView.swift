@@ -14,7 +14,7 @@ struct MeanWearingTimeView: View {
     var body: some View {
         DataCell(
             label: "MEAN_WEARING_TIME".localized,
-            value: "\(recordStore.meanWearingTime(days: 30))",
+            value: recordStore.stats?.meanWearingTime ?? "-",
             color: settingsStore.themeColor
         )
     }

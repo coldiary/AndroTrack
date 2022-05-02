@@ -40,7 +40,25 @@ extension Date {
         Double(Calendar.current.dateComponents([.second], from: self, to: date).second ?? 0) / unit.rawValue
     }
     
+    func minutesInDay() -> Int {
+        return Calendar.current.component(.hour, from: self) * 60 + Calendar.current.component(.minute, from: self)
+    }
+    
     func removeHours(_ hours: Int) -> Date {
         self.addingTimeInterval(TimeInterval(-hours * 3600))
+    }
+}
+
+extension Date {    
+    var startOfMonth: Date? {
+        return  Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self))
+    }
+    
+    var endOfMonth: Date? {
+        guard let startOfMonth = startOfMonth else {
+            return nil
+        }
+
+        return Calendar(identifier: .gregorian).date(byAdding: DateComponents(month: 1, second: -1), to: startOfMonth)
     }
 }

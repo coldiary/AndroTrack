@@ -15,15 +15,10 @@ struct ConsecutiveAchievedGoalView: View {
         return recordStore.getDay(forDate: date)
     }
     
-    var value: String {
-        let consecutive = recordStore.consecutiveSerie(goal: settingsStore.sessionLength)
-        return "\(consecutive) \("DAYS".localized)"
-    }
-    
     var body: some View {
         DataCell(
             label: "CONSECUTIVE_ACHIEVED_GOAL".localized,
-            value: value,
+            value: recordStore.stats?.consecutiveSerie ?? "-",
             color: settingsStore.themeColor,
             valueSize: 40
         )
