@@ -18,11 +18,6 @@ struct StatsView: View {
                 GraphView()
                     .padding()
             }
-            .onAppear {
-                if recordStore.stats == nil {
-                    recordStore.computeStats()
-                }
-            }
             .navigationTitle("STATS")
         }.navigationViewStyle(StackNavigationViewStyle())
     }

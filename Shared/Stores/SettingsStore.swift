@@ -48,6 +48,7 @@ class SettingsStore: ObservableObject {
         didSet {
             do {
                 try UserDefaults.standard.trySet(currentView, forKey: "currentView")
+                watchConnectivity.sync()
             } catch {
                 AppLogger.warning(context: "SettingsStore", "Unable to save currentView settings")
             }
@@ -56,7 +57,8 @@ class SettingsStore: ObservableObject {
     
     public var appContext: [String:Any] {[
         "themeColor": themeColor.toHexString(),
-        "sessionLength": sessionLength
+        "sessionLength": sessionLength,
+        "currentView": currentView.rawValue,
     ]}
     
     private init() {
@@ -78,15 +80,20 @@ class SettingsStore: ObservableObject {
     
     #if os(watchOS)
     private func onReceiveContextUpdate(context: [String:Any]) {
-        for (key, progress) in context {
+        for (key, value) in context {
             switch key {
                 case "themeColor":
-                    if (self.themeColor != Color(hexString: progress as! String)) {
-                        self.themeColor = Color(hexString: progress as! String) ?? Color.tealCompat
+                    if self.themeColor != Color(hexString: value as! String) {
+                        self.themeColor = Color(hexString: value as! String) ?? Color.tealCompat
                     }
                 case "sessionLength":
-                    if (self.sessionLength != progress as! Int) {
-                        self.sessionLength = progress as! Int
+                    if self.sessionLength != (value as! Int) {
+                        self.sessionLength = (value as! Int)
+                    }
+                case "currentView":
+                    if let enumValue = CurrentViewSettings(rawValue: (value as! Int)),
+                       self.currentView != enumValue {
+                        self.currentView = enumValue
                     }
                 default: continue
             }

@@ -14,11 +14,14 @@ struct HistoryCalendarView: View {
     @State var page = 1
     
     var interval: DateInterval? {
-        if let start = Calendar.current.date(byAdding: DateComponents(month: -3 * page), to: Date()) {
-            return DateInterval(start: start, end: Date())
-        } else {
+        guard let start = Date().removeMonths(QUARTER_IN_MONTHS * page) else {
             return nil
         }
+        return DateInterval(start: start, end: Date())
+    }
+    
+    private var loadingThreshold: Int {
+        (page - 1) * QUARTER_IN_MONTHS + (QUARTER_IN_MONTHS - 1)
     }
     
     var body: some View {
@@ -34,10 +37,7 @@ struct HistoryCalendarView: View {
                                 color: settingsStore.themeColor
                             )
                             .onAppear {
-                                let monthDiff = Calendar.current.dateComponents([.month], from: date, to: Date()).month ?? 0
-                                let threshold = (page - 1) * 3 + 2
-                                if monthDiff > threshold {
-                                    recordStore.loadHealthData(forQuarterAgo: page)
+                                if date.diffInMonths(to: Date()) > loadingThreshold {
                                     page += 1
                                 }
                             }

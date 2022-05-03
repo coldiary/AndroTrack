@@ -40,25 +40,39 @@ extension Date {
         Double(Calendar.current.dateComponents([.second], from: self, to: date).second ?? 0) / unit.rawValue
     }
     
-    func minutesInDay() -> Int {
+    func diffInMonths(to date: Date) -> Int {
+        Calendar.current.dateComponents([.month], from: self, to: date).month ?? 0
+    }
+    
+    var minutesInDay: Int {
         return Calendar.current.component(.hour, from: self) * 60 + Calendar.current.component(.minute, from: self)
     }
     
+    var quartersAgo: Int {
+        return (Calendar.current.dateComponents([.month], from: self, to: Date()).month ?? 0) / QUARTER_IN_MONTHS
+    }
+    
     func removeHours(_ hours: Int) -> Date {
-        self.addingTimeInterval(TimeInterval(-hours * 3600))
+        self.addingTimeInterval(TimeInterval(-1 * hours * 3600))
+    }
+    
+    func removeMonths(_ months: Int) -> Date? {
+        Calendar.current.date(byAdding: .month, value: -1 * months, to: self)
     }
 }
 
-extension Date {    
+extension Date {
+    var isInLast24h: Bool {
+        guard let dayBefore = Calendar.current.dayBefore() else { return false }
+        return self > dayBefore
+    }
+    
     var startOfMonth: Date? {
-        return  Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self))
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self))
     }
     
     var endOfMonth: Date? {
-        guard let startOfMonth = startOfMonth else {
-            return nil
-        }
-
+        guard let startOfMonth = startOfMonth else { return nil}
         return Calendar(identifier: .gregorian).date(byAdding: DateComponents(month: 1, second: -1), to: startOfMonth)
     }
 }

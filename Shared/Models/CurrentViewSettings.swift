@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CurrentViewSettings: Codable {
+enum CurrentViewSettings: Int, Codable {
     case Today
     case Last24
 }

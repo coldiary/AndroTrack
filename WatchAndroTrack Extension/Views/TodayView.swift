@@ -23,7 +23,7 @@ struct TodayView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-                Text("TODAY")
+            Text(settingsStore.currentView == .Today ? "TODAY" : "RECENT")
                 .font(.largeTitle)
                 .foregroundColor(settingsStore.themeColor)
                 .padding(.bottom)

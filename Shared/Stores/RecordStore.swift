@@ -19,10 +19,7 @@ class RecordStore: ObservableObject {
     ]
     @Published var pagedQuaterlyRecords: [Int:[Record]] = [:]
     @Published var all: [Record]?
-    
-    #if os(iOS)
     @Published var stats: Stats?
-    #endif
     
     private init() {
         guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
@@ -142,8 +139,7 @@ class RecordStore: ObservableObject {
             return Day(records: records.filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
         }
         
-        let page = (Calendar.current.dateComponents([.month], from: date, to: Date()).month ?? 0) / 3
-        return Day(records: (pagedQuaterlyRecords[page] ?? all ?? []).filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
+        return Day(records: pagedQuaterlyRecords[date.quartersAgo, default: []].filter({ Calendar.current.isDate($0.start, inSameDayAs: date) }))
     }
     
     public func getLast24() -> Last24 {
@@ -169,21 +165,49 @@ class RecordStore: ObservableObject {
         }
     }
     
+    public func loadAllHealthData(completion: ((Error?) -> ())? = nil) {
+        HealthKitService.shared.fetchRecords { records, error in
+            if let error = error {
+                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                completion?(error)
+                return
+            }
+            
+            self.all = records
+            completion?(nil)
+        }
+    }
+    
     public func refreshHealthData() {
-        loadHealthData(forQuarterAgo: 0) { error in
+        loadAllHealthData { error in
             if let error = error {
                 AppLogger.error(context: "RecordStore", "Failure: \(error.localizedDescription)")
                 return
             }
             
-            if let dayBefore = Calendar.current.dayBefore(),
-               let lastQuarter = self.pagedQuaterlyRecords[0] {
-                self.records = lastQuarter.filter({ $0.end > dayBefore })
-                
-                if (self.records.count > 0) {
-                    self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn
-                }
+            self.pagedQuaterlyRecords = [:]
+            self.records = []
+            
+            guard let all = self.all else {
+                AppLogger.error(context: "RecordStore", "Failure: refreshHealthData - all records not loaded")
+                return
             }
+            
+            for record in all {
+                let quarterAgo = record.start.quartersAgo
+                
+                if quarterAgo == 0 && (record.end.isInLast24h || record.start.isInLast24h) {
+                    self.records.append(record)
+                }
+                
+                self.pagedQuaterlyRecords[quarterAgo, default: []].append(record)
+            }
+            
+            if (self.records.count > 0) {
+                self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn
+            }
+            
+            self.stats = Stats(store: self)
         }
     }
 }

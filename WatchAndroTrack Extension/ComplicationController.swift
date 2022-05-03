@@ -66,22 +66,22 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        var complications: [CLKComplicationTimelineEntry] = []
+        var entries: [CLKComplicationTimelineEntry] = []
         var next = date
-        while complications.count < limit {
-            next = next.advanced(by: .minutes(5))
+        while entries.count < limit {
+            next = next.advanced(by: .minutes(15))
             if let duration = Calendar.current.dateComponents([.minute], from:  date, to: next).minute {
                 if let template = makeTemplateFor(complication: complication, data: ComplicationDisplayedData(
                     duration: recordStore.current.duration + Double(duration / 60),
                     sessionLength: settingsStore.sessionLength,
                     color: settingsStore.themeColor
                 )) {
-                    complications.append(.init(date: next, complicationTemplate: template))
+                    entries.append(.init(date: next, complicationTemplate: template))
                 }
             }
         }
         
-        handler(complications)
+        handler(entries)
     }
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {

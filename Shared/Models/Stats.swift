@@ -79,8 +79,8 @@ struct Stats {
         let endCountedSet = NSCountedSet()
         
         for record in (store.all ?? []).filter({ $0.end != Date.distantFuture }) {
-            startCountedSet.add(record.start.minutesInDay())
-            endCountedSet.add(record.end.minutesInDay())
+            startCountedSet.add(record.start.minutesInDay)
+            endCountedSet.add(record.end.minutesInDay)
         }
         
         let mostFrequentStart = startCountedSet.max { startCountedSet.count(for: $0) < startCountedSet.count(for: $1) }

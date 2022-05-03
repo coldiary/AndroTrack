@@ -50,6 +50,7 @@
 		6A779C2526A46001003DF0CE /* AndroTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A779C2426A46001003DF0CE /* AndroTrackApp.swift */; };
 		6A8B2D9026A1B51E00D63862 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B2D8F26A1B51E00D63862 /* UserDefaults+Extension.swift */; };
 		6A8E6DFC28201A1600991C32 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E6DFB28201A1600991C32 /* Stats.swift */; };
+		6A8E6E012821835100991C32 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E6DFB28201A1600991C32 /* Stats.swift */; };
 		6A922C4926A4574A005782DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A922C4826A4574A005782DB /* Assets.xcassets */; };
 		6A922C5026A4574A005782DB /* WatchAndroTrack Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A922C4F26A4574A005782DB /* WatchAndroTrack Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6A922C5726A4574A005782DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A922C5626A4574A005782DB /* ContentView.swift */; };
@@ -692,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A9A662B26A7571700E7526A /* NotificationType.swift in Sources */,
+				6A8E6E012821835100991C32 /* Stats.swift in Sources */,
 				6A0322F126A6213C008E97C8 /* WatchConnectivity.swift in Sources */,
 				6A0322DF26A5E7D0008E97C8 /* NotificationsSettings.swift in Sources */,
 				6A2334E928122BCD005AABA9 /* CurrentViewSettings.swift in Sources */,
