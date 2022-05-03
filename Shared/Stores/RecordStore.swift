@@ -12,11 +12,7 @@ class RecordStore: ObservableObject {
     public static var shared = RecordStore()
     
     @Published var state = RingState.off
-    @Published var records: [Record] = [
-        Record.dayBefore,
-        Record.yesterday,
-        Record.today,
-    ]
+    @Published var records: [Record] = []
     @Published var pagedQuaterlyRecords: [Int:[Record]] = [:]
     @Published var all: [Record]?
     @Published var stats: Stats?

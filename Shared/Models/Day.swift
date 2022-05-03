@@ -13,6 +13,15 @@ struct Day: SessionGroup {
     var goal: Int? {
         records[safe: records.endIndex - 1]?.goal
     }
+    
+    func durationAsProgress(goal currentGoalSetting: Int) -> Double {
+        let goal = Double(self.goal ?? currentGoalSetting)
+        return (duration / goal) * 100
+    }
+    
+    func estimatedEnd(forDuration sessionLength: Int) -> Date? {
+        return Calendar.current.date(byAdding: .second, value: Int((Double(sessionLength) - duration) * 3600), to: Date())
+    }
 }
 
 extension Day: CustomStringConvertible {

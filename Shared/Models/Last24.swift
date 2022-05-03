@@ -26,6 +26,21 @@ struct Last24: SessionGroup {
     var goal: Int? {
         records[safe: records.endIndex - 1]?.goal
     }
+    
+    func durationAsProgress(goal currentGoalSetting: Int) -> Double {
+        let goal = Double(self.goal ?? currentGoalSetting)
+        return (duration / goal) * 100
+    }
+    
+    func estimatedEnd(forDuration sessionLength: Int) -> Date? {
+        let frameStart = Date().removeHours(24)
+        let drifting = records.first { rec in rec.start < frameStart && rec.end > frameStart }
+        var driftingHours: Double = 0
+        if let drifting = drifting {
+            driftingHours = frameStart.distance(to: drifting.end, as: DurationUnit.hour)
+        }
+        return Calendar.current.date(byAdding: .second, value: Int((Double(sessionLength) - duration + driftingHours) * 3600), to: Date())
+    }
 }
 
 extension Last24: CustomStringConvertible {
@@ -35,7 +50,7 @@ extension Last24: CustomStringConvertible {
           records: \(records.count),
           duration: \(self.duration),
           goal: \(self.goal?.description ?? "-"),
-          date: \(records.count != 0 ? records.first!.start.format() : "unknown")
+          date: \(records.count != 0 ? records.first!.start.compactDateTime() : "unknown")
         }
         """
     }

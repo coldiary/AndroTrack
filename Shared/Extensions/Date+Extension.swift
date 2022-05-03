@@ -27,7 +27,12 @@ extension Date {
     
     // Ex: 2021-12-29
     func compactDate() -> String {
-        return self.format(dateFormat: .short, timeFormat: .none, locale: Locale(identifier: "fr_CA"))
+        self.format(dateFormat: .short, timeFormat: .none, locale: Locale(identifier: "fr_CA"))
+    }
+    
+    // Ex: 2021-12-29 07:75
+    func compactDateTime() -> String {
+        self.format(dateFormat: .short, timeFormat: .short, locale: Locale(identifier: "fr_CA"))
     }
     
     static func fromString(date: String, format: String = "yyyy/MM/dd HH:mm") -> Date? {

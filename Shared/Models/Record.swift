@@ -100,6 +100,12 @@ extension Record: Comparable {
 
 extension Record: CustomStringConvertible {
     var description: String {
-        "{ start: \(start.description), end: \(end != Date.distantFuture ? end.description : "-"), goal: \(goal?.description ?? "nil") }"
+        """
+        {
+            start: \(start.compactDateTime()),
+            end: \(end != Date.distantFuture ? end.compactDateTime() : "-"),
+            goal: \(goal?.description ?? "nil")
+        }
+        """
     }
 }
