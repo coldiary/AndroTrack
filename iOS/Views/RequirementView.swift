@@ -28,32 +28,35 @@ struct RequirementView: View {
     }
     
     private func requestAuthorization(completion: (@escaping () -> Void)) -> Void {
-        HealthKitService.shared.requestAccess { success, error in
-            if let error = error {
-                AppLogger.error(context: "ContentView", error.errorDescription!)
-            } else {
-                HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
-                    if let error = error {
-                        AppLogger.error(context: "ContentView", error.errorDescription!)
-                    } else {
-                        if status == .unnecessary {
-                            hasSeenHealthKitAuthorization = true
+        HealthKitService.shared.requestAccess { result in
+            switch result {
+                case .failure(let error):
+                    AppLogger.error(context: "ContentView", error.errorDescription!)
+                case .success(_):
+                    HealthKitService.shared.checkAuthorizationRequestStatus { result in
+                        switch result {
+                            case .failure(let error):
+                                AppLogger.error(context: "ContentView", error.errorDescription!)
+                            case .success(let status):
+                                if status == .unnecessary {
+                                    hasSeenHealthKitAuthorization = true
+                                }
                         }
                     }
-                }
             }
             completion()
         }
     }
     
     private func updateHKRequestStatus() {
-        HealthKitService.shared.checkAuthorizationRequestStatus() { status, error in
-            if let error = error {
-                AppLogger.error(context: "ContentView", error.errorDescription!)
-            } else {
-                if status == .unnecessary {
-                     hasSeenHealthKitAuthorization = true
-                }
+        HealthKitService.shared.checkAuthorizationRequestStatus() { result in
+            switch result {
+                case .failure(let error):
+                    AppLogger.error(context: "ContentView", error.errorDescription!)
+                case .success(let status):
+                    if status == .unnecessary {
+                         hasSeenHealthKitAuthorization = true
+                    }
             }
         }
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import Combine
 
 class RecordStore: ObservableObject {
     public static var shared = RecordStore()
@@ -17,22 +18,24 @@ class RecordStore: ObservableObject {
     @Published var all: [Record]?
     @Published var stats: Stats?
     
+    private var syncSub: AnyCancellable?
+    private var disposableBag = Set<AnyCancellable>()
+    
     private init() {
-        guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else {
-            return
-        }
+        guard ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" else { return }
+        
         if HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized {
-            HealthKitService.shared.registerForSync(withCallback: { error in
-                if let error = error {
-                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                } else {
-                    self.refreshHealthData()
+            syncSub = HealthKitService.shared.registerForSync()
+                .receive(on: DispatchQueue.main)
+                .zip(loadAllHealthData())
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                    }
+                } receiveValue: { (HKCompletion, records) in
+                    self.setHealthData(records)
+                    HKCompletion()
                 }
-            }, completion: { error in
-                if let error = error {
-                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                }
-            })
         }
     }
     
@@ -45,8 +48,8 @@ class RecordStore: ObservableObject {
             state = RingState.worn
             records.append(Record(start: Date()))
             
-            HealthKitService.shared.addRecord(record: records[records.endIndex - 1]) {  _, error  in
-                if let error = error {
+            HealthKitService.shared.addRecord(record: records[records.endIndex - 1]) {  result in
+                if case .failure(let error) = result {
                     return AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
             }
@@ -67,16 +70,13 @@ class RecordStore: ObservableObject {
                     }
                 }
             } else {
-                HealthKitService.shared.editRecord(id: records[records.endIndex - 1].id, records[records.endIndex - 1]) { id, error in
-                    if let error = error {
-                        AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                HealthKitService.shared.editRecord(id: records[records.endIndex - 1].id, records[records.endIndex - 1]) { result in
+                    switch result {
+                        case .failure(let error):
+                            AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                        case .success(let id):
+                            self.records[self.records.endIndex - 1].updateId(id)
                     }
-                    
-                    guard let id = id else {
-                        return AppLogger.error(context: "RecordStore", "Failure: No UUID returned.")
-                    }
-                    
-                    self.records[self.records.endIndex - 1].updateId(id)
                 }
             }
             
@@ -101,13 +101,16 @@ class RecordStore: ObservableObject {
     public func editRecord(with id: UUID, newValues: Record) {
         let editingCurrent = RecordStore.shared.current.records.contains { id == $0.id }
         
-        HealthKitService.shared.editRecord(id: id, newValues) { _, error in
-            if let error = error {
-                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-            } else if editingCurrent {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    Notifications.scheduleNotifyEnd()
-                }
+        HealthKitService.shared.editRecord(id: id, newValues) { result in
+            switch result {
+                case .failure(let error):
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+                case .success(_):
+                    if editingCurrent {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            Notifications.scheduleNotifyEnd()
+                        }
+                    }
             }
         }
     }
@@ -115,10 +118,12 @@ class RecordStore: ObservableObject {
     public func addRecord(newValues: Record) {
         let editingCurrent = Calendar.current.isDateInToday(newValues.start)
         
-        HealthKitService.shared.addRecord(record: newValues) { _, error in
-            if let error = error {
-                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-            } else if editingCurrent {
+        HealthKitService.shared.addRecord(record: newValues) { result in
+            if case .failure(let error) = result {
+                return AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
+            }
+            
+            if editingCurrent {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     Notifications.scheduleNotifyEnd()
                 }
@@ -143,67 +148,51 @@ class RecordStore: ObservableObject {
         return Last24(records: records.filter({ $0.end > start }))
     }
     
-    public func loadHealthData(forQuarterAgo quarter: Int, completion: ((Error?) -> ())? = nil) {
-        if let end = Calendar.current.date(byAdding: DateComponents(month: quarter * -3), to: Date())?.endOfMonth,
-           let start = Calendar.current.date(byAdding: DateComponents(month: (quarter + 1) * -3), to: Date())?.startOfMonth {
-            HealthKitService.shared.fetchRecords(from: start, to: end) { results, error in
-                if let error = error {
-                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                    completion?(error)
-                    return
-                }
-                
-                if let results = results {
-                    self.pagedQuaterlyRecords[quarter] = results
-                    completion?(nil)
+    private func loadAllHealthData() -> Future<[Record], HealthKitServiceError> {
+        Future { promise in
+            HealthKitService.shared.fetchRecords { result in
+                switch result {
+                    case .failure(let error):
+                        return promise(.failure(error))
+                    case .success(let records):
+                        return promise(.success(records))
                 }
             }
-        }
-    }
-    
-    public func loadAllHealthData(completion: ((Error?) -> ())? = nil) {
-        HealthKitService.shared.fetchRecords { records, error in
-            if let error = error {
-                AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
-                completion?(error)
-                return
-            }
-            
-            self.all = records
-            completion?(nil)
         }
     }
     
     public func refreshHealthData() {
-        loadAllHealthData { error in
-            if let error = error {
-                AppLogger.error(context: "RecordStore", "Failure: \(error.localizedDescription)")
-                return
-            }
-            
-            self.pagedQuaterlyRecords = [:]
-            self.records = []
-            
-            guard let all = self.all else {
-                AppLogger.error(context: "RecordStore", "Failure: refreshHealthData - all records not loaded")
-                return
-            }
-            
-            for record in all {
-                let quarterAgo = record.start.quartersAgo
-                
-                if quarterAgo == 0 && (record.end.isInLast24h || record.start.isInLast24h) {
-                    self.records.append(record)
+        loadAllHealthData()
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
                 }
-                
-                self.pagedQuaterlyRecords[quarterAgo, default: []].append(record)
+            } receiveValue: { self.setHealthData($0) }
+            .store(in: &disposableBag)
+
+    }
+    
+    public func setHealthData(_ records: [Record]) {
+        self.all = records
+        self.pagedQuaterlyRecords = [:]
+        self.records = []
+        
+        for record in records {
+            let quarterAgo = record.start.quartersAgo
+            
+            if quarterAgo == 0 && (record.end.isInLast24h || record.start.isInLast24h) {
+                self.records.append(record)
             }
             
-            if (self.records.count > 0) {
-                self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn
-            }
-            
-            self.stats = Stats(store: self)
+            self.pagedQuaterlyRecords[quarterAgo, default: []].append(record)
         }
+        
+        if (self.records.count > 0) {
+            self.state = self.records[self.records.endIndex - 1].end != Date.distantFuture ? RingState.off : RingState.worn
+        }
+        
+        self.stats = Stats(store: self)
+        
+        AppLogger.error(context: "RecordStore", "Data refreshed")
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import Combine
 
 class HealthKitService {
     static let shared = HealthKitService()
@@ -17,18 +18,18 @@ class HealthKitService {
     private lazy var healthKitTypesToWrite: Set<HKSampleType> = { [contraceptiveType] }()
     private lazy var healthKitTypesToRead: Set<HKObjectType> = { [contraceptiveType] }()
     
+    private let syncPub = PassthroughSubject<HKObserverQueryCompletionHandler, HealthKitServiceError>()
+    
     public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
    
-    public func editRecord(id: UUID, _ newValues: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) {
+    public func editRecord(id: UUID, _ newValues: Record, completion: @escaping (Result<UUID, HealthKitServiceError>) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(nil, HealthKitServiceError.HealthDataUnavailable)
-            return
+            return completion(.failure(HealthKitServiceError.HealthDataUnavailable))
         }
         
-        requestAccess { sucess, error in
-            guard error == nil else {
-                completion(nil, HealthKitServiceError.AccessDenied)
-                return
+        requestAccess { result in
+            guard case .success(_) = result else {
+                return completion(.failure(HealthKitServiceError.AccessDenied))
             }
             
             // Try to found record to replace
@@ -38,20 +39,17 @@ class HealthKitService {
                 query, results, error in
                 
                 guard error == nil else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
+                    return completion(.failure(HealthKitServiceError.Failure(error!)))
                 }
                 
                 guard let samples = results as? [HKCategorySample] else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
+                    return completion(.failure(HealthKitServiceError.Failure(error!)))
                 }
                
                 if (samples.count > 0) {
                     self.store.delete(samples[0]) { sucess, error in
                         if let error = error {
-                            completion(nil, HealthKitServiceError.Failure(error))
-                            return
+                            return completion(.failure(HealthKitServiceError.Failure(error)))
                         }
                         
                         let contraceptiveSample = HKCategorySample(
@@ -67,14 +65,14 @@ class HealthKitService {
 
                         self.store.save(contraceptiveSample) { (success, error) in
                             if let error = error {
-                                completion(nil, HealthKitServiceError.Failure(error))
+                                completion(.failure(HealthKitServiceError.Failure(error)))
                             } else {
-                                completion(contraceptiveSample.uuid, nil)
+                                completion(.success(contraceptiveSample.uuid))
                             }
                         }
                     }
                 } else {
-                    completion(nil, HealthKitServiceError.RecordNotFound(id))
+                    completion(.failure(HealthKitServiceError.RecordNotFound(id)))
                 }
             }
             
@@ -82,14 +80,14 @@ class HealthKitService {
         }
     }
     
-    public func removeRecord(id: UUID, completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func removeRecord(id: UUID, completion: @escaping (HealthKitServiceError?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(HealthKitServiceError.HealthDataUnavailable)
             return
         }
         
-        requestAccess { sucess, error in
-            guard error == nil else {
+        requestAccess { result in
+            guard case .success(_) = result else {
                 completion(HealthKitServiceError.AccessDenied)
                 return
             }
@@ -127,16 +125,14 @@ class HealthKitService {
         }
     }
     
-    public func addRecord(record: Record, completion: @escaping (UUID?, HealthKitServiceError?) -> ()) {
+    public func addRecord(record: Record, completion: @escaping (Result<UUID, HealthKitServiceError>) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(nil, HealthKitServiceError.HealthDataUnavailable)
-            return
+            return completion(.failure(HealthKitServiceError.HealthDataUnavailable))
         }
         
-        requestAccess { sucess, error in
-            guard error == nil else {
-                completion(nil, HealthKitServiceError.AccessDenied)
-                return
+        requestAccess { result in
+            guard case .success(_) = result else {
+                return completion(.failure(HealthKitServiceError.AccessDenied))
             }
 
             let contraceptiveSample = HKCategorySample(
@@ -152,24 +148,22 @@ class HealthKitService {
 
             self.store.save(contraceptiveSample) { (success, error) in
                 if let error = error {
-                    completion(nil, HealthKitServiceError.Failure(error))
+                    completion(.failure(HealthKitServiceError.Failure(error)))
                 } else {
-                    completion(contraceptiveSample.uuid, nil)
+                    completion(.success(contraceptiveSample.uuid))
                 }
             }
         }
     }
     
-    public func fetchRecords(from: Date? = nil, to: Date? = nil, completion: @escaping ([Record]?, HealthKitServiceError?) -> ()) {
+    public func fetchRecords(from: Date? = nil, to: Date? = nil, completion: @escaping (Result<[Record], HealthKitServiceError>) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(nil, HealthKitServiceError.HealthDataUnavailable)
-            return
+            return completion(.failure(HealthKitServiceError.HealthDataUnavailable))
         }
         
-        requestAccess { sucess, error in
-            guard error == nil else {
-                completion(nil, HealthKitServiceError.AccessDenied)
-                return
+        requestAccess { result in
+            guard case .success(_) = result else {
+                return completion(.failure(HealthKitServiceError.AccessDenied))
             }
             
             var predicate: NSPredicate? = nil;
@@ -181,13 +175,11 @@ class HealthKitService {
                 query, results, error in
                 
                 guard error == nil else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
+                    return completion(.failure(HealthKitServiceError.Failure(error!)))
                 }
                 
                 guard let samples = results as? [HKCategorySample] else {
-                    completion(nil, HealthKitServiceError.Failure(error!))
-                    return
+                    return completion(.failure(HealthKitServiceError.Failure(error!)))
                 }
                
                 let records = samples.map { sample -> Record in
@@ -202,7 +194,7 @@ class HealthKitService {
                 }
                 
                 DispatchQueue.main.async {
-                    completion(records, nil)
+                    completion(.success(records))
                 }
             }
             
@@ -213,16 +205,15 @@ class HealthKitService {
         
     }
     
-    public func registerForSync(withCallback: @escaping  (HealthKitServiceError?) -> (), completion: @escaping (HealthKitServiceError?) -> ()) {
+    public func registerForSync() -> AnyPublisher<HKObserverQueryCompletionHandler, HealthKitServiceError> {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(HealthKitServiceError.HealthDataUnavailable)
-            return
+            return Fail(error: HealthKitServiceError.HealthDataUnavailable)
+                .eraseToAnyPublisher()
         }
         
-        self.requestAccess { sucess, error in
-            guard error == nil else {
-                completion(HealthKitServiceError.AccessDenied)
-                return
+        requestAccess { result in
+            guard case .success(_) = result else {
+                return self.syncPub.send(completion: .failure(HealthKitServiceError.AccessDenied))
             }
             
             let sampleObserver = HKObserverQuery(
@@ -230,44 +221,39 @@ class HealthKitService {
                 predicate: nil
             ) { (query, completionHandler, error: Error?) in
                 if let error = error {
-                    withCallback(HealthKitServiceError.Failure(error))
-                    return
+                    return self.syncPub.send(completion: .failure(HealthKitServiceError.Failure(error)))
                 }
-                completionHandler()
-                DispatchQueue.main.async {
-                    withCallback(nil)
-                }
+                
+                self.syncPub.send(completionHandler)
             }
 
             self.store.execute(sampleObserver)
-            
-            DispatchQueue.main.async {
-                completion(nil)
-            }
         }
+        
+        return syncPub.eraseToAnyPublisher()
     }
     
-    public func requestAccess(completion: @escaping (Bool, HealthKitServiceError?) -> ()) {
+    public func requestAccess(completion: @escaping (Result<Bool, HealthKitServiceError>) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion(false, HealthKitServiceError.HealthDataUnavailable)
+            completion(.failure(HealthKitServiceError.HealthDataUnavailable))
             return
         }
         
         store.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { (success: Bool, error: Error?) in
             if let error = error {
-                completion(false, HealthKitServiceError.Failure(error))
+                completion(.failure(HealthKitServiceError.Failure(error)))
             } else {
-                completion(success, nil)
+                completion(.success(success))
             }
         }
     }
     
-    public func checkAuthorizationRequestStatus(completion: @escaping (HKAuthorizationRequestStatus?, HealthKitServiceError?) -> ()) {
+    public func checkAuthorizationRequestStatus(completion: @escaping (Result<HKAuthorizationRequestStatus, HealthKitServiceError>) -> Void) {
         store.getRequestStatusForAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { status, error in
             if let error = error {
-                completion(nil, HealthKitServiceError.Failure(error))
+                completion(.failure(HealthKitServiceError.Failure(error)))
             } else {
-                completion(status, nil)
+                completion(.success(status))
             }
         }
     }
@@ -279,24 +265,27 @@ enum HealthKitServiceError: Error {
     case InvalidRecord(property: String)
     case RecordNotFound(UUID)
     case AccessDenied
+    case NoData
     case Failure(Error)
 }
 
 extension HealthKitServiceError: LocalizedError {
     var errorDescription: String? {
         switch self {
-            case .AccessDenied:
-                return NSLocalizedString("HealthKit: Access denied to HealthKit data", comment: "")
-            case .CategoryTypeNotFound:
-                return NSLocalizedString("HealthKit: CategoryType not found", comment: "")
-            case .Failure(let err):
-                return NSLocalizedString("HealthKit: Failure \(err)", comment: "")
-            case .HealthDataUnavailable:
-                return NSLocalizedString("HealthKit: Access denied to HealthKit data", comment: "")
-            case .InvalidRecord(let property):
-                return NSLocalizedString("HealthKit: Invalid record can't be stored. Property \(property) is missing", comment: "")
-            case .RecordNotFound(let id):
-                return NSLocalizedString("HealthKit: Record with UUID \(id) not found", comment: "")
+        case .HealthDataUnavailable:
+            return NSLocalizedString("HealthKit: HealthKit data unavailable", comment: "")
+        case .AccessDenied:
+            return NSLocalizedString("HealthKit: Access denied to HealthKit data", comment: "")
+        case .CategoryTypeNotFound:
+            return NSLocalizedString("HealthKit: CategoryType not found", comment: "")
+        case .Failure(let err):
+            return NSLocalizedString("HealthKit: Failure \(err)", comment: "")
+        case .InvalidRecord(let property):
+            return NSLocalizedString("HealthKit: Invalid record can't be stored. Property \(property) is missing", comment: "")
+        case .NoData:
+            return NSLocalizedString("HealthKit: No HealthKit data", comment: "")
+        case .RecordNotFound(let id):
+            return NSLocalizedString("HealthKit: Record with UUID \(id) not found", comment: "")
         }
     }
 }

@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.scenePhase) var scenePhase
+    
     @EnvironmentObject private var settingsStore: SettingsStore
     @StateObject private var recordStore = RecordStore.shared
     
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    let timer = Timer
+        .publish(every: 60, on: .main, in: .common)
+        .autoconnect()
     
     var body: some View {
         TabView {
@@ -52,6 +56,11 @@ struct ContentView: View {
         .environmentObject(recordStore)
         .onReceive(timer) { _ in
             recordStore.objectWillChange.send()
+        }
+        .onChange(of: scenePhase) { newValue in
+            if case .active = newValue {
+                recordStore.refreshHealthData()
+            }
         }
     }
 }
