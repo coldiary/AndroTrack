@@ -74,9 +74,10 @@ struct RecordView: View {
                             Text(estimatedEnd!, style: .time)
                                 .opacity(estimatedEndOpacity)
                                 .onAppear() {
-                                    estimatedEndOpacity = 0.25
+                                    withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                                        estimatedEndOpacity = 0.25
+                                    }
                                 }
-                                .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true))
                         } else {
                             Text("-")
                                 .padding(.horizontal)
