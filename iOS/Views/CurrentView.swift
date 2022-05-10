@@ -44,7 +44,7 @@ struct CurrentView: View {
                     }.padding(.top, 50)
                     Spacer()
                     VStack {
-                        ForEach(recordStore.current.records.sorted { $0 > $1}) { record in
+                        ForEach(recordStore.current.records.sorted { $0 > $1 }) { record in
                             RecordView(record: record,
                                        ringColor: settingsStore.themeColor,
                                        sessionLength: settingsStore.sessionLength,

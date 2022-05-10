@@ -24,7 +24,7 @@ struct HistoryListView: View {
     
     var body: some View {
         HStack {
-                List(records.sorted { $0 > $1}) { record in
+                List(records.sorted { $0 > $1 }) { record in
                         RecordView(record: record,
                                    ringColor: settingsStore.themeColor,
                                    sessionLength: settingsStore.sessionLength,
