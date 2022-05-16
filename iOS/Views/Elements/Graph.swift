@@ -26,7 +26,7 @@ struct GraphBar: View {
                     Spacer(minLength: 0)
                     if item.value > 0 {
                         ZStack(alignment: .bottom) {
-                            if let height = item.value * (geo.size.height / maxValue) {
+                            if let height = min(item.value, maxValue) * (geo.size.height / maxValue) {
                                 Text(item.label)
                                     .font(.footnote)
                                     .lineLimit(1)
