@@ -33,9 +33,9 @@ struct GraphBar: View {
                                     .allowsTightening(true)
                                     .minimumScaleFactor(0.75)
                                     .rotationEffect(.degrees(-90))
-                                    .offset(y: item.value <= 4 ? -1 * height - 10 : -1 * height + 30)
+                                    .offset(y: trunc(item.value) <= 4 ? -1 * height - 10 : -1 * height + 30)
                                     .zIndex(1)
-                                    .when(item.value > 4) { view in
+                                    .when(trunc(item.value) > 4) { view in
                                         view.colorInvert()
                                     }
                                 
