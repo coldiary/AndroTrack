@@ -27,7 +27,8 @@ class RecordStore: ObservableObject {
         if HealthKitService.shared.healthKitAuthorizationStatus == .sharingAuthorized {
             syncSub = HealthKitService.shared.registerForSync()
                 .receive(on: DispatchQueue.main)
-                .zip(loadAllHealthData())
+                .map { HKCompletion in self.loadAllHealthData().map { records in (HKCompletion, records) } }
+                .switchToLatest()
                 .sink { completion in
                     if case .failure(let error) = completion {
                         AppLogger.error(context: "RecordStore", "Failure: \(error.errorDescription!)")
