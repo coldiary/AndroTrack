@@ -21,6 +21,8 @@ class HealthKitService {
     private let syncPub = PassthroughSubject<HKObserverQueryCompletionHandler, HealthKitServiceError>()
     
     public var healthKitAuthorizationStatus: HKAuthorizationStatus { store.authorizationStatus(for: contraceptiveType) }
+    
+    private init() {}
    
     public func editRecord(id: UUID, _ newValues: Record, completion: @escaping (Result<UUID, HealthKitServiceError>) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {

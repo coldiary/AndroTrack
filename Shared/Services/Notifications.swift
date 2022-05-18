@@ -10,6 +10,8 @@ import UserNotifications
 
 class Notifications {
     
+    private init() {}
+    
     static let UNCenter = UNUserNotificationCenter.current()
     
     static func checkSettings(completion: @escaping (UNNotificationSettings?) -> Void) {

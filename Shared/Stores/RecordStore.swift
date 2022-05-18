@@ -194,6 +194,6 @@ class RecordStore: ObservableObject {
         
         self.stats = Stats(store: self)
         
-        AppLogger.error(context: "RecordStore", "Data refreshed")
+        AppLogger.info(context: "RecordStore", "Data refreshed")
     }
 }

@@ -9,6 +9,9 @@ import Foundation
 import os
 
 class AppLogger {
+    
+    private init() {}
+    
     static private let logger = Logger()
     
     static func formatted(context: String?, _ message: String) -> String {

@@ -22,7 +22,7 @@ class WatchConnectivity: NSObject, ObservableObject, WCSessionDelegate {
     
     @Published var isReachable = false
     
-    override init() {
+    override private init() {
         super.init()
         
         if (WCSession.isSupported()) {

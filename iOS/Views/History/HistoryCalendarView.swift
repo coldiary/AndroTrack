@@ -11,7 +11,7 @@ struct HistoryCalendarView: View {
     @EnvironmentObject var recordStore: RecordStore
     @EnvironmentObject var settingsStore: SettingsStore
     
-    @State var page = 1
+    @State private var page = 1
     
     var interval: DateInterval? {
         guard let start = Date().removeMonths(QUARTER_IN_MONTHS * page) else {
