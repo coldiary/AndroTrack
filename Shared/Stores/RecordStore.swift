@@ -17,6 +17,7 @@ class RecordStore: ObservableObject {
     @Published var pagedQuaterlyRecords: [Int:[Record]] = [:]
     @Published var all: [Record]?
     @Published var stats: Stats?
+    @Published var lastRefresh = Date()
     
     private var syncSub: AnyCancellable?
     private var disposableBag = Set<AnyCancellable>()
@@ -193,6 +194,7 @@ class RecordStore: ObservableObject {
         }
         
         self.stats = Stats(store: self)
+        self.lastRefresh = Date()
         
         AppLogger.info(context: "RecordStore", "Data refreshed")
     }

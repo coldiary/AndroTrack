@@ -14,10 +14,9 @@ struct HistoryCalendarView: View {
     @State private var page = 1
     
     var interval: DateInterval? {
-        guard let start = Date().removeMonths(QUARTER_IN_MONTHS * page) else {
-            return nil
-        }
-        return DateInterval(start: start, end: Date())
+        let now = recordStore.lastRefresh
+        guard let start = now.removeMonths(QUARTER_IN_MONTHS * page) else { return nil }
+        return DateInterval(start: start, end: now)
     }
     
     private var loadingThreshold: Int {
