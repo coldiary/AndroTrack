@@ -32,6 +32,7 @@ struct HistoryListView: View {
                         ).padding(.vertical)
                         .swipeActions(content: {
                             Button(role: .destructive, action: {
+                                editedRecord = record
                                 showConfirmModal = true
                             }) {
                                 Image(systemName: "trash")
@@ -44,21 +45,21 @@ struct HistoryListView: View {
                                 Image(systemName: "square.and.pencil")
                             }
                         })
-                        .confirmationDialog(
-                            "CONFIRM_DELETE",
-                             isPresented: $showConfirmModal,
-                            titleVisibility: .visible
-                        ) {
-                            Button("YES", role: .destructive) {
-                                withAnimation {
-                                    recordStore.deleteRecord(at: record.start!)
-                                }
-                            }
-
-                            Button("CANCEL", role: .cancel) {}
-                        }
                 }
                 .padding(.top)
+        }
+        .confirmationDialog(
+            "CONFIRM_DELETE",
+             isPresented: $showConfirmModal,
+            titleVisibility: .visible
+        ) {
+            Button("YES", role: .destructive) {
+                withAnimation {
+                    recordStore.deleteRecord(at: editedRecord!.start!)
+                }
+            }
+            
+            Button("CANCEL", role: .cancel) {}
         }
         .sheet(isPresented: $showEditModal) { [editedRecord] in
             GenericModal() {

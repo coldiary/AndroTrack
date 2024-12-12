@@ -25,14 +25,12 @@ struct HistoryCalendarView: View {
             if let interval = interval {
                 HStack {
                     CalendarView(interval: interval) { date in
-                        if let day = recordStore.getDay(forDate: date) {
-                            HistoryCalendarDayView(
-                                date: date,
-                                day: day,
-                                sessionLength: settingsStore.sessionLength,
-                                color: settingsStore.themeColor
-                            )
-                        }
+                        HistoryCalendarDayView(
+                            date: date,
+                            day: recordStore.getDay(forDate: date),
+                            sessionLength: settingsStore.sessionLength,
+                            color: settingsStore.themeColor
+                        )
                     }
                 }
                 .padding(.horizontal)
