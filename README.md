@@ -25,6 +25,7 @@ Projet is not distributed on the stores yet
 - [x] Watch complication
 - [x] End of session notification
 - [x] Session start reminder notification
+- [x] Stats for session history (with mean, streak, goals (?))
 - [x] HealthKit authorization onboarding view
 - [x] Localization
 - [x] Past record editing
@@ -33,7 +34,6 @@ Projet is not distributed on the stores yet
 
 - [ ] Other persistant storage 
 - [ ] Calendar view for session history
-- [ ] Stats for session history (with mean, streak, goals (?))
 - [ ] Widget
 - [ ] Shortcut
 - [ ] Shortcuts app integration
